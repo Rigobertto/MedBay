@@ -1,2 +1,2 @@
-# MadBay
+# MedBay
 Sistema de Gerenciamento Hospitalar
