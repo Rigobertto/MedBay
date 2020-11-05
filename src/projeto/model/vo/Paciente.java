@@ -13,25 +13,39 @@ public class Paciente {
 		this.id_paciente = id_paciente;
 	}
 	public float getPeso() {
-		return peso;
+		if(peso > 0.0f)
+			return peso;
+		else{
+			peso = 0.0f;
+			return peso;
+		}
 	}
 	public void setPeso(float peso) {
-		if(peso > 0.0f)
+		if(peso > 1.0f)
 			this.peso = peso;
 		else
 			System.out.println("Peso inválido!");
 	}
 	public float getAltura() {
-		return altura;
+		if(altura > 0.0f)
+			return altura;
+		else{
+			altura = 0.0f;
+			return altura;
+		}
 	}
 	public void setAltura(float altura) {
-		if(altura > 0.0f)
+		if(altura > 30.0f)
 			this.altura = altura;
 		else
 			System.out.println("Altura inválida!");
 	}
 	public String getTipoSangue() {
-		return tipo_sangue;
+		if(tipo_sangue == null) {
+			tipo_sangue = "";
+			return tipo_sangue;}
+		else
+			return tipo_sangue;
 	}
 	public void setTipoSangue(String tipo_sangue) {
 		tipo_sangue = tipo_sangue.toUpperCase();
