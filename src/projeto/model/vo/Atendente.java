@@ -2,7 +2,6 @@ package projeto.model.vo;
 
 public class Atendente {
 	private int id_atendente;
-	private String senha_atendente;
 	
 	public int getIdAtendente() {
 		return id_atendente;
@@ -13,12 +12,5 @@ public class Atendente {
 		return true;
 	}
 	
-	public String getSenhaAtendente() {
-		return new String(this.senha_atendente);
-	}
-	public boolean setSenhaAtendente(String senha_atendente) {
-		if(senha_atendente == null || senha_atendente.isEmpty()) return false;
-		this.senha_atendente = senha_atendente;
-		return true;
-	}
+	// reimplementação e adequação pendente
 }

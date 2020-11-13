@@ -2,7 +2,6 @@ package projeto.model.vo;
 
 public class Gerente {
 	private int id_gerente;
-	private String senha_gerente;
 	
 	public int getIdGerente() {
 		return id_gerente;
@@ -12,13 +11,5 @@ public class Gerente {
 		this.id_gerente = id_gerente;
 		return true;
 	}
-	
-	public String getSenhaGerente() {
-		return new String(this.senha_gerente);
-	}
-	public boolean setSenhaGerente(String senha_gerente) {
-		if(senha_gerente == null || senha_gerente.isEmpty()) return false;
-		this.senha_gerente = senha_gerente;
-		return true;
-	}
+	// reimplementação pendente
 }
