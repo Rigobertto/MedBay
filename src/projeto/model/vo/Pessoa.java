@@ -7,44 +7,44 @@ public class Pessoa {
 	private char genero;
 	
 	public String getNome() {
-		return nome;
+		return new String(this.nome);
 	}
 	
-	public void setNome(String nome) {
-		
-			this.nome = nome.toUpperCase();
+	public boolean setNome(String nome) {
+		if(nome == null || nome.isEmpty()) return false;
+		this.nome = nome.toUpperCase();
+		return true;
 	}
 	
 	public int getIdade() {
-		return idade;
+		return this.idade;
 	}
 	
-	public void setIdade(int idade) {
-		if(idade > 0)
-			this.idade = idade;
-		else
-			System.out.println("Idade inválida!");
+	public boolean setIdade(int idade) {
+		if(idade < 0) return false;
+		this.idade = idade;
+		return true;
 	}
 	
 	public String getCpf() {
-		return cpf;
+		return new String(this.cpf);
 	}
 	
-	public void setCpf(String cpf) {
-		if(cpf.length() == 11)
-			this.cpf = cpf;
-		else
-			System.out.println("CPF inválido!");
+	public boolean setCpf(String cpf) {
+		if(cpf.length() != 11) return false;
+		this.cpf = cpf;
+		return true;
 	}
 	
 	public char getGenero() {
-		return genero;
+		return this.genero;
 	}
 	
-	public void setGenero(char genero) {
-		if(genero == 'M' || genero == 'F' || genero == 'f' || genero == 'm' || genero == 'i' || genero == 'I')
+	public boolean setGenero(char genero) {
+		if(genero == 'M' || genero == 'F' || genero == 'f' || genero == 'm' || genero == 'i' || genero == 'I') {
 			this.genero = genero;
-		else
-			System.out.println("Genero invpalido!");
+			return true;
+		}
+		return false;
 	}
 }

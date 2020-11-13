@@ -1,52 +1,47 @@
 package projeto.model.vo;
 
 public class Paciente {
-	private int id_paciente;
+	private int id;
 	private float peso;
 	private float altura;
 	private String tipo_sangue;
 	
 	public int getId_paciente() {
-		return id_paciente;
+		return this.id;
 	}
-	public void setId_paciente(int id_paciente) {
-		this.id_paciente = id_paciente;
+	public boolean setId_paciente(int id) {
+		if(id < 0x00) return false;
+		this.id = id;
+		return true;
 	}
 	public float getPeso() {
-		return peso;
+		return this.peso;
 	}
-	public void setPeso(float peso) {
-		if(peso > 0.0f)
-			this.peso = peso;
-		else
-			System.out.println("Peso inválido!");
+	public boolean setPeso(float peso) {
+		if(peso <= 0.0f) return false;
+		this.peso = peso;
+		return true;
 	}
 	public float getAltura() {
-		return altura;
+		return this.altura;
 	}
-	public void setAltura(float altura) {
-		if(altura > 0.0f)
-			this.altura = altura;
-		else
-			System.out.println("Altura inválida!");
+	public boolean setAltura(float altura) {
+		if(altura <= 0.0f) return false;
+		this.altura = altura;
+		return true;
 	}
 	public String getTipoSangue() {
-		return tipo_sangue;
+		return new String(this.tipo_sangue);
 	}
-	public void setTipoSangue(String tipo_sangue) {
+	public boolean setTipoSangue(String tipo_sangue) {
 		tipo_sangue = tipo_sangue.toUpperCase();
 		String tipos[] = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
-		boolean teste = false;
 		for(int i = 0; i < 8; i++) {
 			if(tipos[i].equals(tipo_sangue)) {
 				this.tipo_sangue = tipo_sangue;
-				teste = true;
-				break;
+				return true;
 			}
 		}
-		if(teste == false)
-			System.out.println("Tipo sanguineo inválido!");
+		return false;
 	}
-	
-	
 }

@@ -21,9 +21,9 @@ public class Consulta {
         return this.id;
     }
 
-    public boolean setId(int id_consulta) {
-        if(id_consulta < 0) return false;
-        else this.id = id_consulta;
+    public boolean setId(int id) {
+        if(id < 0) return false;
+        else this.id = id;
         return true;
     }
 
@@ -49,15 +49,23 @@ public class Consulta {
         return this.exame;
     }
 
-    public void setExame(Exame exame) {
+    public boolean setExame(Exame exame) {
+        if(exame == null) return false;
+
+        if(exame.getData().getTimeInMillis() < this.data_cadastro.getTimeInMillis()) return false;
+        if(exame.getData().getTimeInMillis() < this.data_consulta.getTimeInMillis()) return false;
+
         this.exame = exame;
+        return true;
     } 
 
-    public void setObservacao(String observacao) {
-        if(observacao != null) this.observacao = observacao;
+    public boolean setObservacao(String observacao) {
+        if(observacao == null || observacao.isEmpty()) return false;
+        this.observacao = observacao;
+        return true;
     }
 
     public String getObservacao() {
-        return this.observacao;
+        return new String(this.observacao);
     }
 }

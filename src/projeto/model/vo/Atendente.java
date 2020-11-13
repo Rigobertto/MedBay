@@ -7,14 +7,18 @@ public class Atendente {
 	public int getIdAtendente() {
 		return id_atendente;
 	}
-	public void setIdAtendente(int id_atendente) {
+	public boolean setIdAtendente(int id_atendente) {
+		if(id_atendente < 0x00) return false;
 		this.id_atendente = id_atendente;
+		return true;
 	}
 	
-	public String setSenhaAtendente() {
-		return senha_atendente;
+	public String getSenhaAtendente() {
+		return new String(this.senha_atendente);
 	}
-	public void setSenhaAtendente(String senha_atendente) {
+	public boolean setSenhaAtendente(String senha_atendente) {
+		if(senha_atendente == null || senha_atendente.isEmpty()) return false;
 		this.senha_atendente = senha_atendente;
+		return true;
 	}
 }

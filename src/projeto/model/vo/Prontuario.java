@@ -31,11 +31,11 @@ public class Prontuario {
     }
 
     public String getObservacao() {
-        return this.observacao;
+        return new String(this.observacao);
     }
 
     public boolean setObservacao(String texto) {
-        if(texto == null) if(texto.isEmpty()) return false;
+        if(texto == null || texto.isEmpty()) return false;
         this.observacao = texto.toUpperCase();
         return true;
     }
