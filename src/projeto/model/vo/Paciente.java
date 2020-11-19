@@ -22,7 +22,7 @@ public class Paciente {
 		this.peso = peso;
 		return true;
 	}
-	public float getAltura() {
+	public float getAltura() {		// verificar altura para retorno;
 		return this.altura;
 	}
 	public boolean setAltura(float altura) {
@@ -35,7 +35,7 @@ public class Paciente {
 	}
 	public boolean setTipoSangue(String tipo_sangue) {
 		tipo_sangue = tipo_sangue.toUpperCase();
-		String tipos[] = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+		String tipos[] = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"}; // testar validação de tipo sanguineo;
 		for(int i = 0; i < 8; i++) {
 			if(tipos[i].equals(tipo_sangue)) {
 				this.tipo_sangue = tipo_sangue;

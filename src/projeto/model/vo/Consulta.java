@@ -61,7 +61,7 @@ public class Consulta {
 
     public boolean setObservacao(String observacao) {
         if(observacao == null || observacao.isEmpty()) return false;
-        this.observacao = observacao;
+        	this.observacao = observacao;
         return true;
     }
 

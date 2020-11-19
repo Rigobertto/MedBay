@@ -1,4 +1,4 @@
-package projeto.mode.vo;
+package projeto.model.vo;
 
 public class Usuario {
     private int id; // remover, o ID vai servir como numero de matricula para os Pacientes
@@ -10,12 +10,12 @@ public class Usuario {
         this.setSenha(senha);
     }
 
-    public int getId() {
+    public int getId() { // validar idade
         return this.id;
     }
 
     public boolean setId(int id) {
-        if(id < 0x00) return false; // adicionar método no pacote "util" que verifica se o ID já existe
+        if(id < 0x00) return false; // adicionar método no pacote "util" que verifica se o ID j�, existe
         this.id = id;
         return true;
     }
@@ -30,12 +30,12 @@ public class Usuario {
         return true;
     }
 
-    private String getSenha() {
+    private String getSenha() {				// getSenha privado
         return new String(this.senha);
     }
 
     private boolean setSenha(String senha) {
-        if(senha == null || senha.isEmpty()) return false;
+        if(senha == null || senha.isEmpty()) return false; // setSenha privado
         this.senha = senha;
         return true;
     }

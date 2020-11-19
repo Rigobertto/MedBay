@@ -11,5 +11,5 @@ public class Gerente {
 		this.id_gerente = id_gerente;
 		return true;
 	}
-	// reimplementação pendente
+	// reimplementa�ao pendente
 }
