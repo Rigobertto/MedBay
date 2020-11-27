@@ -1,6 +1,6 @@
 package projeto.model.vo;
 
-public class Medico {
+public class MedicoVO extends UsuarioVO{
 	private int id_medico;
 	private String n_conselho;	//numero do conselho nacional de medicina
 	private String especialidade;

@@ -2,14 +2,14 @@ package projeto.model.vo;
 
 import java.util.Calendar;
 
-public class Consulta {
-    private int id;
+public class ConsultaVO {
+	private int id;
 
     private Calendar data_cadastro; // data e hora de cadastro da consulta
     private Calendar data_consulta; // data e hora para qual foi marcada a consulta
 
     // private Medico medico;
-    private Exame exame;
+    private ExameVO exame;
 
     private String observacao;
 
@@ -45,11 +45,11 @@ public class Consulta {
         return true;
     }
 
-    public Exame getExame() {
+    public ExameVO getExame() {
         return this.exame;
     }
 
-    public boolean setExame(Exame exame) {
+    public boolean setExame(ExameVO exame) {
         if(exame == null) return false;
 
         if(exame.getData().getTimeInMillis() < this.data_cadastro.getTimeInMillis()) return false;
