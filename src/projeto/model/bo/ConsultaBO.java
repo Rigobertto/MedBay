@@ -1,6 +1,5 @@
 package projeto.model.bo;
 
-<<<<<<< HEAD
 public class ConsultaBO implements ConsultaInterBO {
     static boolean cadastrar(ConsultaVO consulta) {
         // recebe um objeto do tipo ConsultaVO,
@@ -68,8 +67,4 @@ public class ConsultaBO implements ConsultaInterBO {
     }
 
     // lembrar: atributos Mid e Pid
-=======
-public class ConsultaBO {
-	
->>>>>>> develop_bo
 }
