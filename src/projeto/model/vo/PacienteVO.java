@@ -1,6 +1,6 @@
 package projeto.model.vo;
 
-public class Paciente {
+public class PacienteVO extends PessoaVO{
 	private int id;
 	private float peso;
 	private float altura;

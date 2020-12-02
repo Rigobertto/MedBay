@@ -1,7 +1,8 @@
 package projeto.model.vo;
+
 import java.util.InputMismatchException;
 
-public class Pessoa {
+public abstract class PessoaVO {
 	private String nome;
 	private int idade;
 	private String cpf;

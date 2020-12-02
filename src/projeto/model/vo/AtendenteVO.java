@@ -1,7 +1,7 @@
 package projeto.model.vo;
 
-public class Atendente {
-	private int id_atendente;
+public class AtendenteVO extends UsuarioVO{
+private int id_atendente;
 	
 	public int getIdAtendente() {
 		return id_atendente;

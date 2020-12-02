@@ -1,6 +1,6 @@
 package projeto.model.vo;
 
-public class Gerente {
+public class GerenteVO extends UsuarioVO{
 	private int id_gerente;
 	
 	public int getIdGerente() {
