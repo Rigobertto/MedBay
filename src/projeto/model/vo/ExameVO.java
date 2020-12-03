@@ -11,7 +11,7 @@ public class ExameVO {
 	    // private Medico medico;
 	    // private String dados;
 	    private String observacao;
-	    private ProntuarioVO prontuario; // tbm nao entendi o prontuario?
+	    //private ProntuarioVO prontuario; // tbm nao entendi o prontuario?
 
 	    public int getId() {
 	        return this.id;
@@ -63,15 +63,15 @@ public class ExameVO {
 	        return true;
 	    }
 
-	    public ProntuarioVO getProntuario() {
-	        return this.prontuario;
-	    }
+	  //  public ProntuarioVO getProntuario() {
+	    //    return this.prontuario;
+	   // }
 
-	    public boolean setProntuario(ProntuarioVO prontuario) {
-	        if(prontuario.getId() < 0) return false;
-	        if(prontuario.getData().getTimeInMillis() < this.data.getTimeInMillis()) return false;
-	        if(prontuario.getObservacao() == null || prontuario.getObservacao().isEmpty()) return false;
-	        this.prontuario = prontuario;
-	        return true;
-	    }
+	   // public boolean setProntuario(ProntuarioVO prontuario) {
+	        //if(prontuario.getId() < 0) return false;
+	        //if(prontuario.getData().getTimeInMillis() < this.data.getTimeInMillis()) return false;
+	       // if(prontuario.getObservacao() == null || prontuario.getObservacao().isEmpty()) return false;
+	       // this.prontuario = prontuario;
+	       // return true;
+	 //   }
 }

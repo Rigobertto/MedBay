@@ -1,19 +1,19 @@
 package projeto.model.vo;
 
 public class PacienteVO extends PessoaVO{
-	private int id;
+	//private int id;
 	private float peso;
 	private float altura;
 	private String tipo_sangue;
 	
-	public int getId() {
-		return this.id;
-	}
-	public boolean setId(int id) {
-		if(id < 0x00) return false;
-		this.id = id;
-		return true;
-	}
+	//public int getId() {
+	//	return this.id;
+	//}
+	//public boolean setId(int id) {
+	//	if(id < 0x00) return false;
+	//	this.id = id;
+	//	return true;
+	//}
 	public float getPeso() {
 		return this.peso;
 	}

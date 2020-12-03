@@ -15,9 +15,9 @@ public class teste {
 		GerenteDAO<GerenteVO> dao = new GerenteDAO<GerenteVO>();
 		//UsuarioVO vo = new UsuarioVO();
 		GerenteVO vo = new GerenteVO();
-		vo.setCpf("05772418343");
-		vo.setIdade(25);
-		vo.setNome("Alyson Iury");
+		vo.setCpf("70060308460");
+		vo.setIdade(22);
+		vo.setNome("Bruno");
 		vo.setGenero("M");
 		vo.setLogin("talkei");
 		vo.setSenha("PiorMat");

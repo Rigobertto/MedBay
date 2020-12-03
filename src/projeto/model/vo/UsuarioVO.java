@@ -1,7 +1,7 @@
 package projeto.model.vo;
 
 public class UsuarioVO extends PessoaVO{
-	 	private int id;
+	 	//private int id;
 	    private String login;
 	    private String senha;
 
@@ -10,15 +10,15 @@ public class UsuarioVO extends PessoaVO{
 	        this.setSenha(senha);
 	    }
 
-	    public int getId() { // validar idade
-	        return this.id;
-	    }
+	    //public int getId() { // validar idade
+	  //      return this.id;
+	   // }
 
-	    public boolean setId(int id) {
-	        if(id < 0x00) return false; // adicionar mÃ©todo no pacote "util" que verifica se o ID já, existe
-	        this.id = id;
-	        return true;
-	    }
+	    //public boolean setId(int id) {
+	     //   if(id < 0x00) return false; // adicionar mÃ©todo no pacote "util" que verifica se o ID já, existe
+	     //   this.id = id;
+	    //    return true;
+	   // }
 
 	    public String getLogin() {
 	        return new String(this.login);

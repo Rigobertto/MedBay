@@ -56,8 +56,24 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 		}
 	}
 	public void editar(VO vo) throws SQLException{
-		
+		conn = getConnection();
+		String sql = "update Paciente set nome = ?, idade = ?, genero = ?, altura = ?, peso = ?, sangue = ? where ide_paciente = ?"; // revisar dps
+		PreparedStatement ptst = conn.prepareStatement(sql);
+		try {
+			//ptst.setString(1, vo.getCpf());
+			ptst.setString(1, vo.getNome());
+			ptst.setInt(2, vo.getIdade());
+			ptst.setString(3, vo.getGenero());
+			ptst.setFloat(4, vo.getAltura());
+			ptst.setFloat(5, vo.getPeso());
+			ptst.setString(6, vo.getTipoSangue());
+			ptst.executeUpdate();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		sql = "Update Prontuario set "
 	}
+	
 	public ArrayList<PacienteVO> listar() throws SQLException{
 		String sql = "select * from Paciente";
 		Statement st;

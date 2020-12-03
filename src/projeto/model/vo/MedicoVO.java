@@ -1,7 +1,7 @@
 package projeto.model.vo;
 
 public class MedicoVO extends UsuarioVO{
-	private String crm;	//numero do conselho nacional de medicina
+	private String crm;	
 	private String especialidade;
 
 	public String getCrm() {

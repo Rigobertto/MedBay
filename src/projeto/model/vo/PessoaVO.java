@@ -3,10 +3,21 @@ package projeto.model.vo;
 import java.util.InputMismatchException;
 
 public abstract class PessoaVO {
+	private int id;
 	private String nome;
 	private int idade;
 	private String cpf;
 	private String genero;
+	
+	public int getId() { // validar idade
+		    return this.id;
+	}
+
+	public boolean setId(int id) {
+		if(id < 0x00) return false; // adicionar mÃ©todo no pacote "util" que verifica se o ID já, existe
+		this.id = id;
+		return true;
+	}
 	
 	public String getNome(){
 		return new String(this.nome);
