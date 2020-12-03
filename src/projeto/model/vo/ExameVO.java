@@ -6,13 +6,12 @@ public class ExameVO {
 		private int id;
 	    private String nome;
 	    private float valor;
-
-	    private Calendar data;
+	    private Calendar data; // PQ tem data no exame? acho que deveria ser na consulta '-'
 
 	    // private Medico medico;
 	    // private String dados;
 	    private String observacao;
-	    private ProntuarioVO prontuario;
+	    private ProntuarioVO prontuario; // tbm nao entendi o prontuario?
 
 	    public int getId() {
 	        return this.id;

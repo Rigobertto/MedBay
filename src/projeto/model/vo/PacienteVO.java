@@ -6,10 +6,10 @@ public class PacienteVO extends PessoaVO{
 	private float altura;
 	private String tipo_sangue;
 	
-	public int getId_paciente() {
+	public int getId() {
 		return this.id;
 	}
-	public boolean setId_paciente(int id) {
+	public boolean setId(int id) {
 		if(id < 0x00) return false;
 		this.id = id;
 		return true;

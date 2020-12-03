@@ -1,11 +1,11 @@
 package projeto.model.vo;
 
 public class UsuarioVO extends PessoaVO{
-	 private int id; // remover, o ID vai servir como numero de matricula para os Pacientes
-	    private String nome;
+	 	private int id;
+	    private String login;
 	    private String senha;
 
-	    public void Usuario(String nome, String senha) {
+	    public void Usuario(String nome, String senha) { // Pq desse método?
 	        this.setNome(nome);
 	        this.setSenha(senha);
 	    }
@@ -20,21 +20,21 @@ public class UsuarioVO extends PessoaVO{
 	        return true;
 	    }
 
-	    public String getNome() {
-	        return new String(this.nome);
+	    public String getLogin() {
+	        return new String(this.login);
 	    }
 
-	    public boolean setNome(String nome) {
-	        if(nome == null || nome.isEmpty()) return false;
-	        this.nome = nome;
+	    public boolean setLogin(String login) {
+	        if(login == null || login.isEmpty()) return false;
+	        this.login = login;
 	        return true;
 	    }
 
-	    private String getSenha() {				// getSenha privado
+	    public String getSenha() {				// getSenha privado
 	        return new String(this.senha);
 	    }
 
-	    private boolean setSenha(String senha) {
+	    public boolean setSenha(String senha) {
 	        if(senha == null || senha.isEmpty()) return false; // setSenha privado
 	        this.senha = senha;
 	        return true;

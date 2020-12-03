@@ -6,7 +6,7 @@ public abstract class PessoaVO {
 	private String nome;
 	private int idade;
 	private String cpf;
-	private char genero;
+	private String genero;
 	
 	public String getNome(){
 		return new String(this.nome);
@@ -35,27 +35,29 @@ public abstract class PessoaVO {
 	}
 	
 	public String getCpf() {
-		return new String(imprimeCPF(this.cpf));	//Obs: Objetos retornam copia;
+		return this.cpf;	//Obs: Objetos retornam copia;
 	}
 	
 	public boolean setCpf(String cpf) {
-		if (isCPF(cpf) == true)
+		if(isCPF(cpf) == true) {
+			this.cpf = cpf;
             return true;
+		}
         else 
         	return false;
 	}
 	
-	public char getGenero() {
+	public String getGenero() {
 			return this.genero;			// confirmar o valor de retorno.
 	}
 	
-	public boolean setGenero(char genero) {
-		if(genero == 'M' || genero == 'F' || genero == 'I') {
+	public boolean setGenero(String genero) {
+		genero = genero.toUpperCase();
+		if(genero.equals("M") || genero.equals("F") || genero.equals("O")){
 			this.genero = genero;
 			return true;
-		}else {
+		}else
 			return false;
-		}
 	}
 	
 	public static boolean isCPF(String CPF) // Método para validar CPF, (https://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097)
@@ -115,8 +117,4 @@ public abstract class PessoaVO {
             }
         }
 
-    public static String imprimeCPF(String CPF) {
-            return(CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
-            CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
-        }
 }
