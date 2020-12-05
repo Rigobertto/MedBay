@@ -1,18 +1,41 @@
 package projeto.model.bo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import projeto.model.dao.GerenteDAO;
 import projeto.model.vo.GerenteVO;
 
 public class GerenteBO implements GerenteInterBO{
 	
-	public GerenteVO[] listar(GerenteVO[] gerente) {
-		
+	GerenteDAO<GerenteVO> dao = GerenteDAO<GerenteVO>();
+	
+	public List<GerenteVO> listar(GerenteVO gerente) {
+		ArrayList<GerenteVO> gerentes = new ArrayList<GerenteVO>();
+		try {
+			ResultSet rs = dao.listar();
+			while(rs.next()){
+				GerenteVO vo = new GerenteVO();
+				vo.setId(rs.getInt("ide_gerente"));
+				vo.setCpf(rs.getString("cpf"));
+				vo.setNome(rs.getString("nome"));
+				vo.setIdade(rs.getInt("idade"));
+				vo.setGenero(rs.getString("genero"));
+				vo.setLogin(rs.getString("login"));
+				vo.setSenha(rs.getString("senha"));
+				gerentes.add(vo);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return gerentes;
 	}
 	
 	public GerenteVO editar(GerenteVO gerente){
-	//	Recebe objeto do tipo pessoa que poderá editar cada atributo...
-	//	...utilizando também os métodos get e set para exibir e enviar no DAO.
-	//	Caso a o usuário nao escolha nenhum genero, o genero utilizado será o Indefinido, declarado já no construtor;
-	//	Retorna um objeto do tipo Pessoa com os atributos editados.
+		
 	}
 	
 	public void excluir(GerenteVO gerente){

@@ -4,24 +4,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import projeto.model.vo.AtendenteVO;
 
+
 public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
+	
 	public void cadastrar(VO vo) throws SQLException {
 		conn = getConnection();
 		String sql = "insert into Atendente(cpf, nome, idade, genero, login, senha) values (?, ?, ?, ?, ?, ?)";
 		PreparedStatement ptst = conn.prepareStatement(sql);
 		try {
-			//ptst.setId()
 			ptst.setString(1, vo.getCpf());
 			ptst.setString(2, vo.getNome());
 			ptst.setInt(3, vo.getIdade());
 			ptst.setString(4, vo.getGenero());
 			ptst.setString(5, vo.getLogin());
 			ptst.setString(6, vo.getSenha());
-			// DUVIDA: Como fazer o vo.getcpf_gerente;
 			ptst.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -57,18 +55,102 @@ public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
 			}
 	}
 	
-	public ArrayList<AtendenteVO> listar() throws SQLException{
+	public AtendenteVO buscarNome(AtendenteVO vo) throws SQLException {
+		conn = getConnection();
+		String sqlSearch = "select * from Atendente where nome like ?";
+		PreparedStatement ptst;
+		ResultSet rs;
+		AtendenteVO atendente = new AtendenteVO();
+		try {
+			ptst = conn.prepareStatement(sqlSearch);
+			ptst.setString(1, vo.getNome());
+			rs = ptst.executeQuery();
+			if(rs.next()) {
+				atendente.setId(rs.getInt("ide_atendente"));
+				atendente.setNome(rs.getString("nome"));
+				atendente.setCpf(rs.getString("cpf"));
+				atendente.setIdade(rs.getInt("idade"));
+				atendente.setGenero(rs.getString("genero"));
+				atendente.setLogin(rs.getString("login"));
+				atendente.setSenha(rs.getString("senha"));
+			} else {
+				System.out.println("Busca falhou, retornando nulo.");
+				return null;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return atendente;
+	}
+	
+	public AtendenteVO buscarCPF(AtendenteVO vo) throws SQLException {
+		conn = getConnection();
+		String sqlSearch = "select * from Atendente where cpf like ?";
+		PreparedStatement ptst;
+		ResultSet rs;
+		AtendenteVO atendente = new AtendenteVO();
+		try {
+			ptst = conn.prepareStatement(sqlSearch);
+			ptst.setString(1, vo.getCpf());
+			rs = ptst.executeQuery();
+			if(rs.next()) {
+				atendente.setId(rs.getInt("ide_atendente"));
+				atendente.setNome(rs.getString("nome"));
+				atendente.setCpf(rs.getString("cpf"));
+				atendente.setIdade(rs.getInt("idade"));
+				atendente.setGenero(rs.getString("genero"));
+				atendente.setLogin(rs.getString("login"));
+				atendente.setSenha(rs.getString("senha"));
+			} else {
+				System.out.println("Busca falhou, retornando nulo.");
+				return null;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return atendente;
+	}
+	
+	public AtendenteVO buscarID(AtendenteVO vo) throws SQLException {
+		conn = getConnection();
+		String sqlSearch = "select * from Atendente where id_atendente like ?";
+		PreparedStatement ptst;
+		ResultSet rs;
+		AtendenteVO atendente = new AtendenteVO();
+		try {
+			ptst = conn.prepareStatement(sqlSearch);
+			ptst.setInt(1, vo.getId());
+			rs = ptst.executeQuery();
+			if(rs.next()) {
+				atendente.setId(rs.getInt("ide_atendente"));
+				atendente.setNome(rs.getString("nome"));
+				atendente.setCpf(rs.getString("cpf"));
+				atendente.setIdade(rs.getInt("idade"));
+				atendente.setGenero(rs.getString("genero"));
+				atendente.setLogin(rs.getString("login"));
+				atendente.setSenha(rs.getString("senha"));
+			} else {
+				System.out.println("Busca falhou, retornando nulo.");
+				return null;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return atendente;
+	}
+	
+	public ResultSet listar() throws SQLException{
 		conn = getConnection();
 		String sql = "select * from Atendente";;
 		Statement st;
-		ResultSet rs;
-		ArrayList<AtendenteVO> atendentes = new ArrayList<AtendenteVO>();
+		ResultSet rs = null;
+		//ArrayList<AtendenteVO> atendentes = new ArrayList<AtendenteVO>();
 		try {
 			//conn = getConnection();
-			st = conn.createStatement();
+			st = conn.prepareStatement(sql);
 			rs = st.executeQuery(sql);
 			
-			while(rs.next()){
+			/*while(rs.next()){
 				AtendenteVO vo = new AtendenteVO();
 				vo.setId(rs.getInt("ide_gerente"));
 				vo.setCpf(rs.getString("cpf"));
@@ -78,15 +160,15 @@ public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
 				vo.setLogin(rs.getString("login"));
 				vo.setSenha(rs.getString("senha"));
 				atendentes.add(vo);
-			}
+			}*/
 			
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return atendentes;
+		return rs;
 	}
 	
-	public ArrayList<AtendenteVO> listarNome(VO vo) throws SQLException{
+	/*public ArrayList<AtendenteVO> listarNome(VO vo) throws SQLException{
 		conn = getConnection();
 		String sql = "select * from Atendente where nome =" + vo.getNome();
 		Statement st;
@@ -113,6 +195,8 @@ public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
 		return atendentes;
 		
 	}
+	
+	
 	
 	public ArrayList<AtendenteVO> listarCPF(VO vo) throws SQLException{
 		conn = getConnection();
@@ -167,5 +251,5 @@ public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
 			e.printStackTrace();
 		}
 		return atendentes;
-	}
+	}*/
 }

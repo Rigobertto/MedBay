@@ -4,28 +4,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
-import projeto.model.vo.AtendenteVO;
 import projeto.model.vo.GerenteVO;
-import projeto.model.vo.MedicoVO;
 
 public class GerenteDAO<VO extends GerenteVO> extends UsuarioDAO<VO>{
 	
 	public void cadastrar(VO vo) throws SQLException {
 		conn = getConnection();
-		String sql = "insert into Gerente(cpf, nome, idade, genero, login, senha) values (?, ?, ?, ?, ?, ?)";
+		String sql = "insert into Gerente (cpf, nome, idade, genero, login, senha) values (?, ?, ?, ?, ?, ?)";
 		PreparedStatement ptst = conn.prepareStatement(sql);
 		try {
-			//ptst.setId()
 			ptst.setString(1, vo.getCpf());
 			ptst.setString(2, vo.getNome());
 			ptst.setInt(3, vo.getIdade());
 			ptst.setString(4, vo.getGenero());
 			ptst.setString(5, vo.getLogin());
 			ptst.setString(6, vo.getSenha());
-			// DUVIDA: Como fazer o vo.getcpf_gerente;
 			ptst.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -54,49 +47,121 @@ public class GerenteDAO<VO extends GerenteVO> extends UsuarioDAO<VO>{
 			ptst.setString(1, vo.getNome());
 			ptst.setInt(2, vo.getIdade());
 			ptst.setString(3, vo.getGenero());
-			ptst.setInt(5, vo.getId());
+			ptst.setInt(4, vo.getId());
 			ptst.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
 	}
 	
-	public ArrayList<GerenteVO> listar() throws SQLException{
+	public ResultSet listar() throws SQLException{
+		conn = getConnection();
 		String sql = "select * from Gerente";
 		Statement st;
-		ResultSet rs;
-		ArrayList<GerenteVO> gerentes = new ArrayList<GerenteVO>();
+		ResultSet rs = null;
 		try {
-			conn = getConnection();
-			st = conn.createStatement();
+			st = conn.prepareStatement(sql);
 			rs = st.executeQuery(sql);
 			
-			while(rs.next()){
-				GerenteVO vo = new GerenteVO();
-				vo.setId(rs.getInt("ide_gerente"));
-				vo.setCpf(rs.getString("cpf"));
-				vo.setNome(rs.getString("nome"));
-				vo.setIdade(rs.getInt("idade"));
-				vo.setGenero(rs.getString("genero"));
-				vo.setLogin(rs.getString("login"));
-				vo.setSenha(rs.getString("senha"));
-				gerentes.add(vo);
-			}
-			
-		}catch(SQLException e){
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return gerentes;
+		return rs;
 	}
 	
-	public ArrayList<GerenteVO> listarNome(VO vo) throws SQLException{
+	public GerenteVO buscarNome(GerenteVO vo) throws SQLException {
+		conn = getConnection();
+		String sqlSearch = "select * from Gerente where nome like ?";
+		PreparedStatement ptst;
+		ResultSet rs;
+		GerenteVO gerente = new GerenteVO();
+		try {
+			ptst = conn.prepareStatement(sqlSearch);
+			ptst.setString(1, vo.getNome());
+			rs = ptst.executeQuery();
+			if(rs.next()) {
+				gerente.setId(rs.getInt("ide_gerente"));
+				gerente.setNome(rs.getString("nome"));
+				gerente.setCpf(rs.getString("cpf"));
+				gerente.setIdade(rs.getInt("idade"));
+				gerente.setGenero(rs.getString("genero"));
+				gerente.setLogin(rs.getString("login"));
+				gerente.setSenha(rs.getString("senha"));
+			} else {
+				System.out.println("Busca falhou, retornando nulo.");
+				return null;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return gerente;
+	}
+	
+	public GerenteVO buscarCPF(GerenteVO vo) throws SQLException {
+		conn = getConnection();
+		String sqlSearch = "select * from Gerente where cpf like ?";
+		PreparedStatement ptst;
+		ResultSet rs;
+		GerenteVO gerente = new GerenteVO();
+		try {
+			ptst = conn.prepareStatement(sqlSearch);
+			ptst.setString(1, vo.getCpf());
+			rs = ptst.executeQuery();
+			if(rs.next()) {
+				gerente.setId(rs.getInt("ide_gerente"));
+				gerente.setNome(rs.getString("nome"));
+				gerente.setCpf(rs.getString("cpf"));
+				gerente.setIdade(rs.getInt("idade"));
+				gerente.setGenero(rs.getString("genero"));
+				gerente.setLogin(rs.getString("login"));
+				gerente.setSenha(rs.getString("senha"));
+			} else {
+				System.out.println("Busca falhou, retornando nulo.");
+				return null;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return gerente;
+	}
+	
+	public GerenteVO buscarID(GerenteVO vo) throws SQLException {
+		conn = getConnection();
+		String sqlSearch = "select * from Gerente where id_gerente like ?";
+		PreparedStatement ptst;
+		ResultSet rs;
+		GerenteVO gerente = new GerenteVO();
+		try {
+			ptst = conn.prepareStatement(sqlSearch);
+			ptst.setInt(1, vo.getId());
+			rs = ptst.executeQuery();
+			if(rs.next()) {
+				gerente.setId(rs.getInt("ide_gerente"));
+				gerente.setNome(rs.getString("nome"));
+				gerente.setCpf(rs.getString("cpf"));
+				gerente.setIdade(rs.getInt("idade"));
+				gerente.setGenero(rs.getString("genero"));
+				gerente.setLogin(rs.getString("login"));
+				gerente.setSenha(rs.getString("senha"));
+			} else {
+				System.out.println("Busca falhou, retornando nulo.");
+				return null;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return gerente;
+	}
+	
+	/*public ResultSet listarNome(VO vo) throws SQLException{
 		conn = getConnection();
 		String sql = "select * from Gerente where nome =" + vo.getNome();
 		Statement st;
-		ResultSet rs;
-		ArrayList<GerenteVO> gerentes = new ArrayList<GerenteVO>();
+		ResultSet rs = null;
+		
 		try {
-			st = conn.createStatement();
+			st = getConnection().createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				GerenteVO c = new GerenteVO();
@@ -110,20 +175,21 @@ public class GerenteDAO<VO extends GerenteVO> extends UsuarioDAO<VO>{
 				gerentes.add(c);
 			}
 			
+			
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return gerentes;
-	}
+		return rs;
+	}*/
 	
-	public ArrayList<GerenteVO> listarCPF(VO vo) throws SQLException{
+	/*public ResultSet listarCPF(VO vo) throws SQLException{
 		conn = getConnection();
 		String sql = "select * from Gerente where cpf =" + vo.getCpf();
 		Statement st;
-		ResultSet rs;
-		ArrayList<GerenteVO> gerentes = new ArrayList<GerenteVO>();
+		ResultSet rs = null;
+		//List<GerenteVO> gerentes = new ArrayList<GerenteVO>();
 		try {
-			st = conn.createStatement();
+			st = getConnection().createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				GerenteVO c = new GerenteVO();
@@ -140,17 +206,17 @@ public class GerenteDAO<VO extends GerenteVO> extends UsuarioDAO<VO>{
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return gerentes;
-	}
+		return rs;
+	}*/
 	
-	public ArrayList<GerenteVO> listarID(VO vo) throws SQLException{
+	/*public ResultSet listarID(VO vo) throws SQLException{
 		conn = getConnection();
 		String sql = "select * from Gerente where ide_gerente =" + vo.getId();
 		Statement st;
-		ResultSet rs;
-		ArrayList<GerenteVO> gerentes = new ArrayList<GerenteVO>();
+		ResultSet rs = null;
+		//List<GerenteVO> gerentes = new ArrayList<GerenteVO>();
 		try {
-			st = conn.createStatement();
+			st = getConnection().createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				GerenteVO c = new GerenteVO();
@@ -167,6 +233,6 @@ public class GerenteDAO<VO extends GerenteVO> extends UsuarioDAO<VO>{
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return gerentes;
-	}
+		return rs;
+	}*/
 }

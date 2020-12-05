@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class BaseDAO <VO> implements BaseInterDAO <VO>{ // Clase abstrata generica que será superclasse de todas as outras class
 	Connection conn = null;
@@ -30,8 +28,8 @@ public abstract class BaseDAO <VO> implements BaseInterDAO <VO>{ // Clase abstra
 	public abstract void cadastrar(VO vo) throws SQLException;
 	public abstract void excluir(VO vo) throws SQLException;
 	public abstract void editar(VO vo) throws SQLException;
-	public abstract ArrayList<VO> listar() throws SQLException;
-	public abstract ArrayList<VO> listarID(VO vo) throws SQLException;
+	public abstract ResultSet listar() throws SQLException;
+	public abstract ResultSet listarID(VO vo) throws SQLException;
 	//public abstract ResultSet buscaCPF(VO vo) throws SQLException;
 	//public abstract ResultSet buscaNome(VO vo) throws SQLException;
 	//public abstract ResultSet busca(VO vo) throws SQLException;

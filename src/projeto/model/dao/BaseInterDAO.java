@@ -10,8 +10,8 @@ public interface BaseInterDAO <VO> { //Classe interface que promete as classes g
 	public void cadastrar(VO vo) throws SQLException;
 	public void excluir(VO vo) throws SQLException;
 	public void editar(VO vo) throws SQLException;
-	public ArrayList<VO> listar() throws SQLException;
-	public ArrayList<VO> listarID(VO vo) throws SQLException;
+	public ResultSet listar() throws SQLException;
+	public ResultSet listarID(VO vo) throws SQLException;
 	////public ResultSet buscaCPF(VO vo) throws SQLException;
 	//public ResultSet buscaNome(VO vo) throws SQLException;
 	//public ResultSet busca(VO vo) throws SQLException;

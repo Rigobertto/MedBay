@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import projeto.model.vo.GerenteVO;
 import projeto.model.vo.PacienteVO;
+import projeto.model.vo.ProntuarioVO;
 
 public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 	
@@ -15,42 +16,29 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 		conn = getConnection();
 		String sql = "insert into Paciente(cpf, nome, idade, genero, altura, peso, sangue) values (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ptst = conn.prepareStatement(sql);
+		ProntuarioDAO<ProntuarioVO> dao = new ProntuarioDAO<ProntuarioVO>();
 		try {
-			//ptst.setId()
 			ptst.setString(1, vo.getCpf());
 			ptst.setString(2, vo.getNome());
 			ptst.setInt(3, vo.getIdade());
 			ptst.setString(4, vo.getGenero());
-			ptst.setString(5, vo.getLogin());
-			ptst.setString(6, vo.getSenha());
-			// DUVIDA: Como fazer o vo.getcpf_gerente;
 			ptst.execute();
+			
+			dao.cadastrar(vo);
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		
-		sql = "insert into Prontuario(cpf, nome, anotacao, data_anotacao) = values (?, ?, ?)";
-		conn = getConnection();
-		PreparedStatement ptsp = conn.prepareStatement(sql);
-		try {
-			ptsp.setString(1, vo.getCpf());
-			ptsp.setString(2, vo.getNome());
-			ptsp.setString(3, " ");
-			ptsp.setCalendar(4, ""); // PQ NAO VAI????????????????
-			ptsp.execute();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
+			//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA KRL PORRA
 	}
 	
-	public void excluir(VO vo) throws SQLException{
+	public void excluir(VO vo) throws SQLException{ //invocar excluir do pronturaio tbm
 		conn = getConnection();
 		String sql = "delete from Paciente where ide_paciente = ?"; // revisar dps
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, vo.getId());
-			ptst.executeUpdate(); //NOTA P/ Rigo: PELO AMOR DE DEUS LEMBRAR FAZER
+			ptst.executeUpdate(); //NOTA P/ Rigo: PELO AMOR DE DEUS LEMBRAR DE FAZER
 		}catch(SQLException e) {	// A DELEÇÃO EM CASCATA PRA EXCLUIR O PRONTUÁRIO
 			e.printStackTrace();
 		}
@@ -60,7 +48,6 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 		String sql = "update Paciente set nome = ?, idade = ?, genero = ?, altura = ?, peso = ?, sangue = ? where ide_paciente = ?"; // revisar dps
 		PreparedStatement ptst = conn.prepareStatement(sql);
 		try {
-			//ptst.setString(1, vo.getCpf());
 			ptst.setString(1, vo.getNome());
 			ptst.setInt(2, vo.getIdade());
 			ptst.setString(3, vo.getGenero());
@@ -71,7 +58,18 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
-		sql = "Update Prontuario set "
+		sql = "Update Prontuario set cpf = ?, nome = ?, where ide_paciente = ?"; //
+		try {
+			ptst.setString(1, vo.getNome());
+			ptst.setInt(2, vo.getIdade());
+			ptst.setString(3, vo.getGenero());
+			ptst.setFloat(4, vo.getAltura());
+			ptst.setFloat(5, vo.getPeso());
+			ptst.setString(6, vo.getTipoSangue());
+			ptst.executeUpdate();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public ArrayList<PacienteVO> listar() throws SQLException{

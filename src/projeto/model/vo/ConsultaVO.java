@@ -4,7 +4,6 @@ import java.util.Calendar;
 
 public class ConsultaVO {
 	private int id;
-
     private Calendar data_cadastro; // data e hora de cadastro da consulta
     private Calendar data_consulta; // data e hora para qual foi marcada a consulta
 
