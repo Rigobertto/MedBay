@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mebay.controller.ControllerGerenteInicio">
+   <children>
+      <ImageView fitHeight="419.0" fitWidth="230.0" layoutX="662.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Consultas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="419.0" fitWidth="241.0" layoutX="937.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Exame.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="419.0" fitWidth="237.0" layoutX="102.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Atendentes.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="419.0" fitWidth="230.0" layoutX="382.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Médicos.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="entrarAtendente" layoutX="129.0" layoutY="512.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Entrar" textFill="WHITE" />
+      <Button fx:id="entrarMedico" layoutX="405.0" layoutY="513.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Entrar" textFill="WHITE" />
+      <Button fx:id="entrarPaciente" layoutX="679.0" layoutY="513.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Entrar" textFill="WHITE" />
+      <Button fx:id="entrarExame" layoutX="964.0" layoutY="513.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Entrar" textFill="WHITE" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/medbay-logo%202.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1088.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Vector.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="964.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Vector-1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="15.0" layoutX="972.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Vector-2.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="ajuda" layoutX="1002.0" layoutY="45.0" text="Ajuda" />
+      <Button fx:id="logout" layoutX="1126.0" layoutY="40.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
+   </children>
+</Pane>

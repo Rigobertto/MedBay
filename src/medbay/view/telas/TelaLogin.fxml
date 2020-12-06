@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.controller.ControllerLogin">
+   <children>
+      <ImageView fitHeight="734.0" fitWidth="713.0" layoutX="567.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Rectangle%201.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="657.0" fitWidth="568.0" layoutX="-1.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Rectangle%2024%20(2).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="130.0" fitWidth="362.0" layoutX="755.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/texto%20promocional.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="860.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Vector2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="836.0" layoutY="607.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/redes-sociais.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="657.0" fitWidth="568.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Rectangle%2024%20(2).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="44.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/medbay-logo%202.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="263.0" layoutX="44.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Entrar.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="entrar" layoutX="44.0" layoutY="445.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="27.0" prefWidth="393.0" style="-fx-background-color: #7B2CBF;" text="Entrar" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="senha" layoutX="44.0" layoutY="369.0" prefHeight="31.0" prefWidth="393.0" />
+      <Label layoutX="44.0" layoutY="263.0" prefHeight="21.0" prefWidth="78.0" text="Login" />
+      <Label fx:id="erroAut" layoutX="159.0" layoutY="491.0" text="Login ou Senha inválido!" textFill="#ff0505" visible="false" />
+      <Label layoutX="44.0" layoutY="348.0" prefHeight="21.0" prefWidth="78.0" text="Senha" />
+      <TextField fx:id="login" layoutX="44.0" layoutY="286.0" prefHeight="31.0" prefWidth="393.0" />
+   </children>
+</Pane>
