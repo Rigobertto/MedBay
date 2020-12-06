@@ -3,6 +3,10 @@ import projeto.model.vo.UsuarioVO;
 
 public class UsuarioBO implements UsuarioInterBO {
 	
+	public UsuarioVO autenticar(UsuarioVO vo) {
+		return null;
+	}
+	
 	public UsuarioVO[] listar(UsuarioVO[] usuario){
 		
 	}
