@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.CadastraAtendenteController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/medbay-logo%202.png" />
          </image>
@@ -19,7 +19,7 @@
             <Image url="@../VE/Aside.png" />
          </image>
       </ImageView>
-      <Button fx:id="cadastrarAtendente" layoutX="68.0" layoutY="622.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+      <Button fx:id="cadastrarAtendente" layoutX="68.0" layoutY="622.0" mnemonicParsing="false" onAction="#telaCadastroA" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
       <TableView fx:id="listAtendente" layoutX="349.0" layoutY="261.0" prefHeight="419.0" prefWidth="881.0">
         <columns>
           <TableColumn prefWidth="37.0" text="ID" />
@@ -37,17 +37,17 @@
       <TextField fx:id="busqueCPF" layoutX="671.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por CPF" style="-fx-background-radius: 10;" />
       <TextField fx:id="busqueID" layoutX="348.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por ID" style="-fx-background-radius: 10;" />
       <Button fx:id="btnID" layoutX="507.0" layoutY="212.0" mnemonicParsing="false" onAction="#buscar" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
-      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="969.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="969.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Vector-3.png" />
          </image>
       </ImageView>
-      <Button fx:id="logout" layoutX="1154.0" layoutY="58.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
-      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1114.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="logout" layoutX="1131.0" layoutY="48.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1093.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Vector.png" />
          </image>
       </ImageView>
-      <Button fx:id="voltar" layoutX="1009.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
+      <Button fx:id="voltar" layoutX="1009.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
    </children>
 </Pane>

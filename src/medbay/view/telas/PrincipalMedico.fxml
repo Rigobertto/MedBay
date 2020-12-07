@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="403.0" fitWidth="400.0" layoutX="47.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/ConsultaInfo.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="listAtendente" layoutX="470.0" layoutY="261.0" prefHeight="419.0" prefWidth="760.0">
+         <columns>
+            <TableColumn prefWidth="69.0" text="ID" />
+            <TableColumn prefWidth="262.0" text="PACIENTE" />
+            <TableColumn prefWidth="145.0" text="CPF" />
+            <TableColumn prefWidth="125.0" text="EXAME" />
+            <TableColumn prefWidth="92.0" text="DATA" />
+            <TableColumn prefWidth="66.0" text="HORA" />
+         </columns>
+      </TableView>
+      <Button fx:id="cadastrarAtendente" layoutX="70.0" layoutY="566.0" mnemonicParsing="false" onAction="#telaCadastroA" prefHeight="31.0" prefWidth="168.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Prontuario" textFill="WHITE" />
+      <Button fx:id="cadastrarAtendente1" layoutX="257.0" layoutY="566.0" mnemonicParsing="false" onAction="#telaCadastroA" prefHeight="31.0" prefWidth="168.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Finalizar" textFill="WHITE" />
+      <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="225.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+         <image>
+            <Image url="@../VE/Rectangle%2014.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="80.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+         <image>
+            <Image url="@../VE/Rectangle%2014.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="178.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+         <image>
+            <Image url="@../VE/Rectangle%2014.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblNomePaciente" layoutX="72.0" layoutY="509.0" prefHeight="35.0" prefWidth="276.0" text="Nome do Paciente" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1093.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Vector.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="logout" layoutX="1131.0" layoutY="48.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
+      <Button fx:id="btnID" layoutX="609.0" layoutY="212.0" mnemonicParsing="false" onAction="#buscar" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <TextField fx:id="busqueID" layoutX="470.0" layoutY="212.0" prefHeight="31.0" prefWidth="139.0" promptText="Busque por ID" style="-fx-background-radius: 10;" />
+      <TextField fx:id="busqueCPF" layoutX="742.0" layoutY="212.0" prefHeight="31.0" prefWidth="139.0" promptText="Busque por CPF" style="-fx-background-radius: 10;" />
+      <Button fx:id="btnCPF" layoutX="881.0" layoutY="212.0" mnemonicParsing="false" onAction="#buscar" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <Button fx:id="btnNome" layoutX="1163.0" layoutY="212.0" mnemonicParsing="false" onAction="#buscar" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <TextField fx:id="busqueNome" layoutX="1024.0" layoutY="212.0" prefHeight="31.0" prefWidth="139.0" promptText="Busque por Nome" style="-fx-background-radius: 10;" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/medbay-logo%202.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
