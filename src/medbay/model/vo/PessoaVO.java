@@ -2,64 +2,63 @@ package medbay.model.vo;
 
 import java.util.InputMismatchException;
 
+import medbay.model.util.CPF;
+
 public abstract class PessoaVO {
 	private int id;
 	private String nome;
 	private int idade;
-	private String cpf;
+	private CPF cpf;
 	private String genero;
 	
-	public int getId() { // validar idade
+	public int getId() {
 		    return this.id;
 	}
 
 	public boolean setId(int id) {
-		if(id < 0x00) return false; // adicionar método no pacote "util" que verifica se o ID j�, existe
+		if(id < 0x00) return false;
 		this.id = id;
 		return true;
 	}
 	
-	public String getNome(){
+	public String getNome() {
 		return new String(this.nome);
 	}
 	
 	public boolean setNome(String nome) {
-		if(nome == null || nome.isEmpty()) 
-			return false;
-		else{
-			this.nome = nome.toUpperCase();
-			return true;
-		}
+		if(nome == null || nome.isEmpty()) return false;
+		this.nome = new String(nome.toUpperCase());
+		return true;
 	}
 	
 	public int getIdade() {			
-		if(this.idade > 0)			// Provavelmente uma futura excepcion para idades menores que 0;
-			return this.idade;		// IMPORTANTE: Significa que se a idade aparecer como zero para o usu�rio,
-		else						// significa que a idade contida al� era <= 0;
-			return 0;				
+		return this.idade;
 	}
 	
 	public boolean setIdade(int idade) {
-		if(idade < 0) return false;
+		if(idade < 0) return false; // Provavelmente uma futura excepcion para idades menores que 0
 		this.idade = idade;
 		return true;
 	}
 	
 	public String getCpf() {
-		return this.cpf;	//Obs: Objetos retornam copia;
+		return new String(this.cpf);
 	}
 	
 	public boolean setCpf(String cpf) {
-		if(isCPF(cpf) == true) {
-			this.cpf = cpf;
+		if(CPF.itsValid(cpf) == true) {
+			this.cpf = new CPF(cpf);
             return true;
 		}
-        else 
-        	return false;
+        return false;
+	}
+
+	public boolean setCPF(CPF cpf) {
+		return this.setCPF(cpf.get());
 	}
 	
 	public String getGenero() {
-			return this.genero;			// confirmar o valor de retorno.
+		return this.genero;
 	}
 	
 	public boolean setGenero(String genero) {
@@ -67,10 +66,12 @@ public abstract class PessoaVO {
 		if(genero.equals("M") || genero.equals("F") || genero.equals("O")){
 			this.genero = genero;
 			return true;
-		}else
-			return false;
+		}
+		return false;
 	}
 	
+	/*
+	Está no pacote medbay.mode.util
 	public static boolean isCPF(String CPF) // M�todo para validar CPF, (https://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097)
 	{	
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
@@ -127,5 +128,5 @@ public abstract class PessoaVO {
                 return(false);
             }
         }
-
+	*/
 }

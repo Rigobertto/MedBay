@@ -4,13 +4,34 @@ import java.util.Calendar;
 
 public class ConsultaVO {
 	private int id;
-    private Calendar data_cadastro; // data e hora de cadastro da consulta
-    private Calendar data_consulta; // data e hora para qual foi marcada a consulta
 
-    // private Medico medico;
-    private ExameVO exame;
+    private Calendar data; // a data para quando foi marcada a consulta
 
-    private String observacao;
+    private int id_paciente; // id do paciente no banco
+    private int id_medico; // id do médico no banco
+
+    private ProntuarioVO prontuario; // prontuario gerado no ato da consulta
+    private String observacao; // resultado da consulta, observações médicas
+
+    /*
+    prontuario e observação marcam uma etapa de validação
+    caso a observação seja null a consulta ainda não foi executada
+    logo estará em aberto
+
+    caso a observação seja diferente de null e não exista prontuario
+    quer dizer que foi feita uma consulta e não houve a necessidade de
+    fazer um exame
+
+    caso exista observação e prontuario quer dizer que a a consulta foi feita
+    e que os exames foram solicitados
+
+    caso o prontuario conste uma observação igual a null indica que o exame não foi feito
+
+    caso o prontuario tenha observação e não tenha laudo temos que o exame foi feito mas
+    ainda não foi avaliado pelo médico
+
+    caso o laudo exista no prontuario teremos uma consulta completamente concluida
+    */
 
     public void Consulta() {
         setDataCadastro(Calendar.getInstance());
@@ -44,27 +65,43 @@ public class ConsultaVO {
         return true;
     }
 
-    public ExameVO getExame() {
-        return this.exame;
+    public int getExame() {
+        return this.id_exame;
     }
 
-    public boolean setExame(ExameVO exame) {
-        if(exame == null) return false;
-
-        if(exame.getData().getTimeInMillis() < this.data_cadastro.getTimeInMillis()) return false;
-        if(exame.getData().getTimeInMillis() < this.data_consulta.getTimeInMillis()) return false;
-
-        this.exame = exame;
+    public boolean setExame(int id_exame) {
+        if(id_exame < 0x00) return false; // id 0x00 indica que não existe cadastro.
+        this.id_exame = id_exame;
         return true;
-    } 
+    }
 
-    public boolean setObservacao(String observacao) {
-        if(observacao == null || observacao.isEmpty()) return false;
-        	this.observacao = observacao;
+    public int getPaciente() {
+        return this.id_paciente;
+    }
+
+    public boolean setPaciente(int id_paciente) {
+        if(id_paciente <= 0x00) return false;
+        this.id_paciente = id_paciente;
+        return true;
+    }
+
+    public int getMedico() {
+        return this.id_medico;
+    }
+
+    public boolean setMedico(int id_medico) {
+        if(id_medico <= 0x00) return false;
+        this.id_medico = id_medico;
         return true;
     }
 
     public String getObservacao() {
         return new String(this.observacao);
+    }
+
+    public boolean setObservacao(String observacao) {
+        if(observacao == null || observacao.isEmpty()) return false;
+        this.observacao = observacao;
+        return true;
     }
 }

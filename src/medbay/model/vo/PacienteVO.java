@@ -1,11 +1,10 @@
 package medbay.model.vo;
 
 public class PacienteVO extends PessoaVO{
-	//private int id;
 	private float peso;
 	private float altura;
 	private String tipo_sangue;
-
+	
 	public float getPeso() {
 		return this.peso;
 	}
@@ -14,7 +13,7 @@ public class PacienteVO extends PessoaVO{
 		this.peso = peso;
 		return true;
 	}
-	public float getAltura() {		// verificar altura para retorno;
+	public float getAltura() {
 		return this.altura;
 	}
 	public boolean setAltura(float altura) {
