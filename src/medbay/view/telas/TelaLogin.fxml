@@ -23,7 +23,7 @@
             <Image url="@../VE/texto%20promocional.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="860.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="860.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Vector2.png" />
          </image>
@@ -48,7 +48,7 @@
             <Image url="@../VE/Entrar.png" />
          </image>
       </ImageView>
-      <Button fx:id="entrar" layoutX="44.0" layoutY="445.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="27.0" prefWidth="393.0" style="-fx-background-color: #7B2CBF;" text="Entrar" textAlignment="CENTER" textFill="WHITE">
+      <Button layoutX="44.0" layoutY="445.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="27.0" prefWidth="393.0" style="-fx-background-color: #7B2CBF;" text="Entrar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

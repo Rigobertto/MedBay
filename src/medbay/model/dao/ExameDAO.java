@@ -9,16 +9,18 @@ import medbay.model.vo.ExameVO;
 
 public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 	
-	public void cadastrar(VO vo) throws SQLException {
+	public void cadastrar(ExameVO vo) throws SQLException {
 		conn = getConnection();
 		String sql = "insert into Exame(nome, valor) values (?, ?)";
-		PreparedStatement ptst = conn.prepareStatement(sql);
 		try {
+			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setString(1, vo.getNome());
 			ptst.setFloat(2, vo.getValor());
 			ptst.execute();
+			
 		}catch(SQLException e){
 			e.printStackTrace();
+			
 		}
 	}
 	

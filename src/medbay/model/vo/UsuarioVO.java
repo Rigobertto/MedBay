@@ -4,8 +4,15 @@ public class UsuarioVO extends PessoaVO{
 	 	//private int id;
 	    private String login;
 	    private String senha;
-
-	    public void Usuario(String nome, String senha) { // Pq desse m�todo?
+	    private int tabela;
+	    
+	    public int getTabela() {
+	    	return this.tabela;
+	    }
+	    public void setTabela(int tabela) {
+	    	this.tabela = tabela;
+	    }
+	    public void Usuario(String nome, String senha){ // Pq desse m�todo?
 	        this.setNome(nome);
 	        this.setSenha(senha);
 	    }
@@ -21,7 +28,7 @@ public class UsuarioVO extends PessoaVO{
 	   // }
 
 	    public String getLogin() {
-	        return new String(this.login);
+	        return this.login;
 	    }
 
 	    public boolean setLogin(String login) {
@@ -31,7 +38,7 @@ public class UsuarioVO extends PessoaVO{
 	    }
 
 	    public String getSenha() {				// getSenha privado
-	        return new String(this.senha);
+	        return this.senha;
 	    }
 
 	    public boolean setSenha(String senha) {

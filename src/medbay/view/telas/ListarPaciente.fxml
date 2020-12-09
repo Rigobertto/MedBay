@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.ListarPacienteController">
+   <children>
+      <TableView layoutX="349.0" layoutY="261.0" prefHeight="419.0" prefWidth="881.0">
+         <columns>
+            <TableColumn prefWidth="37.0" text="ID" />
+            <TableColumn prefWidth="354.0" text="NOME" />
+            <TableColumn prefWidth="150.0" text="CPF" />
+            <TableColumn prefWidth="68.0" text="IDADE" />
+            <TableColumn prefWidth="78.0" text="GENERO" />
+            <TableColumn prefWidth="69.0" text="SANGUE" />
+            <TableColumn prefWidth="58.0" text="PESO" />
+            <TableColumn prefWidth="66.0" text="ALTURA" />
+         </columns>
+      </TableView>
+      <Button layoutX="507.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <TextField layoutX="348.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por ID" style="-fx-background-radius: 10;" />
+      <TextField layoutX="671.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por CPF" style="-fx-background-radius: 10;" />
+      <Button layoutX="830.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <Button layoutX="1152.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <TextField layoutX="993.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por Nome" style="-fx-background-radius: 10;" />
+      <Button layoutX="1009.0" layoutY="48.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1093.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Vector.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1131.0" layoutY="48.0" mnemonicParsing="false" onAction="#logOut" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
+      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="969.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Vector-3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/medbay-logo%202.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="419.0" fitWidth="237.0" layoutX="45.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/pacientecadastro.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="68.0" layoutY="622.0" mnemonicParsing="false" onAction="#cadastrarPaciente" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+   </children>
+</Pane>

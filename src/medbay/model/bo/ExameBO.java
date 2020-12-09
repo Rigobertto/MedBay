@@ -1,13 +1,22 @@
 package medbay.model.bo;
 
+import java.sql.SQLException;
+
+import medbay.model.dao.ExameDAO;
+import medbay.model.vo.ExameVO;
+
 public class ExameBO implements ExameInterBO {
-    public static boolean cadastrar(ExameVO exame) {
-        // recebe um objeto do tipo ExameVO,
-        // faz alguma validação pendente,
-        // e chama ExameDAO para armazená-lo.
+	ExameDAO ex = new ExameDAO();
+	
+    public void cadastrar(ExameVO exame) {
+    	try {
+    		ex.cadastrar(exame);
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	}
     }
 
-    public static boolean cadastrar(ExameVO exame, ProntuarioVO prontuario) {
+    /*public static boolean cadastrar(ExameVO exame, ProntuarioVO prontuario) {
         // atrela um exame à consulta atual.
     }
 
@@ -27,7 +36,7 @@ public class ExameBO implements ExameInterBO {
         /*
             Exames buscados assim são referentes a apenas uma consulta (que pode ser pesquisada facilmente)
             e por isso são referentes a apenas um PacienteVO
-        */
+        
     }
 
     static ExameVO [] buscar(String nome) {
@@ -56,5 +65,5 @@ public class ExameBO implements ExameInterBO {
     static ExameVO [] buscar(PacienteVO paciente) {
         // Chama ConsultaBO.busca(paciente).
         // Filtra os exames atrelados às consultas.
-    }
+    }*/
 }

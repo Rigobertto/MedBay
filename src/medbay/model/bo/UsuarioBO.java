@@ -1,9 +1,52 @@
 package medbay.model.bo;
 import medbay.model.vo.UsuarioVO;
 
-public class UsuarioBO implements UsuarioInterBO {
+import java.sql.SQLException;
+
+import medbay.model.dao.AtendenteDAO;
+import medbay.model.dao.GerenteDAO;
+import medbay.model.dao.UsuarioDAO;
+import medbay.model.vo.AtendenteVO;
+import medbay.model.vo.GerenteVO;
+import medbay.model.vo.MedicoVO;
+
+public class UsuarioBO implements UsuarioInterBO{
+	UsuarioDAO dao = new UsuarioDAO();
 	
-	public UsuarioVO autenticar(UsuarioVO vo) {
+	public UsuarioVO autenticar(UsuarioVO vo){
+		try {
+			UsuarioVO user = new UsuarioVO();
+			user = dao.autenticar(vo);
+			if(user.getSenha().equals(vo.getSenha())) {
+				if(user.getLogin().equals(vo.getLogin())) {
+					return user;
+				}
+			}
+			/*if(user.getTabela() == 1) {
+				UsuarioVO ger = new UsuarioVO();
+				ger = dao.autenticarSenha(user, "Gerente");
+				ger.setTabela(1);
+				return ger;
+				
+			}else if(user.getTabela() == 2) {
+				UsuarioVO aten = new AtendenteVO();
+				aten = dao.autenticarSenha(user, "Atendente");
+				aten.setTabela(2);
+				return aten;
+				
+			}else if(user.getTabela() == 3) {
+				UsuarioVO med = new MedicoVO();
+				med = dao.autenticarSenha(user, "Medico");
+				med.setTabela(3);
+				return med;
+				
+			}else {
+				return null;
+			}*/
+		}catch(SQLException e){
+			e.getStackTrace();
+			return null;
+		}
 		return null;
 	}
 	
