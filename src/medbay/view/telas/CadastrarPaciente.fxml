@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.CadastrarPacienteController">
+   <children>
+      <ImageView fitHeight="712.0" fitWidth="496.0" layoutX="396.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@../VE/Rectangle%2014.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="peso" alignment="CENTER" layoutX="743.0" layoutY="417.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="675.0" layoutY="319.0" text="Gênero:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="idade" alignment="CENTER" layoutX="469.0" layoutY="317.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="696.0" layoutY="419.0" text="Peso:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nome" alignment="CENTER" layoutX="470.0" layoutY="267.0" prefHeight="31.0" prefWidth="450.0" />
+      <Button layoutX="548.0" layoutY="545.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+      <Label layoutX="415.0" layoutY="317.0" prefHeight="31.0" prefWidth="52.0" text="Idade:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="267.0" prefHeight="31.0" prefWidth="60.0" text="Nome:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="122.0" fitWidth="142.0" layoutX="569.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/undraw_folder_files_nweq%201.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="430.0" layoutY="367.0" prefHeight="31.0" prefWidth="52.0" text="CPF:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cpf" alignment="CENTER" layoutX="469.0" layoutY="367.0" prefHeight="31.0" prefWidth="177.0" />
+      <TextField fx:id="altura" alignment="CENTER" layoutX="469.0" layoutY="417.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="411.0" layoutY="417.0" prefHeight="31.0" prefWidth="52.0" text="Altura:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="334.0" layoutY="467.0" prefHeight="31.0" prefWidth="135.0" text="Tipo Sanguíneo: " textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="sangue" alignment="CENTER" layoutX="469.0" layoutY="467.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="495.0" layoutY="116.0" text="CADASTRO DE PACIENTE" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/medbay-logo%202.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="979.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Vector-3.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1141.0" layoutY="58.0" mnemonicParsing="false" onAction="#logOut" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1103.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/Vector.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1019.0" layoutY="58.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
+      <ComboBox fx:id="genero" layoutX="743.0" layoutY="317.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label fx:id="lblMensagem" layoutX="474.0" layoutY="615.0" text="Cadastro realizado com sucesso!" textFill="#6b0f8a">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

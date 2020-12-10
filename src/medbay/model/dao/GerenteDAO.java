@@ -8,6 +8,7 @@ import medbay.model.vo.GerenteVO;
 
 public class GerenteDAO<VO extends GerenteVO> extends UsuarioDAO<VO>{
 	
+	
 	public void cadastrar(VO vo) throws SQLException {
 		conn = getConnection();
 		String sql = "insert into Gerente (cpf, nome, idade, genero, login, senha) values (?, ?, ?, ?, ?, ?)";

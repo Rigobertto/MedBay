@@ -1,13 +1,42 @@
 package medbay.model.bo;
 
-public class ExameBO implements ExameInterBO {
-    public static boolean cadastrar(ExameVO exame) {
-        // recebe um objeto do tipo ExameVO,
-        // faz alguma validação pendente,
-        // e chama ExameDAO para armazená-lo.
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import medbay.model.dao.ExameDAO;
+import medbay.model.vo.ExameVO;
+
+public class ExameBO<VO extends ExameVO> implements ExameInterBO {
+	ExameDAO<ExameVO> ex = new ExameDAO<ExameVO>();
+	
+	public List<ExameVO> listar() {
+		ArrayList<ExameVO> exames = new ArrayList<ExameVO>();
+		try {
+			ResultSet rs = ex.listar();
+			while(rs.next()){
+				ExameVO vo = new ExameVO();
+				vo.setId(rs.getInt("ide"));
+				vo.setNome(rs.getString("nome"));
+				vo.setValor(rs.getFloat("valor"));
+				exames.add(vo);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return exames;
+	}
+	
+    public void cadastrar(VO exame) {
+    	try {
+    		ex.cadastrar(exame);
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	}
     }
 
-    public static boolean cadastrar(ExameVO exame, ProntuarioVO prontuario) {
+    /*public static boolean cadastrar(ExameVO exame, ProntuarioVO prontuario) {
         // atrela um exame à consulta atual.
     }
 
@@ -27,7 +56,7 @@ public class ExameBO implements ExameInterBO {
         /*
             Exames buscados assim são referentes a apenas uma consulta (que pode ser pesquisada facilmente)
             e por isso são referentes a apenas um PacienteVO
-        */
+        
     }
 
     static ExameVO [] buscar(String nome) {
@@ -56,5 +85,5 @@ public class ExameBO implements ExameInterBO {
     static ExameVO [] buscar(PacienteVO paciente) {
         // Chama ConsultaBO.busca(paciente).
         // Filtra os exames atrelados às consultas.
-    }
+    }*/
 }

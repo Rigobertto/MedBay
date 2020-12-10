@@ -3,7 +3,6 @@ package medbay.model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import medbay.model.vo.ExameVO;
 
 
@@ -12,19 +11,21 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 	public void cadastrar(VO vo) throws SQLException {
 		conn = getConnection();
 		String sql = "insert into Exame(nome, valor) values (?, ?)";
-		PreparedStatement ptst = conn.prepareStatement(sql);
 		try {
+			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setString(1, vo.getNome());
 			ptst.setFloat(2, vo.getValor());
 			ptst.execute();
+			
 		}catch(SQLException e){
 			e.printStackTrace();
+			
 		}
 	}
 	
 	public void excluir(VO vo) throws SQLException{
 		conn = getConnection();
-		String sql = "delete from Exame where ide_exame = ?"; // revisar dps
+		String sql = "delete from Exame where ide = ?"; // revisar dps
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
@@ -37,7 +38,7 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 	
 	public void editar(VO vo) throws SQLException { // editar apenas nome e valor
 		conn = getConnection();
-		String sql = "update Exame set nome = ?, valor = ? where ide_exame = ?";
+		String sql = "update Exame set nome = ?, valor = ? where ide = ?";
 		PreparedStatement ptst = conn.prepareStatement(sql);
 		try {
 			ptst.setString(1, vo.getNome());
@@ -48,33 +49,33 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 			}
 	}
 
-	public ResultSet listar() throws SQLException{ // que erro???????
-		conn = getConnection();
-		String sql = "select * from Exame";
-		Statement st;
-		ResultSet rs = null;
-		//ArrayList<ExameVO> exames = new ArrayList<ExameVO>();
-		try {
-			st = conn.prepareStatement(sql);
-			rs = st.executeQuery(sql);
-			
-			/*while(rs.next()){
-				ExameVO vo = new ExameVO();
-				vo.setId(rs.getInt("ide_exame"));
-				vo.setNome(rs.getString("nome"));
-				vo.setValor(rs.getFloat("valor"));
-				exames.add(vo);
-			}*/
-			
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-		return rs;
-	}
+//	public ResultSet listarID() throws SQLException{ // que erro???????
+//		conn = getConnection();
+//		String sql = "select * from Exame";
+//		Statement st;
+//		ResultSet rs = null;
+//		//ArrayList<ExameVO> exames = new ArrayList<ExameVO>();
+//		try {
+//			st = conn.prepareStatement(sql);
+//			rs = st.executeQuery(sql);
+//			
+//			/*while(rs.next()){
+//				ExameVO vo = new ExameVO();
+//				vo.setId(rs.getInt("ide_exame"));
+//				vo.setNome(rs.getString("nome"));
+//				vo.setValor(rs.getFloat("valor"));
+//				exames.add(vo);
+//			}*/
+//			
+//		}catch(SQLException e){
+//			e.printStackTrace();
+//		}
+//		return rs;
+//	}
 	
 	public ExameVO buscarID(ExameVO vo) throws SQLException {
 		conn = getConnection();
-		String sqlSearch = "select * from Exame where ide_exame like ?";
+		String sqlSearch = "select * from Exame where ide like ?";
 		PreparedStatement ptst;
 		ResultSet rs;
 		ExameVO exame = new ExameVO();
@@ -83,7 +84,7 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 			ptst.setInt(1, vo.getId());
 			rs = ptst.executeQuery();
 			if(rs.next()) {
-				exame.setId(rs.getInt("ide_exame"));
+				exame.setId(rs.getInt("ide"));
 				exame.setNome(rs.getString("nome"));
 				exame.setValor(rs.getFloat("valor"));
 				
@@ -108,7 +109,7 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 			ptst.setString(1, vo.getNome());
 			rs = ptst.executeQuery();
 			if(rs.next()) {
-				exame.setId(rs.getInt("ide_exame"));
+				exame.setId(rs.getInt("ide"));
 				exame.setNome(rs.getString("nome"));
 				exame.setValor(rs.getFloat("valor"));
 				
@@ -122,8 +123,20 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 		return exame;
 	}
 	
-	public ResultSet listarID(VO vo) {
-		return null;
+	public ResultSet listar() {
+		conn = getConnection();
+		String sql = "select * from Exame";
+		PreparedStatement st;
+		ResultSet rs = null;
+		try {
+			st = getConnection().prepareStatement(sql);
+			rs = st.executeQuery();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
 	}
 	
 	/*public ArrayList<ExameVO> listarID(VO vo) throws SQLException{

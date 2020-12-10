@@ -3,9 +3,31 @@ package medbay.model.vo;
 public class UsuarioVO extends PessoaVO {
 	    private String login;
 	    private String senha;
+	    private int tabela;
+	    
+	    public int getTabela() {
+	    	return this.tabela;
+	    }
+	    public void setTabela(int tabela) {
+	    	this.tabela = tabela;
+	    }
+	    public void Usuario(String nome, String senha){ // Pq desse m�todo?
+	        this.setNome(nome);
+	        this.setSenha(senha);
+	    }
+
+	    //public int getId() { // validar idade
+	  //      return this.id;
+	   // }
+
+	    //public boolean setId(int id) {
+	     //   if(id < 0x00) return false; // adicionar método no pacote "util" que verifica se o ID j�, existe
+	     //   this.id = id;
+	    //    return true;
+	   // }
 
 	    public String getLogin() {
-	        return new String(this.login);
+	        return this.login;
 	    }
 
 	    public boolean setLogin(String login) {

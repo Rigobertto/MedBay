@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class BaseDAO <VO> implements BaseInterDAO <VO>{ // Clase abstrata generica que ser� superclasse de todas as outras class
+public abstract class BaseDAO <VO> implements BaseInterDAO <VO>{
 	Connection conn = null;
 	private static final String URL = "jdbc:postgresql://localhost:5432/MedBay";
 	private static final String USER = "postgres";
@@ -29,7 +29,6 @@ public abstract class BaseDAO <VO> implements BaseInterDAO <VO>{ // Clase abstra
 	public abstract void excluir(VO vo) throws SQLException;
 	public abstract void editar(VO vo) throws SQLException;
 	public abstract ResultSet listar() throws SQLException;
-	public abstract ResultSet listarID(VO vo) throws SQLException;
 	//public abstract ResultSet buscaCPF(VO vo) throws SQLException;
 	//public abstract ResultSet buscaNome(VO vo) throws SQLException;
 	//public abstract ResultSet busca(VO vo) throws SQLException;
