@@ -5,103 +5,83 @@ import java.util.Calendar;
 public class ConsultaVO {
 	private int id;
 
-    private Calendar data; // a data para quando foi marcada a consulta
+    private Calendar data;
 
-    private int id_paciente; // id do paciente no banco
-    private int id_medico; // id do m√©dico no banco
+    private PacienteVO paciente;
+    private MedicoVO medico;
 
-    private ProntuarioVO prontuario; // prontuario gerado no ato da consulta
-    private String observacao; // resultado da consulta, observa√ß√µes m√©dicas
+    private String observacao;
+    private ProntuarioVO prontuario;
 
     /*
-    prontuario e observa√ß√£o marcam uma etapa de valida√ß√£o
-    caso a observa√ß√£o seja null a consulta ainda n√£o foi executada
-    logo estar√° em aberto
+    prontuario e observaÁ„o marcam uma etapa de validaÁ„o
+    caso a observaÁ„o seja null a consulta ainda n„o foi executada
+    logo estar· em aberto
 
-    caso a observa√ß√£o seja diferente de null e n√£o exista prontuario
-    quer dizer que foi feita uma consulta e n√£o houve a necessidade de
+    caso a observaÁ„o seja diferente de null e n„o exista prontuario
+    quer dizer que foi feita uma consulta e n„o houve a necessidade de
     fazer um exame
 
-    caso exista observa√ß√£o e prontuario quer dizer que a a consulta foi feita
+    caso exista observaÁ„o e prontuario quer dizer que a a consulta foi feita
     e que os exames foram solicitados
 
-    caso o prontuario conste uma observa√ß√£o igual a null indica que o exame n√£o foi feito
+    caso o prontuario conste uma observaÁ„o igual a null indica que o exame n„o foi feito
 
-    caso o prontuario tenha observa√ß√£o e n√£o tenha laudo temos que o exame foi feito mas
-    ainda n√£o foi avaliado pelo m√©dico
+    caso o prontuario tenha observaÁ„o e n„o tenha laudo temos que o exame foi feito mas
+    ainda n„o foi avaliado pelo mÈdico
 
     caso o laudo exista no prontuario teremos uma consulta completamente concluida
     */
 
-    public void Consulta() {
-        setDataCadastro(Calendar.getInstance());
-    }
-
     public int getId() {
         return this.id;
     }
-
     public boolean setId(int id) {
         if(id < 0) return false;
         else this.id = id;
         return true;
     }
 
-    public Calendar getDataCadastro() {
-        return this.data_cadastro;
+    public Calendar getData() {
+        return this.data;
     }
-
-    private void setDataCadastro(Calendar data) {
-        this.data_cadastro = data;
-    }
-
-    public Calendar getDataConsulta() {
-        return this.data_consulta;
-    }
-
-    public boolean setDataConsulta(Calendar data) {
-        if(data.getTimeInMillis() < this.data_cadastro.getTimeInMillis()) return false;
-        this.data_consulta = data;
+    public boolean setData(Calendar data) {
+        if(data.getTimeInMillis() < this.data.getTimeInMillis()) return false;
+        this.data = data;
         return true;
     }
 
-    public int getExame() {
-        return this.id_exame;
+    public PacienteVO getPaciente() {
+        return this.paciente;
     }
-
-    public boolean setExame(int id_exame) {
-        if(id_exame < 0x00) return false; // id 0x00 indica que n√£o existe cadastro.
-        this.id_exame = id_exame;
+    public boolean setPaciente(PacienteVO paciente) {
+        if(paciente == null) return false;
+        this.paciente = paciente;
         return true;
     }
 
-    public int getPaciente() {
-        return this.id_paciente;
+    public MedicoVO getMedico() {
+        return this.medico;
     }
-
-    public boolean setPaciente(int id_paciente) {
-        if(id_paciente <= 0x00) return false;
-        this.id_paciente = id_paciente;
-        return true;
-    }
-
-    public int getMedico() {
-        return this.id_medico;
-    }
-
-    public boolean setMedico(int id_medico) {
-        if(id_medico <= 0x00) return false;
-        this.id_medico = id_medico;
+    public boolean setMedico(MedicoVO medico) {
+        if(medico == null) return false;
+        this.medico = medico;
         return true;
     }
 
     public String getObservacao() {
         return new String(this.observacao);
     }
-
     public boolean setObservacao(String observacao) {
         if(observacao == null || observacao.isEmpty()) return false;
         this.observacao = observacao;
         return true;
+    }
+
+    public ProntuarioVO getProntuario() {
+    	return this.prontuario;
+    }
+    public void setProntuario(ProntuarioVO prontuario) {
+    	this.prontuario = prontuario;
     }
 }

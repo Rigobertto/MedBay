@@ -7,7 +7,7 @@ public class PronturarioBO implements ProntuarioInterBO {
         // e chama ExameDAO para armazená-lo.
     }
 
-    public static boolean editar(ProntuarioVO prontuario, String observacao) {
+    public static boolean editar(ProntuarioVO prontuario) {
         // adiciona a um objeto do tipo ProntuarioVO uma observação.
     }
 

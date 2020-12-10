@@ -1,16 +1,22 @@
 package medbay.model.bo;
 
+import java.util.Calendar;
+import java.util.List;
+
+import medbay.model.util.CPF;
+import medbay.model.vo.ConsultaVO;
+import medbay.model.vo.MedicoVO;
+import medbay.model.vo.PacienteVO;
+
 public interface ConsultaInterBO {
-    static boolean cadastrar(ConsultaVO consulta); // Cadastra uma consulta
-    static boolean cadastrar(ConsultaVO consulta, ExameVO exame); // Vincula um exame a uma consulta
+    public boolean cadastrar(ConsultaVO consulta);
 
-    static boolean editar(ConsultaVO consulta, String observacao);
-    static boolean editar(ConsultaVO consulta, Calendar data_consulta);
+    public boolean editar(ConsultaVO consulta);
 
-    static ConsultaVO buscar(int id); // id da consulta
-    static ConsultaVO [] buscar(String nome); // nome do paciente e ou do médico
-    static ConsultaVO [] buscar(CPF cpf); // cpf do paciente e ou do médico
-    static ConsultaVO [] buscar(Calendar data); // "marcados em" e "marcados para"
-    static ConsultaVO [] buscar(MedicoVO medico); // busca por id_medico
-    static ConsultaVO [] buscar(PacienteVO paciente) // busca por id_paciente
+    public ConsultaVO buscarId(int id); // id da consulta
+    public List<ConsultaVO> buscarNome(String nome); // nome do paciente e ou do médico
+    public List<ConsultaVO> buscarCpf(CPF cpf); // cpf do paciente e ou do médico
+    public List<ConsultaVO> buscarData(Calendar data); // "marcados em" e "marcados para"
+    public List<ConsultaVO> buscarMedico(MedicoVO medico); // busca por id_medico
+    public List<ConsultaVO> buscar(PacienteVO paciente); // busca por id_paciente
 }
