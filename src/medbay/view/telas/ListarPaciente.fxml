@@ -7,16 +7,16 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.ListarPacienteController">
    <children>
-      <TableView layoutX="349.0" layoutY="261.0" prefHeight="419.0" prefWidth="881.0">
+      <TableView fx:id="tabelaPaciente" layoutX="349.0" layoutY="261.0" prefHeight="419.0" prefWidth="881.0">
          <columns>
-            <TableColumn prefWidth="37.0" text="ID" />
-            <TableColumn prefWidth="354.0" text="NOME" />
-            <TableColumn prefWidth="150.0" text="CPF" />
-            <TableColumn prefWidth="68.0" text="IDADE" />
-            <TableColumn prefWidth="78.0" text="GENERO" />
-            <TableColumn prefWidth="69.0" text="SANGUE" />
-            <TableColumn prefWidth="58.0" text="PESO" />
-            <TableColumn prefWidth="66.0" text="ALTURA" />
+            <TableColumn fx:id="ide" prefWidth="37.0" text="ID" />
+            <TableColumn fx:id="nome" prefWidth="354.0" text="NOME" />
+            <TableColumn fx:id="cpf" prefWidth="150.0" text="CPF" />
+            <TableColumn fx:id="idade" prefWidth="68.0" text="IDADE" />
+            <TableColumn fx:id="genero" prefWidth="78.0" text="GENERO" />
+            <TableColumn fx:id="sangue" prefWidth="69.0" text="SANGUE" />
+            <TableColumn fx:id="peso" prefWidth="58.0" text="PESO" />
+            <TableColumn fx:id="altura" prefWidth="66.0" text="ALTURA" />
          </columns>
       </TableView>
       <Button layoutX="507.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />

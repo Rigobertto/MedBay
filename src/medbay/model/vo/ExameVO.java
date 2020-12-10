@@ -6,11 +6,11 @@ public class ExameVO {
 		private int id;
 	    private String nome;
 	    private float valor;
-	    private Calendar data; // PQ tem data no exame? acho que deveria ser na consulta '-'
+	    //private Calendar data; // PQ tem data no exame? acho que deveria ser na consulta '-'
 
 	    // private Medico medico;
 	    // private String dados;
-	    private String observacao;
+	    //private String observacao;
 	    //private ProntuarioVO prontuario; // tbm nao entendi o prontuario?
 
 	    public int getId() {
@@ -43,25 +43,25 @@ public class ExameVO {
 	        return true;
 	    }
 
-	    public Calendar getData() {
-	        return this.data;
-	    }
-
-	    public boolean setData(Calendar data) {
-	        if(data == null) return false;
-	        this.data = data;
-	        return true;
-	    }
-
-	    public String getObservacao() {
-	        return this.observacao;
-	    }
-
-	    public boolean setObservacao(String texto) {
-	        if(texto == null) if(texto.isEmpty()) return false;
-	        this.observacao = texto.toUpperCase();
-	        return true;
-	    }
+//	    public Calendar getData() {
+//	        return this.data;
+//	    }
+//
+//	    public boolean setData(Calendar data) {
+//	        if(data == null) return false;
+//	        this.data = data;
+//	        return true;
+//	    }
+//
+//	    public String getObservacao() {
+//	        return this.observacao;
+//	    }
+//
+//	    public boolean setObservacao(String texto) {
+//	        if(texto == null) if(texto.isEmpty()) return false;
+//	        this.observacao = texto.toUpperCase();
+//	        return true;
+//	    }
 
 	  //  public ProntuarioVO getProntuario() {
 	    //    return this.prontuario;

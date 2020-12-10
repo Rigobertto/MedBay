@@ -13,7 +13,7 @@ public class CadastrarExameController {
 	@FXML private TextField nome;
 	@FXML private TextField valor;
 	@FXML private Label lblMensagem;
-	ExameBO exame = new ExameBO();
+	ExameBO<ExameVO> exame = new ExameBO<ExameVO>();
 	
 	public void cadastrar(ActionEvent event)throws Exception{
 		ExameVO ex = new ExameVO();

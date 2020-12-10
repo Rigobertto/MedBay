@@ -14,29 +14,26 @@
             <Image url="@../VE/Rectangle%2014.png" />
          </image>
       </ImageView>
-      <TextField alignment="CENTER" layoutX="746.0" layoutY="417.0" prefHeight="31.0" prefWidth="177.0" />
-      <RadioButton layoutX="791.0" layoutY="370.0" mnemonicParsing="false" text="Outro" textFill="WHITE" />
-      <RadioButton layoutX="790.0" layoutY="344.0" mnemonicParsing="false" text="Feminino" textFill="WHITE" />
-      <RadioButton layoutX="790.0" layoutY="318.0" mnemonicParsing="false" text="Masculino" textFill="WHITE" />
-      <Label layoutX="703.0" layoutY="341.0" text="Gênero:" textFill="WHITE">
+      <TextField fx:id="peso" alignment="CENTER" layoutX="743.0" layoutY="417.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="675.0" layoutY="319.0" text="Gênero:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="492.0" layoutY="317.0" prefHeight="31.0" prefWidth="177.0" />
-      <Label layoutX="701.0" layoutY="419.0" text="Peso:" textFill="WHITE">
+      <TextField fx:id="idade" alignment="CENTER" layoutX="469.0" layoutY="317.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="696.0" layoutY="419.0" text="Peso:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="492.0" layoutY="267.0" prefHeight="31.0" prefWidth="428.0" />
-      <Button layoutX="548.0" layoutY="545.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
-      <Label layoutX="438.0" layoutY="317.0" prefHeight="31.0" prefWidth="52.0" text="Idade:" textFill="WHITE">
+      <TextField fx:id="nome" alignment="CENTER" layoutX="470.0" layoutY="267.0" prefHeight="31.0" prefWidth="450.0" />
+      <Button layoutX="548.0" layoutY="545.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+      <Label layoutX="415.0" layoutY="317.0" prefHeight="31.0" prefWidth="52.0" text="Idade:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="434.0" layoutY="267.0" prefHeight="31.0" prefWidth="60.0" text="Nome:" textFill="WHITE">
+      <Label layoutX="411.0" layoutY="267.0" prefHeight="31.0" prefWidth="60.0" text="Nome:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -46,24 +43,24 @@
             <Image url="@../VE/undraw_folder_files_nweq%201.png" />
          </image>
       </ImageView>
-      <Label layoutX="453.0" layoutY="367.0" prefHeight="31.0" prefWidth="52.0" text="CPF:" textFill="WHITE">
+      <Label layoutX="430.0" layoutY="367.0" prefHeight="31.0" prefWidth="52.0" text="CPF:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="492.0" layoutY="367.0" prefHeight="31.0" prefWidth="177.0" />
-      <TextField alignment="CENTER" layoutX="492.0" layoutY="417.0" prefHeight="31.0" prefWidth="177.0" />
-      <Label layoutX="434.0" layoutY="417.0" prefHeight="31.0" prefWidth="52.0" text="Altura:" textFill="WHITE">
+      <TextField fx:id="cpf" alignment="CENTER" layoutX="469.0" layoutY="367.0" prefHeight="31.0" prefWidth="177.0" />
+      <TextField fx:id="altura" alignment="CENTER" layoutX="469.0" layoutY="417.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="411.0" layoutY="417.0" prefHeight="31.0" prefWidth="52.0" text="Altura:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="357.0" layoutY="467.0" prefHeight="31.0" prefWidth="135.0" text="Tipo Sanguíneo: " textFill="WHITE">
+      <Label layoutX="334.0" layoutY="467.0" prefHeight="31.0" prefWidth="135.0" text="Tipo Sanguíneo: " textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="492.0" layoutY="467.0" prefHeight="31.0" prefWidth="177.0" />
+      <TextField fx:id="sangue" alignment="CENTER" layoutX="469.0" layoutY="467.0" prefHeight="31.0" prefWidth="177.0" />
       <Label layoutX="495.0" layoutY="116.0" text="CADASTRO DE PACIENTE" textFill="WHITE">
          <font>
             <Font size="26.0" />
@@ -86,5 +83,11 @@
          </image>
       </ImageView>
       <Button layoutX="1019.0" layoutY="58.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
+      <ComboBox fx:id="genero" layoutX="743.0" layoutY="317.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label fx:id="lblMensagem" layoutX="474.0" layoutY="615.0" text="Cadastro realizado com sucesso!" textFill="#6b0f8a">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

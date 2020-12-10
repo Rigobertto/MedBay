@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import medbay.model.bo.UsuarioBO;
-import medbay.model.vo.UsuarioVO;
 import medbay.view.Telas;
 
 public class TelaLoginController {

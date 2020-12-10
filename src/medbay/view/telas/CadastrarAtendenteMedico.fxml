@@ -33,7 +33,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="456.0" layoutY="212.0" prefHeight="31.0" prefWidth="428.0" />
+      <TextField fx:id="nome" alignment="CENTER" layoutX="456.0" layoutY="212.0" prefHeight="31.0" prefWidth="428.0" />
       <Label layoutX="667.0" layoutY="364.0" text="CPF:">
          <font>
             <Font size="18.0" />
@@ -44,28 +44,25 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="456.0" layoutY="262.0" prefHeight="31.0" prefWidth="177.0" />
-      <Label layoutX="669.0" layoutY="286.0" text="Gênero:">
+      <TextField fx:id="idade" alignment="CENTER" layoutX="456.0" layoutY="262.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="653.0" layoutY="264.0" text="Gênero:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <RadioButton layoutX="756.0" layoutY="263.0" mnemonicParsing="false" text="Masculino" />
-      <RadioButton layoutX="756.0" layoutY="289.0" mnemonicParsing="false" text="Feminino" />
-      <RadioButton layoutX="757.0" layoutY="315.0" mnemonicParsing="false" text="Outro" />
       <Label layoutX="404.0" layoutY="312.0" prefHeight="31.0" prefWidth="52.0" text="Login:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="456.0" layoutY="312.0" prefHeight="31.0" prefWidth="177.0" />
-      <TextField alignment="CENTER" layoutX="456.0" layoutY="362.0" prefHeight="31.0" prefWidth="177.0" />
+      <TextField fx:id="login" alignment="CENTER" layoutX="456.0" layoutY="312.0" prefHeight="31.0" prefWidth="177.0" />
+      <TextField fx:id="senha" alignment="CENTER" layoutX="456.0" layoutY="362.0" prefHeight="31.0" prefWidth="177.0" />
       <Label layoutX="400.0" layoutY="362.0" prefHeight="31.0" prefWidth="60.0" text="Senha:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="706.0" layoutY="412.0" prefHeight="31.0" prefWidth="177.0" promptText="Para Médico" />
+      <TextField fx:id="crm" alignment="CENTER" layoutX="706.0" layoutY="412.0" prefHeight="31.0" prefWidth="177.0" promptText="Para Médico" />
       <Label layoutX="661.0" layoutY="412.0" prefHeight="31.0" prefWidth="46.0" text="CRM:">
          <font>
             <Font size="18.0" />
@@ -76,8 +73,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="456.0" layoutY="412.0" prefHeight="31.0" prefWidth="177.0" promptText="Para Médico" />
-      <TextField alignment="CENTER" layoutX="706.0" layoutY="362.0" prefHeight="31.0" prefWidth="177.0" />
+      <TextField fx:id="especialidade" alignment="CENTER" layoutX="456.0" layoutY="412.0" prefHeight="31.0" prefWidth="177.0" promptText="Para Médico" />
+      <TextField fx:id="cpf" alignment="CENTER" layoutX="706.0" layoutY="362.0" prefHeight="31.0" prefWidth="177.0" />
       <ImageView fitHeight="351.0" fitWidth="241.0" layoutX="60.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Rectangle%2014.png" />
@@ -103,8 +100,8 @@
             <Image url="@../VE/Rectangle%2019.png" />
          </image>
       </ImageView>
-      <Button layoutX="88.0" layoutY="443.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
-      <Button layoutX="1011.0" layoutY="443.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+      <Button layoutX="88.0" layoutY="443.0" mnemonicParsing="false" onAction="#cadastrarA" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+      <Button layoutX="1011.0" layoutY="443.0" mnemonicParsing="false" onAction="#cadastrarM" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1004.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/undraw_medical_care_movn%201.png" />
@@ -125,5 +122,11 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <Label fx:id="lblMensagem" layoutX="468.0" layoutY="457.0" text="Cadastro realizado com sucesso!" textFill="#9d00ff" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="genero" layoutX="733.0" layoutY="262.0" prefWidth="150.0" />
    </children>
 </Pane>

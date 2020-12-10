@@ -18,15 +18,15 @@
             <Image url="@../VE/Aside.png" />
          </image>
       </ImageView>
-      <TableView layoutX="349.0" layoutY="261.0" prefHeight="419.0" prefWidth="881.0">
+      <TableView fx:id="tabelaAtendente" layoutX="349.0" layoutY="261.0" prefHeight="419.0" prefWidth="881.0">
         <columns>
-          <TableColumn prefWidth="37.0" text="ID" />
-            <TableColumn prefWidth="336.0" text="NOME" />
-          <TableColumn prefWidth="146.0" text="CPF" />
-            <TableColumn prefWidth="58.0" text="IDADE" />
-            <TableColumn prefWidth="68.0" text="GENERO" />
-            <TableColumn prefWidth="117.0" text="LOGIN" />
-            <TableColumn prefWidth="118.0" text="SENHA" />
+          <TableColumn fx:id="ide" prefWidth="37.0" text="ID" />
+            <TableColumn fx:id="nome" prefWidth="336.0" text="NOME" />
+          <TableColumn fx:id="cpf" prefWidth="146.0" text="CPF" />
+            <TableColumn fx:id="idade" prefWidth="58.0" text="IDADE" />
+            <TableColumn fx:id="genero" prefWidth="68.0" text="GENERO" />
+            <TableColumn fx:id="login" prefWidth="117.0" text="LOGIN" />
+            <TableColumn fx:id="senha" prefWidth="118.0" text="SENHA" />
         </columns>
       </TableView>
       <Button layoutX="1152.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />

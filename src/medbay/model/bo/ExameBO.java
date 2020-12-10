@@ -1,14 +1,34 @@
 package medbay.model.bo;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import medbay.model.dao.ExameDAO;
 import medbay.model.vo.ExameVO;
 
-public class ExameBO implements ExameInterBO {
-	ExameDAO ex = new ExameDAO();
+public class ExameBO<VO extends ExameVO> implements ExameInterBO {
+	ExameDAO<ExameVO> ex = new ExameDAO<ExameVO>();
 	
-    public void cadastrar(ExameVO exame) {
+	public List<ExameVO> listar() {
+		ArrayList<ExameVO> exames = new ArrayList<ExameVO>();
+		try {
+			ResultSet rs = ex.listar();
+			while(rs.next()){
+				ExameVO vo = new ExameVO();
+				vo.setId(rs.getInt("ide"));
+				vo.setNome(rs.getString("nome"));
+				vo.setValor(rs.getFloat("valor"));
+				exames.add(vo);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return exames;
+	}
+	
+    public void cadastrar(VO exame) {
     	try {
     		ex.cadastrar(exame);
     	}catch(SQLException e) {
