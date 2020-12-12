@@ -35,7 +35,27 @@ public class ExameBO<VO extends ExameVO> implements ExameInterBO {
     		e.printStackTrace();
     	}
     }
-
+    
+    public boolean excluir(ExameVO exame){
+    	try {
+    		ex.excluir(exame);
+    		return true;
+    	}catch(Exception e){
+    		e.printStackTrace();
+    		return false;
+    	}
+    }
+    
+    public boolean editar(ExameVO vo) {
+    	try {
+    		ex.editar(vo);
+    		return true;
+    	}catch(Exception e){
+    		e.printStackTrace();
+    		return false;
+    	}
+    }
+    
     /*public static boolean cadastrar(ExameVO exame, ProntuarioVO prontuario) {
         // atrela um exame à consulta atual.
     }
@@ -44,9 +64,6 @@ public class ExameBO<VO extends ExameVO> implements ExameInterBO {
         // adiciona a um objeto do tipo ExameVO uma observação.
     }
 
-    public static boolean editar(ExameVO exame, float valor) {
-        // edita o valor colocado como preço do exame disponibilizado.
-    }
 
     static ExameVO [] buscar(int id); {
         // Chama o DAO para buscar exames com o ID indicado.

@@ -5,9 +5,52 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import medbay.model.vo.AtendenteVO;
+import medbay.model.vo.UsuarioVO;
 
 
-public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
+public class AtendenteDAO<VO extends AtendenteVO> extends BaseDAO<VO> {
+	
+	public UsuarioVO autenticarAtendente(UsuarioVO vo) {
+		//conn = getConnection();
+		String sqlVerificarLogin = "select * from Atendente where login = ?";// + vo.getLogin();
+		//System.out.println(sqlVerificarLogin);
+		PreparedStatement ptst;
+		ResultSet rs = null;
+		String login = vo.getLogin();
+		UsuarioVO user = new AtendenteVO();
+		try {
+			ptst = getConnection().prepareStatement(sqlVerificarLogin);
+			ptst.setString(1, vo.getLogin());
+			rs = ptst.executeQuery();
+			if(rs.next()) {
+				if(login.equals(rs.getString("login"))){
+					user.setId(rs.getInt("ide"));
+					user.setNome(rs.getString("nome"));
+					user.setCpf(rs.getString("cpf"));
+					user.setIdade(rs.getInt("idade"));
+					user.setGenero(rs.getString("genero"));
+					user.setLogin(rs.getString("login"));
+					user.setSenha(rs.getString("senha"));
+					user.setTabela(2);
+					if(user.getSenha().equals(vo.getSenha())){
+						return user;
+					}else{
+						user.setTabela(0);
+						return user;
+					}
+				}else {
+					user.setTabela(0);
+					return user;
+				}
+			}else{
+				user.setTabela(0);
+				return user;
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			return null;
+		}
+	}
 	
 	public void cadastrar(VO vo) throws SQLException {
 		String sqlVerificarLogin = "select login from Gerente union select login from Atendente union select login from Medico";
@@ -63,7 +106,7 @@ public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
 	
 	public void excluir(VO vo) throws SQLException{
 		conn = getConnection();
-		String sql = "delete from Atendente where ide_atendente = ?"; // revisar dps
+		String sql = "delete from Atendente where ide = ?"; // revisar dps
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
@@ -76,14 +119,15 @@ public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
 	
 	public void editar(VO vo) throws SQLException {
 		conn = getConnection();
-		String sql = "update Atendente set nome = ?, idade = ?, genero = ? where ide_atendente = ?"; // revisar dps
+		String sql = "update Atendente set nome = ?, idade = ?, genero = ?, login = ?, senha = ? where ide = ?";
 		PreparedStatement ptst = conn.prepareStatement(sql);
 		try {
-			//ptst.setString(1, vo.getCpf());
 			ptst.setString(1, vo.getNome());
 			ptst.setInt(2, vo.getIdade());
 			ptst.setString(3, vo.getGenero());
-			ptst.setInt(5, vo.getId());
+			ptst.setString(4, vo.getLogin());
+			ptst.setString(5, vo.getSenha());
+			ptst.setInt(6, vo.getId());
 			ptst.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();
@@ -101,7 +145,7 @@ public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
 			ptst.setString(1, vo.getNome());
 			rs = ptst.executeQuery();
 			if(rs.next()) {
-				atendente.setId(rs.getInt("ide_atendente"));
+				atendente.setId(rs.getInt("ide"));
 				atendente.setNome(rs.getString("nome"));
 				atendente.setCpf(rs.getString("cpf"));
 				atendente.setIdade(rs.getInt("idade"));
@@ -129,7 +173,7 @@ public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
 			ptst.setString(1, vo.getCpf());
 			rs = ptst.executeQuery();
 			if(rs.next()) {
-				atendente.setId(rs.getInt("ide_atendente"));
+				atendente.setId(rs.getInt("ide"));
 				atendente.setNome(rs.getString("nome"));
 				atendente.setCpf(rs.getString("cpf"));
 				atendente.setIdade(rs.getInt("idade"));
@@ -157,7 +201,7 @@ public class AtendenteDAO<VO extends AtendenteVO> extends UsuarioDAO<VO> {
 			ptst.setInt(1, vo.getId());
 			rs = ptst.executeQuery();
 			if(rs.next()) {
-				atendente.setId(rs.getInt("ide_atendente"));
+				atendente.setId(rs.getInt("ide"));
 				atendente.setNome(rs.getString("nome"));
 				atendente.setCpf(rs.getString("cpf"));
 				atendente.setIdade(rs.getInt("idade"));

@@ -6,17 +6,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.EditarExameController">
    <children>
       <ImageView fitHeight="712.0" fitWidth="496.0" layoutX="396.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
             <Image url="@../VE/Rectangle%2014.png" />
          </image>
       </ImageView>
-      <TextField alignment="CENTER" layoutX="564.0" layoutY="329.0" prefHeight="31.0" prefWidth="177.0" />
-      <TextField alignment="CENTER" layoutX="564.0" layoutY="279.0" prefHeight="31.0" prefWidth="177.0" />
-      <Label layoutX="506.0" layoutY="279.0" prefHeight="31.0" prefWidth="60.0" text="Nome:" textFill="WHITE">
+      <TextField fx:id="editarValor" alignment="CENTER" layoutX="564.0" layoutY="410.0" prefHeight="31.0" prefWidth="177.0" />
+      <TextField fx:id="editarNome" alignment="CENTER" layoutX="564.0" layoutY="360.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="506.0" layoutY="360.0" prefHeight="31.0" prefWidth="60.0" text="Nome:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -26,8 +25,8 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Button fx:id="cadastrarAtendente" layoutX="548.0" layoutY="545.0" mnemonicParsing="false" onAction="#telaCadastroA" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Editar" textFill="WHITE" />
-      <Label layoutX="510.0" layoutY="329.0" prefHeight="31.0" prefWidth="52.0" text="Valor:" textFill="WHITE">
+      <Button layoutX="548.0" layoutY="545.0" mnemonicParsing="false" onAction="#editar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Editar" textFill="WHITE" />
+      <Label layoutX="510.0" layoutY="410.0" prefHeight="31.0" prefWidth="52.0" text="Valor:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -42,12 +41,47 @@
             <Image url="@../VE/Vector-3.png" />
          </image>
       </ImageView>
-      <Button fx:id="logout" layoutX="1141.0" layoutY="58.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
+      <Button layoutX="1141.0" layoutY="58.0" mnemonicParsing="false" onAction="#logOut" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
       <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1103.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Vector.png" />
          </image>
       </ImageView>
-      <Button fx:id="voltar" layoutX="1019.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
+      <Button layoutX="1019.0" layoutY="58.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
+      <Label layoutX="510.0" layoutY="204.0" prefHeight="31.0" prefWidth="60.0" text="Nome:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nomeExame" layoutX="570.0" layoutY="204.0" prefHeight="31.0" prefWidth="200.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="valorExame" layoutX="570.0" layoutY="235.0" prefHeight="31.0" prefWidth="200.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="510.0" layoutY="235.0" prefHeight="31.0" prefWidth="60.0" text="Valor:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="ideExame" layoutX="570.0" layoutY="173.0" prefHeight="31.0" prefWidth="200.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="463.0" layoutY="173.0" prefHeight="31.0" prefWidth="107.0" text="ID do Exame:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblMensagem" layoutX="469.0" layoutY="613.0" text="Erro ao cadastrar, verifique as informações!" textAlignment="CENTER" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

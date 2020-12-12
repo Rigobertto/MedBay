@@ -5,9 +5,51 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import medbay.model.vo.GerenteVO;
+import medbay.model.vo.UsuarioVO;
 
-public class GerenteDAO<VO extends GerenteVO> extends UsuarioDAO<VO>{
+public class GerenteDAO<VO extends GerenteVO> extends BaseDAO<VO>{
 	
+	public UsuarioVO autenticarGerente(UsuarioVO vo) {
+		//conn = getConnection();
+		String sqlVerificarLogin = "select * from Gerente where login = ?";// + vo.getLogin();
+		//System.out.println(sqlVerificarLogin);
+		PreparedStatement ptst;
+		ResultSet rs;
+		String login = vo.getLogin();
+		UsuarioVO user = new GerenteVO();
+		try {
+			ptst = getConnection().prepareStatement(sqlVerificarLogin);
+			ptst.setString(1, vo.getLogin());
+			rs = ptst.executeQuery();
+			if(rs.next()) {
+				if(login.equals(rs.getString("login"))){
+					user.setId(rs.getInt("ide"));
+					user.setNome(rs.getString("nome"));
+					user.setCpf(rs.getString("cpf"));
+					user.setIdade(rs.getInt("idade"));
+					user.setGenero(rs.getString("genero"));
+					user.setLogin(rs.getString("login"));
+					user.setSenha(rs.getString("senha"));
+					user.setTabela(1);
+					if(user.getSenha().equals(vo.getSenha())){
+						return user;
+					}else{
+						user.setTabela(0);
+						return user;
+					}
+				}else {
+					user.setTabela(0);
+					return user;
+				}
+			}else{
+				user.setTabela(0);
+				return user;
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			return null;
+		}
+	}
 	
 	public void cadastrar(VO vo) throws SQLException {
 		conn = getConnection();

@@ -43,35 +43,13 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 		try {
 			ptst.setString(1, vo.getNome());
 			ptst.setFloat(2, vo.getValor());
+			ptst.setInt(3, vo.getId());
 			ptst.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
 	}
 
-//	public ResultSet listarID() throws SQLException{ // que erro???????
-//		conn = getConnection();
-//		String sql = "select * from Exame";
-//		Statement st;
-//		ResultSet rs = null;
-//		//ArrayList<ExameVO> exames = new ArrayList<ExameVO>();
-//		try {
-//			st = conn.prepareStatement(sql);
-//			rs = st.executeQuery(sql);
-//			
-//			/*while(rs.next()){
-//				ExameVO vo = new ExameVO();
-//				vo.setId(rs.getInt("ide_exame"));
-//				vo.setNome(rs.getString("nome"));
-//				vo.setValor(rs.getFloat("valor"));
-//				exames.add(vo);
-//			}*/
-//			
-//		}catch(SQLException e){
-//			e.printStackTrace();
-//		}
-//		return rs;
-//	}
 	
 	public ExameVO buscarID(ExameVO vo) throws SQLException {
 		conn = getConnection();

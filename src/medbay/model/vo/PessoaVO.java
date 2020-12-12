@@ -50,7 +50,7 @@ public abstract class PessoaVO {
 	}
 	
 	public boolean setCpf(String cpf) {
-		if(isCPF(cpf) == true) {
+		if(isCPF(cpf) == true && !(cpf.isEmpty())) {
 			this.cpf = cpf;
             return true;
 		}

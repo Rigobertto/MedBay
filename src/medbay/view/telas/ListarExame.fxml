@@ -11,7 +11,9 @@
          <columns>
             <TableColumn fx:id="ide" prefWidth="201.0" text="ID" />
             <TableColumn fx:id="nome" prefWidth="370.0" text="NOME" />
-            <TableColumn fx:id="valor" prefWidth="309.0" text="VALOR" />
+            <TableColumn fx:id="valor" prefWidth="223.0" text="VALOR" />
+            <TableColumn fx:id="columnEdit" prefWidth="47.0" />
+            <TableColumn fx:id="columnDelete" prefWidth="39.0" />
          </columns>
       </TableView>
       <ImageView fitHeight="419.0" fitWidth="237.0" layoutX="45.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
