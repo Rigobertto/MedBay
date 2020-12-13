@@ -5,7 +5,7 @@ import medbay.model.vo.ConsultaVO;
 
 public class ConsultaBO implements ConsultaInterBO {
 	ConsultaDAO<ConsultaVO> dao = new ConsultaDAO<ConsultaVO>();
-    static boolean cadastrar(ConsultaVO consulta) {
+    public boolean cadastrar(ConsultaVO consulta) {
         try {
         	dao.cadastrar(consulta);
         	return true;
@@ -15,7 +15,7 @@ public class ConsultaBO implements ConsultaInterBO {
         }
     }
 
-    static boolean editar(ConsultaVO consulta) {
+    public boolean editar(ConsultaVO consulta) {
         try {
         	dao.editar(consulta);
         	return true;
@@ -25,56 +25,29 @@ public class ConsultaBO implements ConsultaInterBO {
         }
     }
 
-    static boolean editar(ConsultaVO consulta, Calendar data_consulta) {
-        // adiciona a um objeto do tipo ConsultaVO uma data nova que não pode ser menor que a data atual.
+    public void excluir(ConsultaVO consulta) {
+        try {
+        	dao.excluir(consulta);
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }
     }
-
-    // BUSCA
-
-    /* 
-        Os métodos de busca irão chamar pelo MedicoBO e PacienteBO
-        para que os mesmos encontrem médicos e/ou pacientes com a chave
-        de pesquisa indicada.
-
-        Muitos dos métodos indicados ainda precisam ser idealizados e implementados.
-    */
-
-    static ConsultaVO buscar(int id) {
-        // Chama o DAO para buscar uma consulta com o ID indicado.
-        // Cada ID de consulta será único, assim resulta em apenas 1 consulta por busca.
-        // Retorna um objeto do tipo ConsultaVO referente ao ID, caso o mesmo exista.
+    
+    public ArrayList listar() { // listar para a tela principal de atendente;
+    	try {
+    		return null;
+    	}catch(Exception e){
+    		return null;
+    	}
     }
-
-    static ConsultaVO [] buscar(String nome) {
-        // Chama os métodos MedicoBO.buscar(nome) e PacienteBO.buscar(nome).
-        // Filtra as consultas atreladas aos médicos e/ou pacientes
-        // Retorna os dois resultados concatenados.
+    
+    public ArrayList listarID(MedicoVO vo) { // listar para a tela principal de medico de acordo com o ID do mesmo;
+    	try {
+    		return null;
+    	}catch(Exception e){
+    		e.printStackTrace();
+    		return null;
+    	}
     }
-
-    static ConsultaVO [] buscar(CPF cpf) {
-        // Chama os métodos MedicoBO.busca(cpf) e PacienteBO.busca(cpf).
-        // Filtra as consultas atreladas aos médicos e/ou pacientes
-        // Retorna os dois resultados concatenados.
-    }
-
-    static ConsultaVO [] buscar(Calendar data) {
-        // Chama ConsultaDAO para buscar um elemento por data.
-        // Busca uma consulta com a data indicada.
-        // (a data procurada é a data para qual foi marcada a consulta, para evitar conflitos)
-        // Retorna todos os resultados encontrados.
-    }
-
-    static ConsultaVO [] buscar(MedicoVO medico) {
-        // Chama ConsultaDAO para buscar um elemento por médico.
-        // Retorna todas as consultas referentes a um médico usando o seu ID.
-        // ainda precisa ser implementado no objeto ConsultaVO um atributo que armazene o ID do médico.
-    }
-
-    static ConsultaVO [] buscar(PacienteVO paciente) {
-        // Chama ConsultaDAO para buscar um elemento por paciente.
-        // Busca todas as consultas referentes a um paciente usando o seu ID.
-        // ainda precisa ser implementado no objeto ConsultaVO um atributo que armazene o ID do paciente.
-    }
-
-    // lembrar: atributos Mid e Pid
+    
 }
