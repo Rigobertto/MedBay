@@ -12,7 +12,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import medbay.model.bo.PacienteBO;
-import medbay.model.vo.ExameVO;
 import medbay.model.vo.PacienteVO;
 import medbay.view.Telas;
 
@@ -72,6 +71,11 @@ public class ListarPacienteController implements Initializable{
 			}
 		});
     }
+	
+	public void cadastrarConsulta(ActionEvent event) {
+		
+	}
+	
 	private int num;
 	public void setNum(int num){
 		this.num = num;

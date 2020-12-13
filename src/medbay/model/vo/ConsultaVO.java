@@ -4,17 +4,27 @@ import java.util.Calendar;
 
 public class ConsultaVO {
 	private int id;
-    private Calendar data_cadastro; // data e hora de cadastro da consulta
-    private Calendar data_consulta; // data e hora para qual foi marcada a consulta
-
-    // private Medico medico;
-    private ExameVO exame;
-
+    private Calendar data;
+    private ExameVO exame = new ExameVO();
+    private PacienteVO paciente = new PacienteVO();
+    private MedicoVO medico = new MedicoVO();
     private String observacao;
+    
+    public PacienteVO getPaciente() {
+		return paciente;
+	}
 
-    public void Consulta() {
-        setDataCadastro(Calendar.getInstance());
-    }
+	public void setPaciente(PacienteVO paciente) {
+		this.paciente = paciente;
+	}
+
+	public MedicoVO getMedico() {
+		return medico;
+	}
+
+	public void setMedico(MedicoVO medico) {
+		this.medico = medico;
+	}
 
     public int getId() {
         return this.id;
@@ -26,22 +36,18 @@ public class ConsultaVO {
         return true;
     }
 
-    public Calendar getDataCadastro() {
-        return this.data_cadastro;
+    public Calendar getData() {
+        return this.data;
     }
 
-    private void setDataCadastro(Calendar data) {
-        this.data_cadastro = data;
-    }
-
-    public Calendar getDataConsulta() {
-        return this.data_consulta;
-    }
-
-    public boolean setDataConsulta(Calendar data) {
-        if(data.getTimeInMillis() < this.data_cadastro.getTimeInMillis()) return false;
-        this.data_consulta = data;
+    public boolean setData(Calendar data) {
+        if(data.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()) return false;
+        this.data = data;
         return true;
+    }
+    
+    public boolean setData(String data, String hora) {
+        return this.setData(Calendar.getInstance());
     }
 
     public ExameVO getExame() {
@@ -50,10 +56,6 @@ public class ConsultaVO {
 
     public boolean setExame(ExameVO exame) {
         if(exame == null) return false;
-
-        if(exame.getData().getTimeInMillis() < this.data_cadastro.getTimeInMillis()) return false;
-        if(exame.getData().getTimeInMillis() < this.data_consulta.getTimeInMillis()) return false;
-
         this.exame = exame;
         return true;
     } 

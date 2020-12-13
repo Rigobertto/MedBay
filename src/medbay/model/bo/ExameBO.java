@@ -3,7 +3,6 @@ package medbay.model.bo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import medbay.model.dao.ExameDAO;
 import medbay.model.vo.ExameVO;
@@ -11,7 +10,7 @@ import medbay.model.vo.ExameVO;
 public class ExameBO<VO extends ExameVO> implements ExameInterBO {
 	ExameDAO<ExameVO> ex = new ExameDAO<ExameVO>();
 	
-	public List<ExameVO> listar() {
+	public ArrayList<ExameVO> listar() {
 		ArrayList<ExameVO> exames = new ArrayList<ExameVO>();
 		try {
 			ResultSet rs = ex.listar();
@@ -22,6 +21,7 @@ public class ExameBO<VO extends ExameVO> implements ExameInterBO {
 				vo.setValor(rs.getFloat("valor"));
 				exames.add(vo);
 			}
+			return exames;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}

@@ -14,9 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import medbay.model.bo.PacienteBO;
-import medbay.model.vo.MedicoVO;
 import medbay.model.vo.PacienteVO;
-import medbay.model.vo.UsuarioVO;
 import medbay.view.Telas;
 
 public class EditarPacienteController implements Initializable{
