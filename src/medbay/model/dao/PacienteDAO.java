@@ -113,20 +113,36 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 			rs = st.executeQuery();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rs;
 	}
 	
+	public ResultSet buscaID(VO vo) {		
+		conn = getConnection();
+		String sql = "Select * from paciente where ide = ?";
+		PreparedStatement ps;
+		ResultSet tabela = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, vo.getId());
+			tabela = ps.executeQuery();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return tabela;
+	}
+	
+	public ResultSet listarID(VO vo) throws SQLException {
+		return null;
+	}	
 	public ResultSet listarCPF(VO vo) throws SQLException{
 		return null;
 	}
 	public ResultSet listarNome(VO vo) throws SQLException{
 		return null;
 	}
-	public ResultSet listarID(VO vo) throws SQLException{
-		return null;
-	}
-	
 }

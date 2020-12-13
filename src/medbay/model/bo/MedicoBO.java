@@ -64,6 +64,19 @@ public class MedicoBO implements MedicoInterBO{
 				return false;
 			}
 		}
+
+		public MedicoVO buscaId(int id) {
+			MedicoVO medico = new MedicoVO();
+			medico.setId(id);
+			try {
+				medico = dao.buscarID(medico);
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+			return medico;
+		}
 		
 //		public MedicoVO buscaNome(MedicoVO medico) {
 //			// Recebe uma string como parametro para buscar no banco de dados atrav�s do DAO um atributo nome que igual a string recebida 

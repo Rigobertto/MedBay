@@ -61,6 +61,27 @@ public class PacienteBO implements PacienteInterBO{
 			
 		}
 	}
+	
+	public PacienteVO buscaId(int id) {
+		PacienteVO paciente = new PacienteVO();
+		paciente.setId(id);
+		
+		ResultSet tabela = dao.buscaID(paciente);
+		try {
+			paciente.setNome(tabela.getString("nome"));
+			paciente.setIdade(tabela.getInt("idade"));
+			paciente.setCpf(tabela.getString("cpf"));
+			paciente.setGenero(tabela.getString("genero"));
+			paciente.setPeso(tabela.getFloat("peso"));
+			paciente.setAltura(tabela.getFloat("Altura"));
+			paciente.setTipoSangue(tabela.getString("sangue"));
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return paciente;
+	}
 //	
 //	public PacienteVO buscaCPF(PacienteVO paciente){
 //	//	Ir� receber uma String CPF para retornar o objeto do tipo Pessoa que tem como atributo igual a mesma String CPF

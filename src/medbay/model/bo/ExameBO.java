@@ -56,6 +56,20 @@ public class ExameBO<VO extends ExameVO> implements ExameInterBO {
     	}
     }
     
+    public ExameVO buscaId(int id) {
+    	ExameVO exame = new ExameVO();
+    	exame.setId(id);
+    	
+    	try {
+			exame = ex.buscarID(exame);
+		}
+    	catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return exame;
+    }
+    
     /*public static boolean cadastrar(ExameVO exame, ProntuarioVO prontuario) {
         // atrela um exame à consulta atual.
     }
