@@ -3,12 +3,10 @@ package medbay.model.bo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-
 import medbay.model.dao.MedicoDAO;
 import medbay.model.vo.MedicoVO;
 
-public class MedicoBO implements MedicoInterBO{
+public class MedicoBO<VO extends MedicoVO> implements MedicoInterBO{
 	MedicoDAO<MedicoVO> dao = new MedicoDAO<MedicoVO>();
 	
 		public boolean cadastrar(MedicoVO medico) {
@@ -22,7 +20,7 @@ public class MedicoBO implements MedicoInterBO{
 			
 		}
 		
-		public List<MedicoVO> listar() {
+		public ArrayList<MedicoVO> listar() {
 			ArrayList<MedicoVO> medicos = new ArrayList<MedicoVO>();
 			try {
 				ResultSet rs = dao.listar();
@@ -76,6 +74,28 @@ public class MedicoBO implements MedicoInterBO{
 			}
 			
 			return medico;
+		}
+		
+		public MedicoVO listarID(int id) {
+			try {
+				MedicoVO vo = new MedicoVO();
+				ResultSet rs = dao.listarID(id);
+				if(rs.next()){
+					vo.setId(rs.getInt("ide"));
+					vo.setNome(rs.getString("nome"));
+					vo.setCpf(rs.getString("cpf"));
+					vo.setIdade(rs.getInt("idade"));
+					vo.setGenero(rs.getString("genero"));
+					vo.setLogin(rs.getString("login"));
+					vo.setSenha(rs.getString("senha"));
+					vo.setEspecialidade(rs.getString("especialidade"));
+					vo.setCrm(rs.getString("crm"));
+				}
+				return vo;
+			}catch(SQLException e){
+				e.printStackTrace();
+				return null;
+			}
 		}
 		
 //		public MedicoVO buscaNome(MedicoVO medico) {

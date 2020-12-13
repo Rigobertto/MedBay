@@ -18,6 +18,25 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 	PacienteBO pbo = new PacienteBO();
 	MedicoBO mbo = new MedicoBO();
 	
+	 static boolean cadastrar(ConsultaVO consulta) {
+        try {
+        	dao.cadastrar(consulta);
+        	return true;
+        }catch(Exception e){
+        	e.printStackTrace();
+        	return false;
+        }
+    }
+
+    static boolean editar(ConsultaVO consulta) {
+        try {
+        	dao.editar(consulta);
+        	return true;
+        }catch(Exception e) {
+        	e.printStackTrace();
+        	return false;
+        }
+    }
 	
 	public List<ConsultaVO> listar() {
 		List<ConsultaVO> lista = new ArrayList<ConsultaVO>();
@@ -86,19 +105,6 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 	}
 	
 	/*
-    static boolean cadastrar(ConsultaVO consulta) {
-        // recebe um objeto do tipo ConsultaVO,
-        // faz alguma validação pendente,
-        // e chama ConsultaDAO para armazená-lo.
-    }
-
-    static boolean cadastrar(ConsultaVO consulta, ExameVO exame) {
-        // atrela um objeto exame à consulta disponibilizada
-    }
-
-    static boolean editar(ConsultaVO consulta, String observacao) {
-        // adiciona a um objeto do tipo ConsultaVO uma observação.
-    }
 
     static boolean editar(ConsultaVO consulta, Calendar data_consulta) {
         // adiciona a um objeto do tipo ConsultaVO uma data nova que não pode ser menor que a data atual.
