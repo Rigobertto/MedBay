@@ -87,19 +87,19 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="ide" layoutX="590.0" layoutY="466.0" prefHeight="31.0" prefWidth="142.0" textFill="WHITE">
+      <Label fx:id="ide" layoutX="620.0" layoutY="466.0" prefHeight="31.0" prefWidth="142.0" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="cpf" layoutX="581.0" layoutY="497.0" prefHeight="31.0" prefWidth="142.0" textFill="WHITE">
+      <Label fx:id="cpf" layoutX="590.0" layoutY="497.0" prefHeight="31.0" prefWidth="142.0" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblMensagem" layoutX="532.0" layoutY="614.0" prefHeight="31.0" prefWidth="215.0" text="Editado com Sucesso!" textAlignment="CENTER" textFill="#6513d0">
+      <Label fx:id="lblMensagem" layoutX="513.0" layoutY="616.0" prefHeight="35.0" prefWidth="254.0" text="Editado com Sucesso!" textAlignment="CENTER" textFill="#6513d0" visible="false">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
    </children>

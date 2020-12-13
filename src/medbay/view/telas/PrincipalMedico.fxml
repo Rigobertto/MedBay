@@ -8,59 +8,40 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.PrincipalMedicoController">
    <children>
-      <ImageView fitHeight="403.0" fitWidth="400.0" layoutX="47.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../VE/ConsultaInfo.png" />
-         </image>
-      </ImageView>
-      <TableView layoutX="470.0" layoutY="261.0" prefHeight="419.0" prefWidth="760.0">
+      <TableView fx:id="tabelaConsulta" layoutX="277.0" layoutY="261.0" prefHeight="419.0" prefWidth="953.0">
          <columns>
-            <TableColumn prefWidth="69.0" text="ID" />
-            <TableColumn prefWidth="262.0" text="PACIENTE" />
-            <TableColumn prefWidth="145.0" text="CPF" />
-            <TableColumn prefWidth="125.0" text="EXAME" />
-            <TableColumn prefWidth="92.0" text="DATA" />
-            <TableColumn prefWidth="66.0" text="HORA" />
+            <TableColumn fx:id="ideConsulta" prefWidth="39.0" text="ID" />
+            <TableColumn fx:id="nomePaciente" prefWidth="306.0" text="PACIENTE" />
+            <TableColumn fx:id="cpfPaciente" prefWidth="132.0" text="CPF" />
+            <TableColumn fx:id="sanguePaciente" prefWidth="71.0" text="SANGUE" />
+            <TableColumn fx:id="pesoPaciente" prefWidth="45.0" text="PESO" />
+            <TableColumn fx:id="alturaPaciente" prefWidth="65.0" text="ALTURA" />
+            <TableColumn fx:id="nomeExame" prefWidth="129.0" text="EXAME" />
+            <TableColumn fx:id="data" prefWidth="97.0" text="DATA" />
+            <TableColumn fx:id="hora" prefWidth="68.0" text="HORA" />
          </columns>
       </TableView>
-      <Button layoutX="70.0" layoutY="566.0" mnemonicParsing="false" onAction="#editarProntuario" prefHeight="31.0" prefWidth="168.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Prontuario" textFill="WHITE" />
-      <Button layoutX="257.0" layoutY="566.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="168.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Finalizar" textFill="WHITE" />
-      <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="225.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+      <ImageView fitHeight="380.0" fitWidth="245.0" layoutX="20.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../VE/Rectangle%2014.png" />
+            <Image url="@../VE/telamenor.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="80.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
-         <image>
-            <Image url="@../VE/Rectangle%2014.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="178.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
-         <image>
-            <Image url="@../VE/Rectangle%2014.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="72.0" layoutY="509.0" prefHeight="35.0" prefWidth="276.0" text="Nome do Paciente" textFill="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1093.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Vector.png" />
          </image>
       </ImageView>
       <Button layoutX="1131.0" layoutY="48.0" mnemonicParsing="false" onAction="#logOut" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
-      <Button layoutX="609.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
-      <TextField layoutX="470.0" layoutY="212.0" prefHeight="31.0" prefWidth="139.0" promptText="Busque por ID" style="-fx-background-radius: 10;" />
-      <TextField layoutX="742.0" layoutY="212.0" prefHeight="31.0" prefWidth="139.0" promptText="Busque por CPF" style="-fx-background-radius: 10;" />
-      <Button layoutX="881.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <Button layoutX="640.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <TextField layoutX="277.0" layoutY="212.0" prefHeight="31.0" prefWidth="362.0" promptText="Busque por ID" style="-fx-background-radius: 10;" />
       <Button layoutX="1163.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
-      <TextField layoutX="1024.0" layoutY="212.0" prefHeight="31.0" prefWidth="139.0" promptText="Busque por Nome" style="-fx-background-radius: 10;" />
+      <TextField layoutX="799.0" layoutY="212.0" prefHeight="31.0" prefWidth="362.0" promptText="Busque por Nome" style="-fx-background-radius: 10;" />
+      <Button layoutX="47.0" layoutY="589.0" mnemonicParsing="false" onAction="#excluir" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Finalizar" textFill="WHITE" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/medbay-logo%202.png" />
          </image>
       </ImageView>
+      <Button layoutX="47.0" layoutY="539.0" mnemonicParsing="false" onAction="#editarProntuario" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Prontuario" textFill="WHITE" />
    </children>
 </Pane>

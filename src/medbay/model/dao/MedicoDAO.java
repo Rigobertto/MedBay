@@ -239,6 +239,23 @@ public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
 		return rs;
 	}
 	
+	public ResultSet listarID(int id){
+		conn = getConnection();
+		String sql = "select * from Medico where ide = ?";
+		PreparedStatement st;
+		ResultSet rs;
+		try {
+			conn = getConnection();
+			st = conn.prepareStatement(sql);
+			st.setInt(1, id);
+			rs = st.executeQuery();
+			return rs;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	/*public ArrayList<MedicoVO> listarCPF(VO vo) throws SQLException{
 		String sql = "select * from Medico where cpf = " + vo.getCpf();
 		Statement st;

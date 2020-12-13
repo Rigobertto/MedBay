@@ -1,18 +1,28 @@
 package medbay.model.bo;
 
+import medbay.model.dao.ConsultaDAO;
+import medbay.model.vo.ConsultaVO;
+
 public class ConsultaBO implements ConsultaInterBO {
+	ConsultaDAO<ConsultaVO> dao = new ConsultaDAO<ConsultaVO>();
     static boolean cadastrar(ConsultaVO consulta) {
-        // recebe um objeto do tipo ConsultaVO,
-        // faz alguma validação pendente,
-        // e chama ConsultaDAO para armazená-lo.
+        try {
+        	dao.cadastrar(consulta);
+        	return true;
+        }catch(Exception e){
+        	e.printStackTrace();
+        	return false;
+        }
     }
 
-    static boolean cadastrar(ConsultaVO consulta, ExameVO exame) {
-        // atrela um objeto exame à consulta disponibilizada
-    }
-
-    static boolean editar(ConsultaVO consulta, String observacao) {
-        // adiciona a um objeto do tipo ConsultaVO uma observação.
+    static boolean editar(ConsultaVO consulta) {
+        try {
+        	dao.editar(consulta);
+        	return true;
+        }catch(Exception e) {
+        	e.printStackTrace();
+        	return false;
+        }
     }
 
     static boolean editar(ConsultaVO consulta, Calendar data_consulta) {

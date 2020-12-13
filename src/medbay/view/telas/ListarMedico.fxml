@@ -12,25 +12,25 @@
             <Image url="@../VE/cadastroMedicoPanel.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tabelaMedico" layoutX="349.0" layoutY="261.0" prefHeight="419.0" prefWidth="881.0">
+      <TableView fx:id="tabelaMedico" layoutX="316.0" layoutY="261.0" prefHeight="419.0" prefWidth="914.0">
          <columns>
-            <TableColumn fx:id="ide" prefWidth="22.0" text="ID" />
-            <TableColumn fx:id="nome" prefWidth="252.0" text="NOME" />
-            <TableColumn fx:id="cpf" prefWidth="99.0" text="CPF" />
-            <TableColumn fx:id="idade" prefWidth="53.0" text="IDADE" />
-            <TableColumn fx:id="genero" prefWidth="67.0" text="GENERO" />
-            <TableColumn fx:id="login" prefWidth="71.0" text="LOGIN" />
-            <TableColumn fx:id="senha" minWidth="0.0" prefWidth="71.0" text="SENHA" />
-            <TableColumn fx:id="crm" prefWidth="40.0" text="CRM" />
-            <TableColumn fx:id="especialidade" prefWidth="128.0" text="ESPECIALIDADE" />
-            <TableColumn fx:id="columnEdit" prefWidth="31.0" />
-            <TableColumn fx:id="columnDelete" prefWidth="46.0" />
+            <TableColumn fx:id="ide" prefWidth="29.0" text="ID" />
+            <TableColumn fx:id="nome" prefWidth="245.0" text="NOME" />
+            <TableColumn fx:id="cpf" prefWidth="100.0" text="CPF" />
+            <TableColumn fx:id="idade" prefWidth="52.0" text="IDADE" />
+            <TableColumn fx:id="genero" prefWidth="66.0" text="GENERO" />
+            <TableColumn fx:id="login" prefWidth="92.0" text="LOGIN" />
+            <TableColumn fx:id="senha" minWidth="0.0" prefWidth="85.0" text="SENHA" />
+            <TableColumn fx:id="crm" prefWidth="57.0" text="CRM" />
+            <TableColumn fx:id="especialidade" prefWidth="118.0" text="ESPECIALIDADE" />
+            <TableColumn fx:id="columnEdit" prefWidth="33.0" />
+            <TableColumn fx:id="columnDelete" prefWidth="36.0" />
          </columns>
       </TableView>
-      <Button layoutX="507.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
-      <TextField layoutX="348.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por ID" style="-fx-background-radius: 10;" />
-      <TextField layoutX="671.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por CPF" style="-fx-background-radius: 10;" />
-      <Button layoutX="830.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <Button layoutX="475.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <TextField layoutX="316.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por ID" style="-fx-background-radius: 10;" />
+      <TextField layoutX="655.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por CPF" style="-fx-background-radius: 10;" />
+      <Button layoutX="814.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
       <Button layoutX="1152.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
       <TextField layoutX="993.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por Nome" style="-fx-background-radius: 10;" />
       <Button layoutX="68.0" layoutY="622.0" mnemonicParsing="false" onAction="#entrarCadastrarAtendenteMedico" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />

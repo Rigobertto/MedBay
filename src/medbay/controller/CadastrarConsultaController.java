@@ -9,15 +9,16 @@ import java.util.ResourceBundle;
 
 //import controller.TextFieldFormatter;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import medbay.model.bo.ExameBO;
+import medbay.model.bo.MedicoBO;
 import medbay.model.vo.ConsultaVO;
 import medbay.model.vo.ExameVO;
 import medbay.model.vo.MedicoVO;
@@ -30,15 +31,14 @@ public class CadastrarConsultaController implements Initializable{
 	@FXML private Label cpf;
 	@FXML private TextArea obs;
 	@FXML private ComboBox<String> listarExame;
-	@FXML private ComboBox<MedicoVO> listarMedico;
+	@FXML private ComboBox<String> listarMedico;
 	@FXML private TextField data_consulta;
 	@FXML private TextField hora_consulta;
-	private TextField text;
 	String data;
 	
-	ExameBO<ExameVO> aux = new ExameBO<ExameVO>();
-	ExameBO bo = new ExameBO();
-	MedicoVO boMed = new MedicoVO();
+	
+	ExameBO<ExameVO> boExa = new ExameBO<ExameVO>();
+	MedicoBO<MedicoVO> boMed = new MedicoBO<MedicoVO>();
 	ConsultaVO consulta = new ConsultaVO();
 	private static PacienteVO paciente = new PacienteVO(); 
 	public void initialize(URL url, ResourceBundle rb) {
@@ -50,9 +50,8 @@ public class CadastrarConsultaController implements Initializable{
 	
 	public void cadastrar(ActionEvent event){
 		try {
-			MedicoVO medico;
 			ExameVO exame;
-			medico = (listarMedico.getSelectionModel().getSelectedItem()); // Pesquisar ID selecionado dentro do comboBOX
+			 // Pesquisar ID selecionado dentro do comboBOX
 			String exameAtual = listarExame.getSelectionModel().getSelectedItem();
 			int id;
 			{
@@ -62,10 +61,19 @@ public class CadastrarConsultaController implements Initializable{
 					ID = exameAtual.substring(0, --indice);
 					id = Integer.parseInt(ID);
 			}
-			exame = bo.buscaID(id);
+			exame = boExa.listarID(id);
 			
+			String medicoAtual = listarMedico.getSelectionModel().getSelectedItem();
+			{
+				String ID = "";
+				int indice = 0;
+				for(indice = 0; medicoAtual.charAt(indice) != '/'; indice++ );
+					ID = medicoAtual.substring(0, --indice);
+					id = Integer.parseInt(ID);
+			}
+			MedicoVO medico;
+			medico = boMed.listarID(id); //FAZER
 			
-			//exame = (); 
 			consulta.setPaciente(paciente);
 			consulta.setMedico(medico);
 			consulta.setExame(exame);
@@ -84,7 +92,7 @@ public class CadastrarConsultaController implements Initializable{
 	
 		if (listarExame != null) {
 			
-			ArrayList<ExameVO> aux2 = aux.listar();
+			ArrayList<ExameVO> aux2 = boExa.listar();
 			ArrayList<String> aux3 = new ArrayList<String>();
 
 			for (int i = 0; i < aux2.size(); i++) {
@@ -92,22 +100,25 @@ public class CadastrarConsultaController implements Initializable{
 			}
 
 			List<String> exames = FXCollections.observableArrayList(aux3);
-			listarExame.setItems(exames); // implementar dps
+			listarExame.setItems((ObservableList<String>) exames); // implementar dps
 		}
 	}
 	
 	public void carregarMedico(){
-		
-		if (listarExame != null) {
-			List<MedicoVO> aux2 = boMed.listar<MedicoVO>();
-			ArrayList<String> aux3 = new ArrayList<String>();
-
-			for (int i = 0; i < aux2.size(); i++) {
-				aux3.add(aux2.get(i).getId() + "/" + aux2.get(i).getNome());
+		try {
+			if (listarMedico != null) {
+				ArrayList<MedicoVO> aux2 = boMed.listar();
+				ArrayList<String> aux3 = new ArrayList<String>();
+	
+				for (int i = 0; i < aux2.size(); i++) {
+					aux3.add(aux2.get(i).getId() + "/" + aux2.get(i).getNome());
+				}
+	
+				List<String> medicos = FXCollections.observableArrayList(aux3);
+				listarExame.setItems((ObservableList<String>) medicos);
 			}
-
-			ObservableList<String> medicos = FXCollections.observableArrayList(aux3);
-			listarExame.setItems(medicos);
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -148,7 +159,7 @@ public class CadastrarConsultaController implements Initializable{
 		return paciente;
 	}
 
-	public static void setPaciente(PacienteVO paciente) {
-		CadastrarConsultaController.paciente = paciente;
+	public static void setPaciente(PacienteVO paci) {
+		paciente = paci;
 	}
 }

@@ -27,6 +27,7 @@ public class TelaLoginController {
 			//UsuarioVO user = new UsuarioVO();
 			//user = usuBO.autenticar(vo);
 			if(vo.getTabela() == 1) {
+				ListarPacienteController.setUser(vo);
 				Telas.telaInicioGerente();
 			}else if(vo.getTabela() == 2) {
 				Telas.telaInicioAtendente();

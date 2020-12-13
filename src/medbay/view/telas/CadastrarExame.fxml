@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.CadastrarExameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.CadastrarExameController">
    <children>
       <ImageView fitHeight="712.0" fitWidth="496.0" layoutX="396.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
@@ -14,19 +14,24 @@
          </image>
       </ImageView>
       <Button layoutX="548.0" layoutY="545.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
-      <Label layoutX="495.0" layoutY="116.0" text="CADASTRO DE EXAME" textFill="WHITE">
+      <ImageView fitHeight="387.0" fitWidth="492.0" layoutX="394.0" layoutY="164.0" opacity="0.08" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/undraw_Taking_notes_re_bnaf%201.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="523.0" layoutY="116.0" text="CADASTRO DE EXAME" textFill="WHITE">
          <font>
-            <Font size="26.0" />
+            <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="523.0" layoutY="279.0" prefHeight="31.0" prefWidth="60.0" text="Nome:" textFill="WHITE">
+      <Label layoutX="503.0" layoutY="277.0" prefHeight="35.0" prefWidth="76.0" text="Nome:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="527.0" layoutY="329.0" prefHeight="31.0" prefWidth="52.0" text="Valor:" textFill="WHITE">
+      <Label layoutX="503.0" layoutY="327.0" prefHeight="35.0" prefWidth="76.0" text="Valor:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <TextField fx:id="nome" alignment="CENTER" layoutX="581.0" layoutY="279.0" prefHeight="31.0" prefWidth="177.0" />
@@ -48,9 +53,9 @@
             <Image url="@../VE/medbay-logo%202.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblMensagem" layoutX="522.0" layoutY="381.0" text="Cadastro realizado com Sucesso!" textFill="WHITE" visible="false">
+      <Label fx:id="lblMensagem" layoutX="456.0" layoutY="614.0" text="Cadastro realizado com Sucesso!" textAlignment="CENTER" textFill="#aa14d3" visible="false">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
    </children>

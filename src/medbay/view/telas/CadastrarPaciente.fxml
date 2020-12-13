@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.CadastrarPacienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.CadastrarPacienteController">
    <children>
       <ImageView fitHeight="712.0" fitWidth="496.0" layoutX="396.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
@@ -84,9 +84,9 @@
       </ImageView>
       <Button layoutX="1019.0" layoutY="58.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
       <ComboBox fx:id="genero" layoutX="743.0" layoutY="317.0" prefHeight="31.0" prefWidth="177.0" />
-      <Label fx:id="lblMensagem" layoutX="474.0" layoutY="615.0" text="Cadastro realizado com sucesso!" textFill="#6b0f8a">
+      <Label fx:id="lblMensagem" layoutX="509.0" layoutY="614.0" text="Cadastro realizado com sucesso!" textAlignment="CENTER" textFill="#690f8a" visible="false">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
    </children>

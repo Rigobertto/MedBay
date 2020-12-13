@@ -117,51 +117,43 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 		return rs;
 	}
 	
-	/*public ArrayList<ExameVO> listarID(VO vo) throws SQLException{
-		String sql = "select * from Exame where ide_exame = " + vo.getId();
-		Statement st;
+	public ResultSet listarID(int id) throws SQLException{
+		String sql = "select * from Exame where ide = ?";
+		PreparedStatement st;
 		ResultSet rs;
-		ArrayList<ExameVO> exames = new ArrayList<ExameVO>();
 		try {
 			conn = getConnection();
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
-			
-			while(rs.next()){
-				ExameVO c = new ExameVO();
-				c.setId(rs.getInt("ide_exame"));
-				c.setNome(rs.getString("nome"));
-				c.setValor(rs.getFloat("valor"));
-				exames.add(c);
-			}
-			
+			st = conn.prepareStatement(sql);
+			st.setInt(1, id);
+			rs = st.executeQuery();
+			return rs;
 		}catch(SQLException e){
 			e.printStackTrace();
+			return null;
 		}
-		return exames;
 	}
 	
-	public ArrayList<ExameVO> listarNome(VO vo) throws SQLException{
-		String sql = "select * from Exame where nome = " + vo.getNome();
-		Statement st;
-		ResultSet rs;
-		ArrayList<ExameVO> exames = new ArrayList<ExameVO>();
-		try {
-			conn = getConnection();
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
-			
-			while(rs.next()){
-				ExameVO c = new ExameVO();
-				c.setId(rs.getInt("ide_exame"));
-				c.setNome(rs.getString("nome"));
-				c.setValor(rs.getFloat("valor"));
-				exames.add(c);
-			}
-			
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-		return exames;
-	}*/
+//	public ArrayList<ExameVO> listarNome(VO vo) throws SQLException{
+//		String sql = "select * from Exame where nome = " + vo.getNome();
+//		Statement st;
+//		ResultSet rs;
+//		ArrayList<ExameVO> exames = new ArrayList<ExameVO>();
+//		try {
+//			conn = getConnection();
+//			st = conn.createStatement();
+//			rs = st.executeQuery(sql);
+//			
+//			while(rs.next()){
+//				ExameVO c = new ExameVO();
+//				c.setId(rs.getInt("ide_exame"));
+//				c.setNome(rs.getString("nome"));
+//				c.setValor(rs.getFloat("valor"));
+//				exames.add(c);
+//			}
+//			
+//		}catch(SQLException e){
+//			e.printStackTrace();
+//		}
+//		return exames;
+//	}*/
 }

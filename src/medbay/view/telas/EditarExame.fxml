@@ -13,22 +13,32 @@
             <Image url="@../VE/Rectangle%2014.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="387.0" fitWidth="492.0" layoutX="394.0" layoutY="179.0" opacity="0.08" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../VE/undraw_Taking_notes_re_bnaf%201.png" />
+         </image>
+      </ImageView>
       <TextField fx:id="editarValor" alignment="CENTER" layoutX="564.0" layoutY="410.0" prefHeight="31.0" prefWidth="177.0" />
       <TextField fx:id="editarNome" alignment="CENTER" layoutX="564.0" layoutY="360.0" prefHeight="31.0" prefWidth="177.0" />
-      <Label layoutX="506.0" layoutY="360.0" prefHeight="31.0" prefWidth="60.0" text="Nome:" textFill="WHITE">
+      <Label fx:id="valorExame" layoutX="607.0" layoutY="235.0" prefHeight="35.0" prefWidth="91.0" text="25.00" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="486.0" layoutY="358.0" prefHeight="35.0" prefWidth="76.0" text="Nome:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Label layoutX="553.0" layoutY="116.0" text="EDITAR EXAME" textFill="WHITE">
          <font>
-            <Font size="26.0" />
+            <Font name="System Bold" size="26.0" />
          </font>
       </Label>
       <Button layoutX="548.0" layoutY="545.0" mnemonicParsing="false" onAction="#editar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Editar" textFill="WHITE" />
-      <Label layoutX="510.0" layoutY="410.0" prefHeight="31.0" prefWidth="52.0" text="Valor:" textFill="WHITE">
+      <Label layoutX="486.0" layoutY="408.0" prefHeight="35.0" prefWidth="76.0" text="Valor:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
@@ -48,39 +58,34 @@
          </image>
       </ImageView>
       <Button layoutX="1019.0" layoutY="58.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
-      <Label layoutX="510.0" layoutY="204.0" prefHeight="31.0" prefWidth="60.0" text="Nome:" textFill="WHITE">
+      <Label layoutX="487.0" layoutY="204.0" prefHeight="35.0" prefWidth="76.0" text="Nome:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="nomeExame" layoutX="570.0" layoutY="204.0" prefHeight="31.0" prefWidth="200.0" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="nomeExame" layoutX="595.0" layoutY="204.0" prefHeight="35.0" prefWidth="282.0" text="Teste de covid" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="valorExame" layoutX="570.0" layoutY="235.0" prefHeight="31.0" prefWidth="200.0" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="494.0" layoutY="235.0" prefHeight="35.0" prefWidth="76.0" text="Valor:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="510.0" layoutY="235.0" prefHeight="31.0" prefWidth="60.0" text="Valor:" textFill="WHITE">
+      <Label fx:id="ideExame" layoutX="623.0" layoutY="173.0" prefHeight="31.0" prefWidth="147.0" text="ID" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="ideExame" layoutX="570.0" layoutY="173.0" prefHeight="31.0" prefWidth="200.0" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="415.0" layoutY="173.0" prefHeight="35.0" prefWidth="155.0" text="ID do Exame:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="463.0" layoutY="173.0" prefHeight="31.0" prefWidth="107.0" text="ID do Exame:" textFill="WHITE">
+      <Label fx:id="lblMensagem" layoutX="395.0" layoutY="616.0" text="Erro ao cadastrar, verifique as informações!" textAlignment="CENTER" textFill="#a318ba" visible="false">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblMensagem" layoutX="469.0" layoutY="613.0" text="Erro ao cadastrar, verifique as informações!" textAlignment="CENTER" visible="false">
-         <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
    </children>
