@@ -5,8 +5,51 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import medbay.model.vo.MedicoVO;
+import medbay.model.vo.UsuarioVO;
 
-public class MedicoDAO<VO extends MedicoVO> extends UsuarioDAO <VO> {
+public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
+	
+	public UsuarioVO autenticarMedico(UsuarioVO vo) {
+		//conn = getConnection();
+		String sqlVerificarLogin = "select * from Medico where login = ?";// + vo.getLogin();
+		//System.out.println(sqlVerificarLogin);
+		PreparedStatement ptst;
+		ResultSet rs = null;
+		String login = vo.getLogin();
+		UsuarioVO user = new MedicoVO();
+		try {
+			ptst = getConnection().prepareStatement(sqlVerificarLogin);
+			ptst.setString(1, vo.getLogin());
+			rs = ptst.executeQuery();
+			if(rs.next()) {
+				if(login.equals(rs.getString("login"))){
+					user.setId(rs.getInt("ide"));
+					user.setNome(rs.getString("nome"));
+					user.setCpf(rs.getString("cpf"));
+					user.setIdade(rs.getInt("idade"));
+					user.setGenero(rs.getString("genero"));
+					user.setLogin(rs.getString("login"));
+					user.setSenha(rs.getString("senha"));
+					user.setTabela(3);
+					if(user.getSenha().equals(vo.getSenha())){
+						return user;
+					}else{
+						user.setTabela(0);
+						return user;
+					}
+				}else {
+					user.setTabela(0);
+					return user;
+				}
+			}else{
+				user.setTabela(0);
+				return user;
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			return null;
+		}
+	}
 	
 	public void cadastrar(VO vo) throws SQLException {
 		String sqlVerificarLogin = "select login from Gerente union select login from Atendente union select login from Medico";
@@ -61,7 +104,7 @@ public class MedicoDAO<VO extends MedicoVO> extends UsuarioDAO <VO> {
 	
 	public void excluir(VO vo) throws SQLException{
 		conn = getConnection();
-		String sql = "delete from Medico where ide_medico = ?";
+		String sql = "delete from Medico where ide = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
@@ -74,14 +117,16 @@ public class MedicoDAO<VO extends MedicoVO> extends UsuarioDAO <VO> {
 	
 	public void editar(VO vo) throws SQLException {
 		conn = getConnection();
-		String sql = "update Medico set nome = ?, idade = ?, genero = ?, especialidade = ? where ide_medico = ?"; // revisar dps
+		String sql = "update Medico set nome = ?, idade = ?, genero = ?, login = ?, senha = ?, especialidade = ? where ide = ?"; // revisar dps
 		PreparedStatement ptst = conn.prepareStatement(sql);
 		try {
 			ptst.setString(1, vo.getNome());
 			ptst.setInt(2, vo.getIdade());
 			ptst.setString(3, vo.getGenero());
-			ptst.setString(4, vo.getEspecialidade());
-			ptst.setInt(5, vo.getId());
+			ptst.setString(4, vo.getLogin());
+			ptst.setString(5, vo.getSenha());
+			ptst.setString(6, vo.getEspecialidade());
+			ptst.setInt(7, vo.getId());
 			ptst.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();
@@ -99,11 +144,11 @@ public class MedicoDAO<VO extends MedicoVO> extends UsuarioDAO <VO> {
 			ptst.setString(1, vo.getCpf());
 			rs = ptst.executeQuery();
 			if(rs.next()) {
-				medico.setId(rs.getInt("ide_medico"));
+				medico.setId(rs.getInt("ide"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCpf(rs.getString("cpf"));
 				medico.setIdade(rs.getInt("idade"));
-				medico.setCrm(rs.getString("CRM"));
+				medico.setCrm(rs.getString("crm"));
 				medico.setEspecialidade(rs.getString("especialidade"));
 				medico.setGenero(rs.getString("genero"));
 				medico.setLogin(rs.getString("login"));
@@ -129,7 +174,7 @@ public class MedicoDAO<VO extends MedicoVO> extends UsuarioDAO <VO> {
 			ptst.setString(1, vo.getNome());
 			rs = ptst.executeQuery();
 			if(rs.next()) {
-				medico.setId(rs.getInt("ide_medico"));
+				medico.setId(rs.getInt("ide"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCpf(rs.getString("cpf"));
 				medico.setIdade(rs.getInt("idade"));
@@ -150,7 +195,7 @@ public class MedicoDAO<VO extends MedicoVO> extends UsuarioDAO <VO> {
 	
 	public MedicoVO buscarID(MedicoVO vo) throws SQLException {
 		conn = getConnection();
-		String sqlSearch = "select * from Medico where ide_medico like ?";
+		String sqlSearch = "select * from Medico where ide like ?";
 		PreparedStatement ptst;
 		ResultSet rs;
 		MedicoVO medico = new MedicoVO();
@@ -159,7 +204,7 @@ public class MedicoDAO<VO extends MedicoVO> extends UsuarioDAO <VO> {
 			ptst.setInt(1, vo.getId());
 			rs = ptst.executeQuery();
 			if(rs.next()) {
-				medico.setId(rs.getInt("ide_medico"));
+				medico.setId(rs.getInt("ide"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCpf(rs.getString("cpf"));
 				medico.setIdade(rs.getInt("idade"));

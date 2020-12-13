@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.CadastrarConsultaController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.CadastrarConsultaController">
    <children>
       <Button layoutX="1019.0" layoutY="58.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
       <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1103.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
@@ -25,51 +25,76 @@
             <Image url="@../VE/medbay-logo%202.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="712.0" fitWidth="496.0" layoutX="396.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+      <ImageView fitHeight="839.0" fitWidth="586.0" layoutX="352.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
             <Image url="@../VE/Rectangle%2014.png" />
          </image>
       </ImageView>
-      <Label layoutX="495.0" layoutY="116.0" text="CADASTRO DE CONSULTA" textFill="WHITE">
+      <Label layoutX="495.0" layoutY="109.0" text="CADASTRO DE CONSULTA" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="581.0" layoutY="465.0" prefHeight="31.0" prefWidth="177.0" />
-      <Label layoutX="529.0" layoutY="465.0" prefHeight="31.0" prefWidth="52.0" text="Hora:" textFill="WHITE">
+      <TextField fx:id="hora_consulta" alignment="CENTER" layoutX="522.0" layoutY="479.0" onKeyPressed="#formatoHora" prefHeight="31.0" prefWidth="341.0" promptText="Formato 00:00" />
+      <Label layoutX="470.0" layoutY="479.0" prefHeight="31.0" prefWidth="52.0" text="Hora:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="523.0" layoutY="415.0" prefHeight="31.0" prefWidth="52.0" text="Data:" textFill="WHITE">
+      <Label layoutX="464.0" layoutY="429.0" prefHeight="31.0" prefWidth="52.0" text="Data:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="581.0" layoutY="365.0" prefHeight="31.0" prefWidth="177.0" />
-      <Label layoutX="498.0" layoutY="365.0" prefHeight="31.0" prefWidth="88.0" text="ID Exame:" textFill="WHITE">
+      <Label layoutX="459.0" layoutY="379.0" prefHeight="31.0" prefWidth="68.0" text="Exame:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="122.0" fitWidth="142.0" layoutX="569.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="122.0" fitWidth="142.0" layoutX="569.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/undraw_Taking_notes_re_bnaf%201.png" />
          </image>
       </ImageView>
-      <Label layoutX="481.0" layoutY="265.0" prefHeight="31.0" prefWidth="102.0" text="ID Paciente:" textFill="WHITE">
+      <Label layoutX="452.0" layoutY="329.0" prefHeight="31.0" prefWidth="68.0" text="Médico:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="491.0" layoutY="315.0" prefHeight="31.0" prefWidth="88.0" text="ID Médico:" textFill="WHITE">
+      <Button layoutX="548.0" layoutY="624.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+      <ComboBox fx:id="nomeMedico" layoutX="522.0" layoutY="329.0" prefHeight="31.0" prefWidth="341.0" promptText="Selecione o Médico" />
+      <ComboBox fx:id="nomeExame" layoutX="522.0" layoutY="379.0" prefHeight="31.0" prefWidth="341.0" promptText="Selecione o Exame" />
+      <TextArea fx:id="obs" layoutX="522.0" layoutY="529.0" prefHeight="69.0" prefWidth="341.0" promptText="Digite uma informação" />
+      <Label layoutX="417.0" layoutY="529.0" prefHeight="31.0" prefWidth="99.0" text="Observação:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="548.0" layoutY="545.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
-      <TextField alignment="CENTER" layoutX="581.0" layoutY="265.0" prefHeight="31.0" prefWidth="177.0" />
-      <TextField alignment="CENTER" layoutX="581.0" layoutY="315.0" prefHeight="31.0" prefWidth="177.0" />
-      <DatePicker layoutX="579.0" layoutY="415.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label fx:id="lblMensagem" layoutX="511.0" layoutY="655.0" text="Cadastro realizado com sucesso!" textFill="WHITE" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="438.0" layoutY="245.0" prefHeight="31.0" prefWidth="82.0" text="Paciente:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="473.0" layoutY="276.0" prefHeight="31.0" prefWidth="38.0" text="CPF:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nome" layoutX="522.0" layoutY="245.0" prefHeight="31.0" prefWidth="341.0" text="Nome..........." textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="cpf" layoutX="522.0" layoutY="276.0" prefHeight="31.0" prefWidth="341.0" text="CPF............" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="data_consulta" alignment="CENTER" layoutX="522.0" layoutY="429.0" onKeyPressed="#formatoData" prefHeight="31.0" prefWidth="341.0" promptText="Formato ##/##/####" />
    </children>
 </Pane>

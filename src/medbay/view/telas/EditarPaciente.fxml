@@ -6,8 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.EditarPacienteController">
    <children>
       <ImageView fitHeight="712.0" fitWidth="496.0" layoutX="396.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
@@ -24,8 +23,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="492.0" layoutY="417.0" prefHeight="31.0" prefWidth="177.0" />
-      <TextField alignment="CENTER" layoutX="492.0" layoutY="367.0" prefHeight="31.0" prefWidth="177.0" />
+      <TextField fx:id="editarAltura" alignment="CENTER" layoutX="492.0" layoutY="417.0" prefHeight="31.0" prefWidth="177.0" />
+      <TextField fx:id="editarSangue" alignment="CENTER" layoutX="492.0" layoutY="367.0" prefHeight="31.0" prefWidth="177.0" />
       <Label layoutX="360.0" layoutY="367.0" prefHeight="31.0" prefWidth="132.0" text="Tipo Sanguíneo:" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -46,30 +45,27 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="cadastrarAtendente" layoutX="548.0" layoutY="545.0" mnemonicParsing="false" onAction="#telaCadastroA" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
-      <TextField alignment="CENTER" layoutX="492.0" layoutY="267.0" prefHeight="31.0" prefWidth="428.0" />
-      <Label layoutX="701.0" layoutY="419.0" text="Peso:" textFill="WHITE">
+      <Button layoutX="548.0" layoutY="545.0" mnemonicParsing="false" onAction="#editar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+      <TextField fx:id="editarNome" alignment="CENTER" layoutX="492.0" layoutY="267.0" prefHeight="31.0" prefWidth="428.0" />
+      <Label layoutX="697.0" layoutY="369.0" text="Peso:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="492.0" layoutY="317.0" prefHeight="31.0" prefWidth="177.0" />
-      <Label layoutX="701.0" layoutY="347.0" text="Gênero:" textFill="WHITE">
+      <TextField fx:id="editarIdade" alignment="CENTER" layoutX="492.0" layoutY="317.0" prefHeight="31.0" prefWidth="177.0" />
+      <Label layoutX="700.0" layoutY="321.0" text="Gênero:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <RadioButton layoutX="788.0" layoutY="324.0" mnemonicParsing="false" text="Masculino" textFill="WHITE" />
-      <RadioButton layoutX="788.0" layoutY="350.0" mnemonicParsing="false" text="Feminino" textFill="WHITE" />
-      <RadioButton layoutX="789.0" layoutY="376.0" mnemonicParsing="false" text="Outro" textFill="WHITE" />
-      <TextField alignment="CENTER" layoutX="746.0" layoutY="417.0" prefHeight="31.0" prefWidth="177.0" />
-      <Button fx:id="voltar" layoutX="1019.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
+      <TextField fx:id="editarPeso" alignment="CENTER" layoutX="742.0" layoutY="367.0" prefHeight="31.0" prefWidth="177.0" />
+      <Button layoutX="1019.0" layoutY="58.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
       <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1103.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Vector.png" />
          </image>
       </ImageView>
-      <Button fx:id="logout" layoutX="1141.0" layoutY="58.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
+      <Button layoutX="1141.0" layoutY="58.0" mnemonicParsing="false" onAction="#logOut" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
       <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="979.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Vector-3.png" />
@@ -80,5 +76,31 @@
             <Image url="@../VE/medbay-logo%202.png" />
          </image>
       </ImageView>
+      <ComboBox fx:id="editarGenero" layoutX="769.0" layoutY="319.0" prefHeight="31.0" prefWidth="151.0" />
+      <Label layoutX="560.0" layoutY="466.0" prefHeight="31.0" prefWidth="31.0" text="ID:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="548.0" layoutY="497.0" prefHeight="31.0" prefWidth="42.0" text="CPF:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="ide" layoutX="590.0" layoutY="466.0" prefHeight="31.0" prefWidth="142.0" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="cpf" layoutX="581.0" layoutY="497.0" prefHeight="31.0" prefWidth="142.0" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblMensagem" layoutX="532.0" layoutY="614.0" prefHeight="31.0" prefWidth="215.0" text="Editado com Sucesso!" textAlignment="CENTER" textFill="#6513d0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

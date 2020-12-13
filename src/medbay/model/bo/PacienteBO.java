@@ -43,17 +43,24 @@ public class PacienteBO implements PacienteInterBO{
 		return pacientes;
 	}
 	
-//	public PacienteVO editar(PacienteVO paciente){
-//	//	Recebe objeto do tipo pessoa que poder� editar cada atributo...
-//	//	...utilizando tamb�m os m�todos get e set para exibir e enviar no DAO.
-//	//	Caso a o usu�rio nao escolha nenhum genero, o genero utilizado ser� o Indefinido, declarado j� no construtor;
-//	//	Retorna um objeto do tipo Pessoa com os atributos editados.
-//	}
-//	
-//	public void excluir(PacienteVO paciente){
-//	//	Recebe um objeto Pessoa para excluir, vale destacar que excluir� n�o s� apenas um atributo, mas sim o objeto por completo.
-//	//	N�o retorna nada.
-//	}
+	public boolean editar(PacienteVO paciente){
+		try {
+			dao.editar(paciente);
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public void excluir(PacienteVO paciente){
+		try {
+			dao.excluir(paciente);
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
+	}
 //	
 //	public PacienteVO buscaCPF(PacienteVO paciente){
 //	//	Ir� receber uma String CPF para retornar o objeto do tipo Pessoa que tem como atributo igual a mesma String CPF

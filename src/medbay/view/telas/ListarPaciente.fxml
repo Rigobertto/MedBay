@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.ListarPacienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.ListarPacienteController">
    <children>
-      <TableView fx:id="tabelaPaciente" layoutX="349.0" layoutY="261.0" prefHeight="419.0" prefWidth="881.0">
+      <TableView fx:id="tabelaPaciente" layoutX="349.0" layoutY="173.0" prefHeight="419.0" prefWidth="881.0">
          <columns>
             <TableColumn fx:id="ide" prefWidth="37.0" text="ID" />
-            <TableColumn fx:id="nome" prefWidth="354.0" text="NOME" />
-            <TableColumn fx:id="cpf" prefWidth="150.0" text="CPF" />
-            <TableColumn fx:id="idade" prefWidth="68.0" text="IDADE" />
-            <TableColumn fx:id="genero" prefWidth="78.0" text="GENERO" />
-            <TableColumn fx:id="sangue" prefWidth="69.0" text="SANGUE" />
-            <TableColumn fx:id="peso" prefWidth="58.0" text="PESO" />
+            <TableColumn fx:id="nome" prefWidth="304.0" text="NOME" />
+            <TableColumn fx:id="cpf" prefWidth="131.0" text="CPF" />
+            <TableColumn fx:id="idade" prefWidth="57.0" text="IDADE" />
+            <TableColumn fx:id="genero" prefWidth="66.0" text="GENERO" />
+            <TableColumn fx:id="sangue" prefWidth="75.0" text="SANGUE" />
+            <TableColumn fx:id="peso" prefWidth="56.0" text="PESO" />
             <TableColumn fx:id="altura" prefWidth="66.0" text="ALTURA" />
+            <TableColumn fx:id="columnEdit" prefWidth="43.0" />
+            <TableColumn fx:id="columnDelete" prefWidth="45.0" />
          </columns>
       </TableView>
-      <Button layoutX="507.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
-      <TextField layoutX="348.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por ID" style="-fx-background-radius: 10;" />
-      <TextField layoutX="671.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por CPF" style="-fx-background-radius: 10;" />
-      <Button layoutX="830.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
-      <Button layoutX="1152.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
-      <TextField layoutX="993.0" layoutY="212.0" prefHeight="31.0" prefWidth="159.0" promptText="Busque por Nome" style="-fx-background-radius: 10;" />
+      <Button layoutX="1151.0" layoutY="119.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
+      <TextField layoutX="350.0" layoutY="119.0" prefHeight="31.0" prefWidth="799.0" promptText="Busque por Nome" style="-fx-background-radius: 10;" />
       <Button layoutX="1009.0" layoutY="48.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
       <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1093.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -42,11 +41,16 @@
             <Image url="@../VE/medbay-logo%202.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="419.0" fitWidth="237.0" layoutX="45.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="419.0" fitWidth="237.0" layoutX="44.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/pacientecadastro.png" />
          </image>
       </ImageView>
-      <Button layoutX="68.0" layoutY="622.0" mnemonicParsing="false" onAction="#cadastrarPaciente" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+      <Button layoutX="67.0" layoutY="534.0" mnemonicParsing="false" onAction="#cadastrarPaciente" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
+      <Button layoutX="684.0" layoutY="609.0" mnemonicParsing="false" onAction="#cadastrarConsulta" prefHeight="49.0" prefWidth="211.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar Consulta" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

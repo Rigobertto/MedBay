@@ -1,6 +1,5 @@
 package medbay.model.vo;
 
-import java.util.Calendar;
 
 public class ExameVO {
 	private int id;

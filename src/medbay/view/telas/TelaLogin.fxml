@@ -53,10 +53,10 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="senha" layoutX="44.0" layoutY="369.0" prefHeight="31.0" prefWidth="393.0" />
       <Label layoutX="44.0" layoutY="263.0" prefHeight="21.0" prefWidth="78.0" text="Login" />
       <Label fx:id="erroAut" layoutX="159.0" layoutY="491.0" text="Login ou Senha inválido!" textFill="#ff0505" visible="false" />
       <Label layoutX="44.0" layoutY="348.0" prefHeight="21.0" prefWidth="78.0" text="Senha" />
       <TextField fx:id="login" layoutX="44.0" layoutY="286.0" prefHeight="31.0" prefWidth="393.0" />
+      <PasswordField fx:id="senha" layoutX="44.0" layoutY="369.0" prefHeight="31.0" prefWidth="393.0" />
    </children>
 </Pane>

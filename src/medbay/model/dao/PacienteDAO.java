@@ -84,22 +84,23 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 			ptst.setFloat(4, vo.getAltura());
 			ptst.setFloat(5, vo.getPeso());
 			ptst.setString(6, vo.getTipoSangue());
+			ptst.setInt(7, vo.getId());
 			ptst.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
-		sql = "Update Prontuario set cpf = ?, nome = ?, where ide_paciente = ?"; //
-		try {
-			ptst.setString(1, vo.getNome());
-			ptst.setInt(2, vo.getIdade());
-			ptst.setString(3, vo.getGenero());
-			ptst.setFloat(4, vo.getAltura());
-			ptst.setFloat(5, vo.getPeso());
-			ptst.setString(6, vo.getTipoSangue());
-			ptst.executeUpdate();
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
+//		sql = "Update Prontuario set cpf = ?, nome = ?, where ide_paciente = ?"; //
+//		try {
+//			ptst.setString(1, vo.getNome());
+//			ptst.setInt(2, vo.getIdade());
+//			ptst.setString(3, vo.getGenero());
+//			ptst.setFloat(4, vo.getAltura());
+//			ptst.setFloat(5, vo.getPeso());
+//			ptst.setString(6, vo.getTipoSangue());
+//			ptst.executeUpdate();
+//			}catch(SQLException e) {
+//				e.printStackTrace();
+//			}
 	}
 	
 	public ResultSet listar() throws SQLException{
