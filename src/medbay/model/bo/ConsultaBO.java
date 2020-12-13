@@ -18,7 +18,7 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 	PacienteBO pbo = new PacienteBO();
 	MedicoBO mbo = new MedicoBO();
 	
-	 static boolean cadastrar(ConsultaVO consulta) {
+	public boolean cadastrar(ConsultaVO consulta) {
         try {
         	dao.cadastrar(consulta);
         	return true;
@@ -28,7 +28,7 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
         }
     }
 
-    static boolean editar(ConsultaVO consulta) {
+    public boolean editar(ConsultaVO consulta) {
         try {
         	dao.editar(consulta);
         	return true;
@@ -38,6 +38,14 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
         }
     }
 	
+	public void excluir(ConsultaVO consulta) {
+        try {
+        	dao.excluir(consulta);
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }
+    }
+
 	public List<ConsultaVO> listar() {
 		List<ConsultaVO> lista = new ArrayList<ConsultaVO>();
 		

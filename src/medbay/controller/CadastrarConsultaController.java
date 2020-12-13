@@ -17,6 +17,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import medbay.model.bo.ConsultaBO;
 import medbay.model.bo.ExameBO;
 import medbay.model.bo.MedicoBO;
 import medbay.model.vo.ConsultaVO;
@@ -39,6 +40,7 @@ public class CadastrarConsultaController implements Initializable{
 	
 	ExameBO<ExameVO> boExa = new ExameBO<ExameVO>();
 	MedicoBO<MedicoVO> boMed = new MedicoBO<MedicoVO>();
+	ConsultaBO boConsulta = new ConsultaBO();
 	ConsultaVO consulta = new ConsultaVO();
 	private static PacienteVO paciente = new PacienteVO(); 
 	public void initialize(URL url, ResourceBundle rb) {
@@ -79,6 +81,7 @@ public class CadastrarConsultaController implements Initializable{
 			consulta.setExame(exame);
 			consulta.setData(data_consulta.getText(), hora_consulta.getText());	//Data ##/##/####
 			consulta.setObservacao(obs.getText());
+			boolean valor = boConsulta.cadastrar(consulta);
 			lblMensagem.setVisible(true);
 		}catch(Exception e) {
 			e.printStackTrace();
