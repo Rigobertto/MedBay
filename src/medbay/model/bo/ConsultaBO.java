@@ -1,6 +1,79 @@
 package medbay.model.bo;
 
-public class ConsultaBO implements ConsultaInterBO {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import medbay.model.dao.ConsultaDAO;
+import medbay.model.vo.ConsultaVO;
+import medbay.model.vo.ExameVO;
+
+public class ConsultaBO /*implements ConsultaInterBO*/ {
+	ConsultaDAO<ConsultaVO> dao = new ConsultaDAO<ConsultaVO>();
+	
+	ExameBO<ExameVO> ebo = new ExameBO<ExameVO>();
+	PacienteBO pbo = new PacienteBO();
+	MedicoBO mbo = new MedicoBO();
+	
+	
+	List<ConsultaVO> listar() {
+		List<ConsultaVO> lista = new ArrayList<ConsultaVO>();
+		
+		try {
+			ResultSet tabela = dao.listar();
+			
+			while(tabela.next()) {
+				ConsultaVO consulta = new ConsultaVO();
+				
+				consulta.setId(tabela.getInt("ide"));
+				
+				Calendar data = Calendar.getInstance();
+				data.setTimeInMillis(tabela.getTime("data").getTime());
+				consulta.setData(data);
+				
+				consulta.setExame(ebo.buscaId(tabela.getInt("id_exame")));
+				consulta.setPaciente(pbo.buscaId(tabela.getInt("id_paciente")));
+				consulta.setMedico(mbo.buscaId(tabela.getInt("id_medico")));
+				
+				consulta.setObservacao(tabela.getString("observacao"));
+				
+				lista.add(consulta);
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return lista;
+	}
+	
+	public ConsultaVO buscarId(int id) {
+		ConsultaVO consulta = new ConsultaVO();
+		consulta.setId(id);
+		
+		ResultSet tabela = dao.buscaID(consulta);
+		
+		try {
+			Calendar data = Calendar.getInstance();
+			data.setTimeInMillis(tabela.getTime("data").getTime());
+			consulta.setData(data);
+			
+			consulta.setExame(ebo.buscaId(tabela.getInt("id_exame")));
+			consulta.setPaciente(pbo.buscaId(tabela.getInt("id_paciente")));
+			consulta.setMedico(mbo.buscaId(tabela.getInt("id_medico")));
+			
+			consulta.setObservacao(tabela.getString("observacao"));
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return consulta;
+	}
+	
+	/*
     static boolean cadastrar(ConsultaVO consulta) {
         // recebe um objeto do tipo ConsultaVO,
         // faz alguma validação pendente,
@@ -20,14 +93,11 @@ public class ConsultaBO implements ConsultaInterBO {
     }
 
     // BUSCA
-
-    /* 
         Os métodos de busca irão chamar pelo MedicoBO e PacienteBO
         para que os mesmos encontrem médicos e/ou pacientes com a chave
         de pesquisa indicada.
 
         Muitos dos métodos indicados ainda precisam ser idealizados e implementados.
-    */
 
     static ConsultaVO buscar(int id) {
         // Chama o DAO para buscar uma consulta com o ID indicado.
@@ -67,4 +137,6 @@ public class ConsultaBO implements ConsultaInterBO {
     }
 
     // lembrar: atributos Mid e Pid
+    
+    */
 }
