@@ -9,6 +9,7 @@ import java.util.List;
 import medbay.model.dao.ConsultaDAO;
 import medbay.model.vo.ConsultaVO;
 import medbay.model.vo.ExameVO;
+import medbay.model.vo.MedicoVO;
 
 public class ConsultaBO /*implements ConsultaInterBO*/ {
 	ConsultaDAO<ConsultaVO> dao = new ConsultaDAO<ConsultaVO>();
@@ -18,7 +19,7 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 	MedicoBO mbo = new MedicoBO();
 	
 	
-	List<ConsultaVO> listar() {
+	public List<ConsultaVO> listar() {
 		List<ConsultaVO> lista = new ArrayList<ConsultaVO>();
 		
 		try {
@@ -47,6 +48,17 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 		}
 		
 		return lista;
+	}
+	
+	public List<ConsultaVO> listarID(MedicoVO medico) {
+		List<ConsultaVO> lista = listar();
+		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
+		
+		for(int index = 0; index < lista.size(); index++) {
+			if(lista.get(index).getMedico().getId() == medico.getId()) resultado.add(lista.get(index));
+		}
+		
+		return resultado;
 	}
 	
 	public ConsultaVO buscarId(int id) {
