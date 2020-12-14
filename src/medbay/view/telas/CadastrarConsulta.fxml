@@ -35,7 +35,7 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="hora_consulta" alignment="CENTER" layoutX="522.0" layoutY="479.0" onKeyPressed="#formatoHora" prefHeight="31.0" prefWidth="341.0" promptText="Formato 00:00" />
+      <TextField fx:id="hora_consulta" alignment="CENTER" layoutX="522.0" layoutY="479.0" onKeyPressed="#formatoHora" prefHeight="31.0" prefWidth="341.0" promptText="Hora no Formato 00:00" />
       <Label layoutX="444.0" layoutY="477.0" prefHeight="35.0" prefWidth="68.0" text="Hora:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -95,6 +95,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="data_consulta" alignment="CENTER" layoutX="522.0" layoutY="429.0" onKeyPressed="#formatoData" prefHeight="31.0" prefWidth="341.0" promptText="Formato ##/##/####" />
+      <DatePicker fx:id="horaConsulta" layoutX="523.0" layoutY="429.0" prefHeight="31.0" prefWidth="341.0" promptText="Selecione a data" />
    </children>
 </Pane>
