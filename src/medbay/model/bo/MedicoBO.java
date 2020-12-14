@@ -3,7 +3,10 @@ package medbay.model.bo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+
 import medbay.model.dao.MedicoDAO;
+import medbay.model.util.Texto;
 import medbay.model.vo.MedicoVO;
 
 public class MedicoBO<VO extends MedicoVO> implements MedicoInterBO{
@@ -42,6 +45,19 @@ public class MedicoBO<VO extends MedicoVO> implements MedicoInterBO{
 			}
 			return medicos;
 		}
+		
+		public List<MedicoVO> listarNome(String nome) {
+			List<MedicoVO> lista = this.listar();
+			List<MedicoVO> resultado = new ArrayList<MedicoVO>();
+			
+			for(int index = 0; index < lista.size(); index++) {
+				if(Texto.contem(lista.get(index).getNome(), nome)) resultado.add(lista.get(index));
+			}
+			
+			return resultado;
+		}
+		
+		
 		
 		public void excluir(MedicoVO medico){
 			try {

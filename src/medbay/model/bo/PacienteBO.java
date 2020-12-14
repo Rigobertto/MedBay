@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import medbay.model.dao.PacienteDAO;
+import medbay.model.util.Texto;
 import medbay.model.vo.PacienteVO;
 
 public class PacienteBO implements PacienteInterBO{
@@ -41,6 +42,17 @@ public class PacienteBO implements PacienteInterBO{
 			e.printStackTrace();
 		}
 		return pacientes;
+	}
+	
+	public List<PacienteVO> listarNome(String nome) {
+		List<PacienteVO> lista = this.listar();
+		List<PacienteVO> resultado = new ArrayList<PacienteVO>();
+		
+		for(int index = 0; index < lista.size(); index++) {
+			if(Texto.contem(lista.get(index).getNome(), nome)) resultado.add(lista.get(index));
+		}
+		
+		return resultado;
 	}
 	
 	public boolean editar(PacienteVO paciente){
