@@ -1,5 +1,7 @@
 package medbay.model.vo;
 
+import medbay.model.util.Tempo;
+
 import java.util.Calendar;
 
 public class ConsultaVO {
@@ -34,7 +36,7 @@ public class ConsultaVO {
     }
     
     public boolean setData(String data, String hora) {
-        return this.setData(Calendar.getInstance());
+        return setData(Tempo.toCalendar(data, hora));
     }
 
     public ExameVO getExame() {
