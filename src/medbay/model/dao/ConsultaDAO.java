@@ -1,5 +1,6 @@
 package medbay.model.dao;
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,11 +25,11 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 				o construtor de Data do pacote java.sql recebe um "Unix Timestamp" como parâmetro para construir o objeto.
 				objeto esse que é adaptado para o "sql/banco de dados" e pode ser armazenado de forma correta.
 			*/
-			ps.setDate(2, new Date(vo.getData().getTimeInMillis()));
+			ps.setTime(2, new Time(vo.getData().getTimeInMillis()));
 			ps.setInt(3, vo.getExame().getId());
 			ps.setInt(4, vo.getPaciente().getId());
 			ps.setInt(5, vo.getMedico().getId());
-			ps.setString(5, vo.getObservacao());
+			ps.setString(6, vo.getObservacao());
 
 			int affectedRolls = ps.executeUpdate();
 			
