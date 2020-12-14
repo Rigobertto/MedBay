@@ -16,7 +16,7 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 	
 	ExameBO<ExameVO> ebo = new ExameBO<ExameVO>();
 	PacienteBO pbo = new PacienteBO();
-	MedicoBO mbo = new MedicoBO();
+	MedicoBO<MedicoVO> mbo = new MedicoBO<MedicoVO>();
 	
 	public boolean cadastrar(ConsultaVO consulta) {
         try {
@@ -32,7 +32,8 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
         try {
         	dao.editar(consulta);
         	return true;
-        }catch(Exception e) {
+        }
+        catch(Exception e) {
         	e.printStackTrace();
         	return false;
         }
