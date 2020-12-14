@@ -42,7 +42,9 @@ public class CadastrarConsultaController implements Initializable{
 	MedicoBO<MedicoVO> boMed = new MedicoBO<MedicoVO>();
 	ConsultaBO boConsulta = new ConsultaBO();
 	ConsultaVO consulta = new ConsultaVO();
+
 	private static PacienteVO paciente = new PacienteVO(); 
+
 	public void initialize(URL url, ResourceBundle rb) {
 		nome.setText(paciente.getNome());
 		cpf.setText(paciente.getCpf());
@@ -53,18 +55,19 @@ public class CadastrarConsultaController implements Initializable{
 	public void cadastrar(ActionEvent event){
 		try {
 			ExameVO exame;
-			 // Pesquisar ID selecionado dentro do comboBOX
-			String exameAtual = listarExame.getSelectionModel().getSelectedItem();
-			int id;
+			 
 			{
-				String ID = "";
-				int indice = 0;
-				for(indice = 0; exameAtual.charAt(indice) != '/'; indice++ );
-					ID = exameAtual.substring(0, --indice);
-					id = Integer.parseInt(ID);
+				// Pesquisar ID selecionado dentro do comboBOX
+				String exameAtual = listarExame.getSelectionModel().getSelectedItem();
+				List<ExameVO> lista = boExa.listar();
+				for(int index = 0; index < lista.size(); index++) {
+					if(lista.get(index).getNome() == exameAtual) {
+						exame = lista.get(index);
+						break;
+					}
+				}
 			}
-			exame = boExa.listarID(id);
-			
+
 			String medicoAtual = listarMedico.getSelectionModel().getSelectedItem();
 			{
 				String ID = "";
@@ -85,7 +88,7 @@ public class CadastrarConsultaController implements Initializable{
 			lblMensagem.setVisible(true);
 		}catch(Exception e) {
 			e.printStackTrace();
-			lblMensagem.setText("Erro ao cadastrar, verifique as informações!");
+			lblMensagem.setText("Erro ao cadastrar, verifique as informaï¿½ï¿½es!");
 			lblMensagem.setVisible(true);
 		}
 		
@@ -99,7 +102,7 @@ public class CadastrarConsultaController implements Initializable{
 			ArrayList<String> aux3 = new ArrayList<String>();
 
 			for (int i = 0; i < aux2.size(); i++) {
-				aux3.add(aux2.get(i).getId() + "/" + aux2.get(i).getNome());
+				aux3.add(aux2.get(i).getNome());
 			}
 
 			List<String> exames = FXCollections.observableArrayList(aux3);
