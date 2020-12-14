@@ -1,4 +1,5 @@
 /bin/
 /.setting/
+/src/medbay/model/dao/BaseDAO.java
 .classpath
 .project
