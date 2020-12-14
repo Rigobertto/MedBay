@@ -2,6 +2,8 @@ package medbay.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,6 +37,7 @@ public class VisualizarProntuarioController implements Initializable {
 	public void listar(){
 		ObservableList<ProntuarioVO> prontuario = FXCollections.observableArrayList(boPront.listar(consulta)); 
 		ide.setCellValueFactory(new PropertyValueFactory<ProntuarioVO, Integer>("id"));
+		exame.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> param) -> new SimpleStringProperty(param.getValue().getMedico().getNome()));
 		data_consulta.setCellValueFactory(new PropertyValueFactory<ProntuarioVO, String>("data"));
 		exame.setCellValueFactory(new PropertyValueFactory<ExameVO, String>("nome"));
 		observacao.setCellValueFactory(new PropertyValueFactory<ProntuarioVO, String>("observacao")); // Talvez o q esta entre "" esteja incorreto

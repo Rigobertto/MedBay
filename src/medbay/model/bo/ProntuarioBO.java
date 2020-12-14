@@ -17,7 +17,7 @@ public class ProntuarioBO implements ProntuarioInterBO {
     
     public boolean editar(ProntuarioVO prontuario) {
         try {
-        	
+        	daoProntuario.editar(prontuario);
         	return true;
         }catch(Exception e) {
         	e.printStackTrace();

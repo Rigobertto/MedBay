@@ -8,7 +8,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-//import controller.TextFieldFormatter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,10 +25,9 @@ import medbay.model.util.Tempo;
 import medbay.model.vo.ConsultaVO;
 import medbay.model.vo.ExameVO;
 import medbay.model.vo.MedicoVO;
-import medbay.model.vo.PacienteVO;
 import medbay.view.Telas;
 
-public class CadastrarConsultaController implements Initializable{
+public class EditarConsultaController implements Initializable{
 	@FXML private Label lblMensagem;
 	@FXML private Label nome;
 	@FXML private Label cpf;
@@ -38,19 +36,15 @@ public class CadastrarConsultaController implements Initializable{
 	@FXML private ComboBox<String> nomeMedico;
 	@FXML private TextField hora_consulta;
 	@FXML private DatePicker horaConsulta;
-	String data;
-	
-	
+	private static ConsultaVO consultal = new ConsultaVO();
 	ExameBO<ExameVO> boExa = new ExameBO<ExameVO>();
 	MedicoBO<MedicoVO> boMed = new MedicoBO<MedicoVO>();
-	ConsultaBO boConsulta = new ConsultaBO();
 	ConsultaVO consulta = new ConsultaVO();
-
-	private static PacienteVO paciente = new PacienteVO(); 
-
+	ConsultaBO boConsulta = new ConsultaBO();
+	
 	public void initialize(URL url, ResourceBundle rb) {
-		nome.setText(paciente.getNome());
-		cpf.setText(paciente.getCpf());
+		nome.setText(consultal.getPaciente().getNome());
+		cpf.setText(consultal.getPaciente().getCpf());
 		carregarExame();
 		carregarMedico();
 	}
@@ -72,7 +66,7 @@ public class CadastrarConsultaController implements Initializable{
 			
 			consulta.setData(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText()));
 			System.out.println(Tempo.toString(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText())));
-			consulta.setPaciente(paciente);
+			consulta.setPaciente(consulta.getPaciente());
 			consulta.setMedico(medico);
 			consulta.setExame(exame);
 			consulta.setData(data_consulta);
@@ -81,17 +75,17 @@ public class CadastrarConsultaController implements Initializable{
 			if(valor == true){
 				lblMensagem.setVisible(true);
 			}else {
-				lblMensagem.setText("Erro ao cadastrar!");
+				lblMensagem.setText("Erro ao editar!");
 				lblMensagem.setVisible(true);
 				}
 		}catch(Exception e) {
 			e.printStackTrace();
-			lblMensagem.setText("Erro ao cadastrar!");
+			lblMensagem.setText("Erro ao editar!");
 			lblMensagem.setVisible(true);
 		}
 		
 	}
-
+	
 	public void carregarExame(){
 		
 		if (nomeExame != null) {
@@ -137,7 +131,7 @@ public class CadastrarConsultaController implements Initializable{
 	public void voltar(ActionEvent event) {
 		try {
 			//fazer um if pra voltar para a tela certa
-			Telas.telaEntrarPaciente();
+			Telas.telaEntrarConsulta();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -151,11 +145,11 @@ public class CadastrarConsultaController implements Initializable{
 		tex.formatter();
 	}
 	
-	public static PacienteVO getPaciente() {
-		return paciente;
+	public static ConsultaVO getConsultal() {
+		return consultal;
 	}
 
-	public static void setPaciente(PacienteVO paci) {
-		paciente = paci;
+	public static void setConsultal(ConsultaVO consultal) {
+		EditarConsultaController.consultal = consultal;
 	}
 }

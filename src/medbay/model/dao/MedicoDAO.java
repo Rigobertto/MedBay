@@ -135,7 +135,7 @@ public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
 	
 	public MedicoVO buscarCPF(MedicoVO vo) throws SQLException {
 		conn = getConnection();
-		String sqlSearch = "select * from Medico where cpf like ?";
+		String sqlSearch = "select * from Medico where cpf = ?";
 		PreparedStatement ptst;
 		ResultSet rs;
 		MedicoVO medico = new MedicoVO();
@@ -195,7 +195,7 @@ public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
 	
 	public MedicoVO buscarID(MedicoVO vo) throws SQLException {
 		conn = getConnection();
-		String sqlSearch = "select * from Medico where ide like ?";
+		String sqlSearch = "select * from Medico where ide = ?";
 		PreparedStatement ptst;
 		ResultSet rs;
 		MedicoVO medico = new MedicoVO();
