@@ -42,6 +42,7 @@
             <Image url="@../VE/medbay-logo%202.png" />
          </image>
       </ImageView>
-      <Button layoutX="47.0" layoutY="539.0" mnemonicParsing="false" onAction="#editarProntuario" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Prontuario" textFill="WHITE" />
+      <Button layoutX="47.0" layoutY="539.0" mnemonicParsing="false" onAction="#prontuario" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Prontuario" textFill="WHITE" />
+      <Label fx:id="lblMensagem" layoutX="27.0" layoutY="659.0" prefHeight="21.0" prefWidth="226.0" text="texto" textAlignment="CENTER" textFill="#972e9a" visible="false" />
    </children>
 </Pane>

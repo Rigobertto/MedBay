@@ -51,7 +51,7 @@ public class CadastrarAtendenteMedicoController implements Initializable{
 			if(valor == true)
 				lblMensagem.setVisible(true);
 			else {
-				lblMensagem.setText("Erro no cadastrar!");
+				lblMensagem.setText("Falha ao Cadastrar Atendente!");
 				lblMensagem.setVisible(true);
 			}
 		}catch(Exception e) {
@@ -82,12 +82,12 @@ public class CadastrarAtendenteMedicoController implements Initializable{
 			if(valor == true)
 				lblMensagem.setVisible(true);
 			else {
-				lblMensagem.setText("Erro no cadastrar!");
+				lblMensagem.setText("Falha ao Cadastrar Medico!");
 				lblMensagem.setVisible(true);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			lblMensagem.setText("Falha ao Cadastrar Atendente!");
+			lblMensagem.setText("Falha ao Cadastrar Medico!");
 			lblMensagem.setVisible(true);
 		}
 	}
@@ -96,7 +96,6 @@ public class CadastrarAtendenteMedicoController implements Initializable{
 		carregarGenero();
 	}
 	public void carregarGenero(){
-	
 		generos.add("Masculino");
 		generos.add("Feminino");
 		generos.add("Outro");

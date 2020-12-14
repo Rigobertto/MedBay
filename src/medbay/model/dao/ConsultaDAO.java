@@ -9,20 +9,16 @@ import medbay.model.vo.ConsultaVO;
 public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 	
 	public void cadastrar(ConsultaVO vo) {
-		String sqlInsert = "insert into Consulta (nome, cpf, idade, genero, sangue, "
-				+ "data_consulta, hora_consulta, nome_exame, valor_exame, nome_medico, "
-				+ "crm) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sqlInsert = "insert into Consulta (ide_paciente, ide_exame, ide_medico, data_consulta, hora_consulta, observacao) values (?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement ptst2;
 		try {
 			ptst2 = getConnection().prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
-			ptst2.setString(1, vo.getPaciente().getNome());
-			ptst2.setString(2, vo.getPaciente().getCpf());
-			ptst2.setInt(3, vo.getPaciente().getIdade());
-			ptst2.setString(4, vo.getPaciente().getGenero());
-			ptst2.setString(5, vo.getPaciente().getTipoSangue());
-			ptst2.setDate(6, new Date(vo.getData().getTimeInMillis())); //COMO FUNCIONA ISSO?????????????????????????????????????????????
-			ptst2.setDate(7, new Date(vo.getData().getTimeInMillis())); 
+			ptst2.setInt(1, vo.getPaciente().getId());
+			ptst2.setInt(2, vo.getExame().getId());
+			ptst2.setInt(3, vo.getMedico().getId());
+			ptst2.setDate(4, new Date(vo.getData().getTimeInMillis())); //COMO FUNCIONA ISSO?????????????????????????????????????????????
+			ptst2.setDate(5, new Date(vo.getData().getTimeInMillis())); 
 			/*
 				respondendo à pergunta:
 				o método setDate, da classe PreparedStatement, recebe um inteiro, que é o índice da String sql e um objeto do tipo Date do pacote java.sql.
@@ -31,11 +27,11 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 				objeto esse que é adaptado para o "sql/banco de dados" e pode ser armazenado de forma correta.
 			*/
 			
+			/*MDS esse ome é bom viu
+			 * 
+			 */
 			
-			ptst2.setString(8, vo.getExame().getNome());
-			ptst2.setFloat(9, vo.getExame().getValor());
-			ptst2.setString(10, vo.getMedico().getNome());
-			ptst2.setString(11, vo.getMedico().getCrm());
+			ptst2.setString(6, vo.getObservacao());
 			int affectedRolls = ptst2.executeUpdate();
 			
 			if(affectedRolls == 0) {

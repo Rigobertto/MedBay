@@ -97,7 +97,9 @@ public class MedicoBO<VO extends MedicoVO> implements MedicoInterBO{
 				return null;
 			}
 		}
-		
+		public MedicoVO listarID() {
+			return null;
+		}
 //		public MedicoVO buscaNome(MedicoVO medico) {
 //			// Recebe uma string como parametro para buscar no banco de dados atrav�s do DAO um atributo nome que igual a string recebida 
 //			// como parametro.

@@ -139,4 +139,10 @@ public class Telas extends Application{
 		Scene cena = new Scene(root); 
 		primaryStage.setScene(cena);
 	}
+	
+	public static void telaEntrarProntuario() throws Exception{
+		Parent root = FXMLLoader.load(Telas.class.getResource("telas/VisualizarProntuario.fxml"));
+		Scene cena = new Scene(root); 
+		primaryStage.setScene(cena);
+	}
 }

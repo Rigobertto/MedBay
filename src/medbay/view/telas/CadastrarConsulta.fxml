@@ -36,19 +36,19 @@
          </font>
       </Label>
       <TextField fx:id="hora_consulta" alignment="CENTER" layoutX="522.0" layoutY="479.0" onKeyPressed="#formatoHora" prefHeight="31.0" prefWidth="341.0" promptText="Formato 00:00" />
-      <Label layoutX="470.0" layoutY="479.0" prefHeight="31.0" prefWidth="52.0" text="Hora:" textFill="WHITE">
+      <Label layoutX="444.0" layoutY="477.0" prefHeight="35.0" prefWidth="68.0" text="Hora:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="464.0" layoutY="429.0" prefHeight="31.0" prefWidth="52.0" text="Data:" textFill="WHITE">
+      <Label layoutX="445.0" layoutY="427.0" prefHeight="35.0" prefWidth="68.0" text="Data:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="459.0" layoutY="379.0" prefHeight="31.0" prefWidth="68.0" text="Exame:" textFill="WHITE">
+      <Label layoutX="425.0" layoutY="377.0" prefHeight="35.0" prefWidth="86.0" text="Exame:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <ImageView fitHeight="122.0" fitWidth="142.0" layoutX="569.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
@@ -56,43 +56,43 @@
             <Image url="@../VE/undraw_Taking_notes_re_bnaf%201.png" />
          </image>
       </ImageView>
-      <Label layoutX="452.0" layoutY="329.0" prefHeight="31.0" prefWidth="68.0" text="Médico:" textFill="WHITE">
+      <Label layoutX="416.0" layoutY="327.0" prefHeight="35.0" prefWidth="97.0" text="Médico:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Button layoutX="548.0" layoutY="624.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
       <ComboBox fx:id="nomeMedico" layoutX="522.0" layoutY="329.0" prefHeight="31.0" prefWidth="341.0" promptText="Selecione o Médico" />
       <ComboBox fx:id="nomeExame" layoutX="522.0" layoutY="379.0" prefHeight="31.0" prefWidth="341.0" promptText="Selecione o Exame" />
       <TextArea fx:id="obs" layoutX="522.0" layoutY="529.0" prefHeight="69.0" prefWidth="341.0" promptText="Digite uma informação" />
-      <Label layoutX="417.0" layoutY="529.0" prefHeight="31.0" prefWidth="99.0" text="Observação:" textFill="WHITE">
+      <Label layoutX="369.0" layoutY="529.0" prefHeight="35.0" prefWidth="142.0" text="Observação:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblMensagem" layoutX="511.0" layoutY="655.0" text="Cadastro realizado com sucesso!" textFill="WHITE" visible="false">
+      <Label fx:id="lblMensagem" layoutX="473.0" layoutY="655.0" prefHeight="27.0" prefWidth="371.0" text="Cadastro realizado com sucesso!" textAlignment="CENTER" textFill="WHITE" visible="false">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="438.0" layoutY="245.0" prefHeight="31.0" prefWidth="82.0" text="Paciente:" textFill="WHITE">
+      <Label layoutX="407.0" layoutY="245.0" prefHeight="35.0" prefWidth="116.0" text="Paciente:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="473.0" layoutY="276.0" prefHeight="31.0" prefWidth="38.0" text="CPF:" textFill="WHITE">
+      <Label layoutX="458.0" layoutY="276.0" prefHeight="35.0" prefWidth="52.0" text="CPF:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="nome" layoutX="522.0" layoutY="245.0" prefHeight="31.0" prefWidth="341.0" text="Nome..........." textFill="WHITE">
+      <Label fx:id="nome" layoutX="522.0" layoutY="245.0" prefHeight="31.0" prefWidth="341.0" text="Nome..........." textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="cpf" layoutX="522.0" layoutY="276.0" prefHeight="31.0" prefWidth="341.0" text="CPF............" textFill="WHITE">
+      <Label fx:id="cpf" layoutX="522.0" layoutY="276.0" prefHeight="31.0" prefWidth="341.0" text="CPF............" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <TextField fx:id="data_consulta" alignment="CENTER" layoutX="522.0" layoutY="429.0" onKeyPressed="#formatoData" prefHeight="31.0" prefWidth="341.0" promptText="Formato ##/##/####" />

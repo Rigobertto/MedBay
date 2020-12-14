@@ -31,8 +31,8 @@ public class CadastrarConsultaController implements Initializable{
 	@FXML private Label nome;
 	@FXML private Label cpf;
 	@FXML private TextArea obs;
-	@FXML private ComboBox<String> listarExame;
-	@FXML private ComboBox<String> listarMedico;
+	@FXML private ComboBox<String> nomeExame;
+	@FXML private ComboBox<String> nomeMedico;
 	@FXML private TextField data_consulta;
 	@FXML private TextField hora_consulta;
 	String data;
@@ -54,21 +54,19 @@ public class CadastrarConsultaController implements Initializable{
 	
 	public void cadastrar(ActionEvent event){
 		try {
-			ExameVO exame;
-			 
+			int id;
+			String exameAtual = nomeExame.getSelectionModel().getSelectedItem();
 			{
-				// Pesquisar ID selecionado dentro do comboBOX
-				String exameAtual = listarExame.getSelectionModel().getSelectedItem();
-				List<ExameVO> lista = boExa.listar();
-				for(int index = 0; index < lista.size(); index++) {
-					if(lista.get(index).getNome() == exameAtual) {
-						exame = lista.get(index);
-						break;
-					}
-				}
+				String ID = "";
+				int indice = 0;
+				for(indice = 0; exameAtual.charAt(indice) != '/'; indice++ );
+					ID = exameAtual.substring(0, --indice);
+					id = Integer.parseInt(ID);
 			}
-
-			String medicoAtual = listarMedico.getSelectionModel().getSelectedItem();
+			ExameVO exame;
+			exame = boExa.listarID(id);
+			
+			String medicoAtual = nomeMedico.getSelectionModel().getSelectedItem();
 			{
 				String ID = "";
 				int indice = 0;
@@ -85,34 +83,39 @@ public class CadastrarConsultaController implements Initializable{
 			consulta.setData(data_consulta.getText(), hora_consulta.getText());	//Data ##/##/####
 			consulta.setObservacao(obs.getText());
 			boolean valor = boConsulta.cadastrar(consulta);
-			lblMensagem.setVisible(true);
+			if(valor == true){
+				lblMensagem.setVisible(true);
+			}else {
+				lblMensagem.setText("Erro ao cadastrar!");
+				lblMensagem.setVisible(true);
+				}
 		}catch(Exception e) {
 			e.printStackTrace();
-			lblMensagem.setText("Erro ao cadastrar, verifique as informa��es!");
+			lblMensagem.setText("Erro ao cadastrar!");
 			lblMensagem.setVisible(true);
 		}
 		
 	}
 
 	public void carregarExame(){
-	
-		if (listarExame != null) {
+		
+		if (nomeExame != null) {
 			
 			ArrayList<ExameVO> aux2 = boExa.listar();
 			ArrayList<String> aux3 = new ArrayList<String>();
 
 			for (int i = 0; i < aux2.size(); i++) {
-				aux3.add(aux2.get(i).getNome());
+				aux3.add(aux2.get(i).getId() + "/" +aux2.get(i).getNome());
 			}
-
-			List<String> exames = FXCollections.observableArrayList(aux3);
-			listarExame.setItems((ObservableList<String>) exames); // implementar dps
+			
+			ObservableList<String> exames = FXCollections.observableArrayList(aux3);
+			nomeExame.setItems(exames); 
 		}
 	}
 	
 	public void carregarMedico(){
 		try {
-			if (listarMedico != null) {
+			if (nomeMedico != null) {
 				ArrayList<MedicoVO> aux2 = boMed.listar();
 				ArrayList<String> aux3 = new ArrayList<String>();
 	
@@ -120,8 +123,8 @@ public class CadastrarConsultaController implements Initializable{
 					aux3.add(aux2.get(i).getId() + "/" + aux2.get(i).getNome());
 				}
 	
-				List<String> medicos = FXCollections.observableArrayList(aux3);
-				listarExame.setItems((ObservableList<String>) medicos);
+				ObservableList<String> medicos = FXCollections.observableArrayList(aux3);
+				nomeMedico.setItems(medicos);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -139,7 +142,7 @@ public class CadastrarConsultaController implements Initializable{
 	public void voltar(ActionEvent event) {
 		try {
 			//fazer um if pra voltar para a tela certa
-			Telas.telaEntrarConsulta();
+			Telas.telaEntrarPaciente();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

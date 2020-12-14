@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.VisualizarProntuarioController">
+   <children>
+      <Button layoutX="1009.0" layoutY="48.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Voltar" textFill="WHITE" />
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="1093.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../MedBay/src/medbay/view/VE/Vector.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1131.0" layoutY="48.0" mnemonicParsing="false" onAction="#logOut" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Log Out" textFill="WHITE" />
+      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="969.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../MedBay/src/medbay/view/VE/Vector-3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../MedBay/src/medbay/view/VE/medbay-logo%202.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="515.0" layoutY="116.0" text="EDITAR PRONTUÁRIO" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="154.0" fitWidth="216.0" layoutX="329.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../MedBay/src/medbay/view/VE/undraw_Taking_notes_re_bnaf%201.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="378.0" layoutY="265.0" prefHeight="31.0" prefWidth="111.0" text="Observação: " textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="45.0" layoutY="183.0" prefViewportHeight="508.0" prefViewportWidth="1190.0">
+         <content>
+            <TableView fx:id="tabelaProntuario" layoutX="45.0" layoutY="183.0" prefHeight="508.0" prefWidth="1190.0">
+               <columns>
+                  <TableColumn fx:id="ide" prefWidth="66.0" text="ID" />
+                  <TableColumn fx:id="exame" prefWidth="153.0" text="EXAME" />
+                  <TableColumn fx:id="data_consulta" minWidth="0.0" prefWidth="121.0" text="DATA" />
+                  <TableColumn fx:id="observacao" prefWidth="849.0" text="LAUDO - RESULTADO DA CONSULTA/EXAME" />
+               </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Label layoutX="561.0" layoutY="118.0" text="PRONTUÁRIO">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="nome" layoutX="415.0" layoutY="153.0" prefHeight="27.0" prefWidth="508.0" text="NOME" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

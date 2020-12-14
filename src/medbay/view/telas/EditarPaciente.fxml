@@ -97,7 +97,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblMensagem" layoutX="513.0" layoutY="616.0" prefHeight="35.0" prefWidth="254.0" text="Editado com Sucesso!" textAlignment="CENTER" textFill="#6513d0" visible="false">
+      <Label fx:id="lblMensagem" layoutX="375.0" layoutY="616.0" prefHeight="35.0" prefWidth="526.0" text="Editado com Sucesso!" textAlignment="CENTER" textFill="#6513d0" visible="false">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

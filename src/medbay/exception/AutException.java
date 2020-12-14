@@ -1,4 +1,4 @@
-package projeto.exception;
+package medbay.exception;
 
 public class AutException extends Exception{
 	private static final long SERIAL_VERSION_UID = 1L;

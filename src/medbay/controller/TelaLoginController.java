@@ -32,6 +32,7 @@ public class TelaLoginController {
 			}else if(vo.getTabela() == 2) {
 				Telas.telaInicioAtendente();
 			}else if(vo.getTabela() == 3) {
+				PrincipalMedicoController.setUser(vo);
 				Telas.telaInicioMedico();
 			}else {
 				erroAut.setVisible(true);
