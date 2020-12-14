@@ -68,6 +68,7 @@ public class ExameBO<VO extends ExameVO> implements ExameInterBO {
     	
     	return exame;
     }
+
     public ExameVO listarID(int ID) {
     	try {
     		ExameVO vo = new ExameVO();

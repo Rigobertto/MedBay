@@ -49,7 +49,6 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 				e.printStackTrace();
 			}
 	}
-
 	
 	public ExameVO buscarID(ExameVO vo) throws SQLException {
 		conn = getConnection();

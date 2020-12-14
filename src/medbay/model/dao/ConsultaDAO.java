@@ -1,5 +1,6 @@
 package medbay.model.dao;
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,54 +10,70 @@ import medbay.model.vo.ConsultaVO;
 public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 	
 	public void cadastrar(ConsultaVO vo) {
-		String sqlInsert = "insert into Consulta (ide_paciente, ide_exame, ide_medico, data_consulta, hora_consulta, observacao) values (?, ?, ?, ?, ?, ?)";
-		
+		conn = getConnection();
+		String sqlInsert = "insert into Consulta (data, hora, id_exame, "
+				+ "id_paciente, id_medico, observacao) values (?, ?, ?, ?, ?, ?)";
 		PreparedStatement ptst2;
 		try {
+
 			ptst2 = getConnection().prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
 			ptst2.setInt(1, vo.getPaciente().getId());
 			ptst2.setInt(2, vo.getExame().getId());
 			ptst2.setInt(3, vo.getMedico().getId());
-			ptst2.setDate(4, new Date(vo.getData().getTimeInMillis())); //COMO FUNCIONA ISSO?????????????????????????????????????????????
-			ptst2.setDate(5, new Date(vo.getData().getTimeInMillis())); 
-			/*
-				respondendo à pergunta:
-				o método setDate, da classe PreparedStatement, recebe um inteiro, que é o índice da String sql e um objeto do tipo Date do pacote java.sql.
-				o método getData da classe ConsultaVO retorna um Calendar do pacote java.util, que por meio do método getTimeInMillis() retorna o "Unix Timestamp" da data armazenada nele.
-				o construtor de Data do pacote java.sql recebe um "Unix Timestamp" como parâmetro para construir o objeto.
-				objeto esse que é adaptado para o "sql/banco de dados" e pode ser armazenado de forma correta.
-			*/
-			
-			/*MDS esse ome é bom viu
-			 * 
-			 */
-			
+			ptst2.setDate(4, new Date(vo.getData().getTimeInMillis()));
+			ptst2.setTime(5, new Time(vo.getData().getTimeInMillis()));
 			ptst2.setString(6, vo.getObservacao());
+
 			int affectedRolls = ptst2.executeUpdate();
-			
 			if(affectedRolls == 0) {
 				System.out.println("Falha em cadastrar o usuário");
 				return;
 			}
-			
 			ResultSet chave = ptst2.getGeneratedKeys();
 			if(chave.next()) {
 				vo.setId(chave.getInt(1));
-			} else {
+			}
+			else {
 				System.out.println("Falha ao obter Id de usuário cadastrado.");
 			}
-			
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void editar(ConsultaVO vo) {
-		
+	public void editar(ConsultaVO vo) {		
+		conn = getConnection();
+		String sql = "update Consulta set data = ?, id_exame = ?, id_paciente = ?, id_medico = ?, observacao = ? where ide = ?";
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setDate(1, new Date(vo.getData().getTimeInMillis()));
+			ps.setInt(2, vo.getExame().getId());
+			ps.setInt(3, vo.getPaciente().getId());
+			ps.setInt(4, vo.getMedico().getId());
+			ps.setString(5, vo.getObservacao());
+			ps.setInt(6, vo.getId());
+			ps.executeUpdate();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void excluir(ConsultaVO vo) {
-	
+		conn = getConnection();
+		String sql = "delete from Exame where ide = ?";
+		
+		PreparedStatement ptst;
+		try {
+			ptst = conn.prepareStatement(sql);
+			ptst.setInt(1, vo.getId());
+			ptst.executeUpdate();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public ResultSet listar() throws SQLException{
