@@ -1,10 +1,11 @@
 package medbay.controller;
 
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 //import controller.TextFieldFormatter;
@@ -14,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -33,8 +35,8 @@ public class CadastrarConsultaController implements Initializable{
 	@FXML private TextArea obs;
 	@FXML private ComboBox<String> nomeExame;
 	@FXML private ComboBox<String> nomeMedico;
-	@FXML private TextField data_consulta;
 	@FXML private TextField hora_consulta;
+	@FXML private DatePicker horaConsulta;
 	String data;
 	
 	
@@ -54,33 +56,26 @@ public class CadastrarConsultaController implements Initializable{
 	
 	public void cadastrar(ActionEvent event){
 		try {
-			int id;
+			Calendar data_consulta = Calendar.getInstance();
+			data_consulta.setTime(Date.from(Instant.from(horaConsulta.getValue().atStartOfDay(ZoneId.systemDefault()))));
+			
 			String exameAtual = nomeExame.getSelectionModel().getSelectedItem();
-			{
-				String ID = "";
-				int indice = 0;
-				for(indice = 0; exameAtual.charAt(indice) != '/'; indice++ );
-					ID = exameAtual.substring(0, --indice);
-					id = Integer.parseInt(ID);
-			}
-			ExameVO exame;
-			exame = boExa.listarID(id);
+			String[] ide_exame = exameAtual.split("/");
+			System.out.println(ide_exame[0]);
+			ExameVO exame = new ExameVO();
+			exame = boExa.listarID(Integer.parseInt(ide_exame[0]));
 			
 			String medicoAtual = nomeMedico.getSelectionModel().getSelectedItem();
-			{
-				String ID = "";
-				int indice = 0;
-				for(indice = 0; medicoAtual.charAt(indice) != '/'; indice++ );
-					ID = medicoAtual.substring(0, --indice);
-					id = Integer.parseInt(ID);
-			}
+			String[] ide_medico = medicoAtual.split("/");
+			System.out.println(ide_medico[0]);
 			MedicoVO medico;
-			medico = boMed.listarID(id); //FAZER
+			medico = boMed.listarID(Integer.parseInt(ide_medico[0]));
 			
 			consulta.setPaciente(paciente);
 			consulta.setMedico(medico);
 			consulta.setExame(exame);
-			consulta.setData(data_consulta.getText(), hora_consulta.getText());	//Data ##/##/####
+			consulta.setData(data_consulta);
+			consulta.setHora(hora_consulta.getText());	//Data ##/##/####
 			consulta.setObservacao(obs.getText());
 			boolean valor = boConsulta.cadastrar(consulta);
 			if(valor == true){
@@ -146,14 +141,6 @@ public class CadastrarConsultaController implements Initializable{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void formatoData() {
-		TextFieldFormatter tex = new TextFieldFormatter();
-		tex.setMask("##/##/####");
-		tex.setCaracteresValidos("0123456789");
-		tex.setTf(data_consulta);
-		tex.formatter();
 	}
 	
 	public void formatoHora() {

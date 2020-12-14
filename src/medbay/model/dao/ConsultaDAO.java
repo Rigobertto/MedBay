@@ -11,17 +11,16 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 	
 	public void cadastrar(ConsultaVO vo) {
 		conn = getConnection();
-		String sqlInsert = "insert into Consulta (data, hora, id_exame, "
-				+ "id_paciente, id_medico, observacao) values (?, ?, ?, ?, ?, ?)";
+		String sqlInsert = "insert into Consulta (data_consulta, hora_consulta, ide_exame, "
+				+ "ide_paciente, ide_medico, observacao) values (?, ?, ?, ?, ?, ?)";
 		PreparedStatement ptst2;
 		try {
-
 			ptst2 = getConnection().prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
-			ptst2.setInt(1, vo.getPaciente().getId());
-			ptst2.setInt(2, vo.getExame().getId());
-			ptst2.setInt(3, vo.getMedico().getId());
-			ptst2.setDate(4, new Date(vo.getData().getTimeInMillis()));
-			ptst2.setTime(5, new Time(vo.getData().getTimeInMillis()));
+			ptst2.setDate(1, new Date(vo.getData().getTimeInMillis()));
+			ptst2.setTime(2, new Time(vo.getHora().getTimeInMillis()));
+			ptst2.setInt(3, vo.getExame().getId());
+			ptst2.setInt(4, vo.getPaciente().getId());
+			ptst2.setInt(5, vo.getMedico().getId());
 			ptst2.setString(6, vo.getObservacao());
 
 			int affectedRolls = ptst2.executeUpdate();
@@ -29,12 +28,12 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 				System.out.println("Falha em cadastrar o usuário");
 				return;
 			}
+			
 			ResultSet chave = ptst2.getGeneratedKeys();
 			if(chave.next()) {
 				vo.setId(chave.getInt(1));
-			}
-			else {
-				System.out.println("Falha ao obter Id de usuário cadastrado.");
+			} else {
+				System.out.println("Falha ao obter Id de Consulta cadastrado.");
 			}
 		}
 		catch (SQLException e) {
@@ -79,10 +78,8 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 	public ResultSet listar() throws SQLException{
 		conn = getConnection();
 		String sql = "select * from Consulta";
-		
 		PreparedStatement ptst;
 		ResultSet rs = null;
-		
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			rs = ptst.executeQuery();
@@ -112,5 +109,22 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 		}
 		
 		return tabela;
+	}
+	
+	public ResultSet buscarData(ConsultaVO consulta) {
+		conn = getConnection();
+		String sql = "select * from consulta where data_consulta = ?";
+		PreparedStatement ptst;
+		ResultSet rs;
+		try {
+			ptst = conn.prepareStatement(sql);
+			ptst.setDate(1, new Date(consulta.getData().getTimeInMillis()));
+			rs = ptst.executeQuery();
+			return rs;
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

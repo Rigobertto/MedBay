@@ -5,15 +5,12 @@ import java.util.Calendar;
 public class ConsultaVO {
 	private int id;
     private Calendar data;
-
+    private Calendar hora;
     private ExameVO exame;
-
     private PacienteVO paciente;
     private MedicoVO medico;
-
     private String observacao;
-
-
+    
     public int getId() {
         return this.id;
     }
@@ -22,21 +19,6 @@ public class ConsultaVO {
         else this.id = id;
         return true;
     }
-
-    public Calendar getData() {
-        return this.data;
-    }
-
-    public boolean setData(Calendar data) {
-        if(data.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()) return false;
-        this.data = data;
-        return true;
-    }
-    
-    public boolean setData(String data, String hora) {
-        return this.setData(Calendar.getInstance());
-    }
-
     public ExameVO getExame() {
         return this.exame;
     }
@@ -45,7 +27,6 @@ public class ConsultaVO {
         this.exame = exame;
         return true;
     }
-    
     public PacienteVO getPaciente() {
 		return paciente;
 	}
@@ -71,4 +52,60 @@ public class ConsultaVO {
         this.observacao = observacao;
         return true;
     }
+
+    public String getData(Calendar data) {
+		return Util.formataData(data);
+	}
+	
+	public Calendar getData() {
+		return data;
+	}
+	
+	public void setData() {
+		data = Calendar.getInstance();
+	}
+	
+	public void setData(Calendar data) {
+		if(data != null)
+			this.data = data;
+		else
+			System.out.println("Data Inválida!");
+	}
+	
+	public void setData(String d) {
+		if (d != null && !d.isEmpty()) {
+			Calendar data = Util.formataData(d);
+			if(data != null)		
+				this.data = data;
+			else System.out.println("Data inválida!");
+		} else System.out.println("Data inválida!");
+	}
+	
+	public String getHora(Calendar hora) {
+		return Util.formataHora(hora);
+	}
+	
+	public Calendar getHora() {
+		return hora;
+	}
+	
+	public void setHora() {
+		hora = Calendar.getInstance();
+	}
+	
+	public void setHora(Calendar hora) {
+		if(hora != null)
+			this.hora = hora;
+		else
+			System.out.println("Hora Inválida!");
+	}
+	
+	public void setHora(String h) {
+		if (h!= null && !h.isEmpty()) {
+			Calendar hora = Util.formataHora(h);
+			if(hora != null)		
+				this.hora = hora;
+			else System.out.println("Hora inválida!");
+		} else System.out.println("Hora inválida!");
+	}
 }
