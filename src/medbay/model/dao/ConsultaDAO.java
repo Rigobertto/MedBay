@@ -17,7 +17,7 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 		try {
 			ptst2 = getConnection().prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
 			ptst2.setDate(1, new Date(vo.getData().getTimeInMillis()));
-			ptst2.setTime(2, new Time(vo.getHora().getTimeInMillis()));
+			ptst2.setTime(2, new Time(vo.getData().getTimeInMillis()));
 			ptst2.setInt(3, vo.getExame().getId());
 			ptst2.setInt(4, vo.getPaciente().getId());
 			ptst2.setInt(5, vo.getMedico().getId());

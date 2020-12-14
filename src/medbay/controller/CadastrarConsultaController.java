@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import medbay.model.bo.ConsultaBO;
 import medbay.model.bo.ExameBO;
 import medbay.model.bo.MedicoBO;
+import medbay.model.util.Tempo;
 import medbay.model.vo.ConsultaVO;
 import medbay.model.vo.ExameVO;
 import medbay.model.vo.MedicoVO;
@@ -61,21 +62,23 @@ public class CadastrarConsultaController implements Initializable{
 			
 			String exameAtual = nomeExame.getSelectionModel().getSelectedItem();
 			String[] ide_exame = exameAtual.split("/");
-			System.out.println(ide_exame[0]);
+			//System.out.println(ide_exame[0]);
 			ExameVO exame = new ExameVO();
 			exame = boExa.listarID(Integer.parseInt(ide_exame[0]));
 			
 			String medicoAtual = nomeMedico.getSelectionModel().getSelectedItem();
 			String[] ide_medico = medicoAtual.split("/");
-			System.out.println(ide_medico[0]);
+			//System.out.println(ide_medico[0]);
 			MedicoVO medico;
 			medico = boMed.listarID(Integer.parseInt(ide_medico[0]));
 			
+			consulta.setData(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText()));
+			System.out.println(Tempo.toString(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText())));
 			consulta.setPaciente(paciente);
 			consulta.setMedico(medico);
 			consulta.setExame(exame);
 			consulta.setData(data_consulta);
-			consulta.setHora(hora_consulta.getText());	//Data ##/##/####
+			//consulta.setHora(hora_consulta.getText());	//Data ##/##/####
 			consulta.setObservacao(obs.getText());
 			boolean valor = boConsulta.cadastrar(consulta);
 			if(valor == true){

@@ -10,6 +10,7 @@ import medbay.model.dao.ConsultaDAO;
 import medbay.model.vo.ConsultaVO;
 import medbay.model.vo.ExameVO;
 import medbay.model.vo.MedicoVO;
+import medbay.model.vo.PacienteVO;
 
 public class ConsultaBO /*implements ConsultaInterBO*/ {
 	ConsultaDAO<ConsultaVO> dao = new ConsultaDAO<ConsultaVO>();
@@ -61,7 +62,7 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 				Calendar data = Calendar.getInstance();
 				data.setTimeInMillis(tabela.getTime("data_consulta").getTime());
 				consulta.setData(data);
-				
+				dfghsdfgadfbdfb.tabela.getTime("hora_consulta").getTime();
 				consulta.setExame(ebo.buscaId(tabela.getInt("ide_exame")));
 				consulta.setPaciente(pbo.buscaId(tabela.getInt("ide_paciente")));
 				consulta.setMedico(mbo.buscaId(tabela.getInt("ide_medico")));
@@ -77,13 +78,55 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 		return lista;
 	}
 	
-	public List<ConsultaVO> listarID(MedicoVO medico) {
-		List<ConsultaVO> lista = listar();
+	public List<ConsultaVO> listarIdMedico(MedicoVO medico) {
+		List<ConsultaVO> lista = this.listar();
 		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
 		
 		for(int index = 0; index < lista.size(); index++) {
 			if(lista.get(index).getMedico().getId() == medico.getId()) resultado.add(lista.get(index));
 		}
+		
+		return resultado;
+	}
+
+	public List<ConsultaVO> listarIdPaciente(PacienteVO paciente) {
+		List<ConsultaVO> lista = this.listar();
+		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
+		
+		for(int index = 0; index < lista.size(); index++) {
+			if(lista.get(index).getPaciente().getId() == paciente.getId()) resultado.add(lista.get(index));
+		}
+		
+		return resultado;
+	}
+	
+	public List<ConsultaVO> listarNomeMedico(String nome) {
+		List<ConsultaVO> lista = this.listar();
+		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
+		
+		for(int index = 0; index < lista.size(); index++) {
+			if(lista.get(index).getMedico().getNome().contains(nome)) resultado.add(lista.get(index));
+		}
+		
+		return resultado;
+	}
+	
+	public List<ConsultaVO> listarNomePaciente(String nome) {
+		List<ConsultaVO> lista = this.listar();
+		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
+		
+		for(int index = 0; index < lista.size(); index++) {
+			if(lista.get(index).getPaciente().getNome().contains(nome)) resultado.add(lista.get(index));
+		}
+		
+		return resultado;
+	}
+	
+	public List<ConsultaVO> listarNome(String nome) {
+		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
+		
+		resultado.addAll(this.listarNomeMedico(nome));
+		resultado.addAll(this.listarNomePaciente(nome));
 		
 		return resultado;
 	}
@@ -111,4 +154,10 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 		
 		return consulta;
 	}
+	
+	/*
+	public List<ConsultaVO> buscarData() {
+		
+	}
+	*/
 }

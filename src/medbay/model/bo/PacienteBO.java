@@ -68,6 +68,7 @@ public class PacienteBO implements PacienteInterBO{
 		
 		ResultSet tabela = dao.buscaID(paciente);
 		try {
+			if(tabela.next()) {
 			paciente.setNome(tabela.getString("nome"));
 			paciente.setIdade(tabela.getInt("idade"));
 			paciente.setCpf(tabela.getString("cpf"));
@@ -75,6 +76,7 @@ public class PacienteBO implements PacienteInterBO{
 			paciente.setPeso(tabela.getFloat("peso"));
 			paciente.setAltura(tabela.getFloat("Altura"));
 			paciente.setTipoSangue(tabela.getString("sangue"));
+			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
