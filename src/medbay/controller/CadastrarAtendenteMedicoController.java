@@ -48,8 +48,10 @@ public class CadastrarAtendenteMedicoController implements Initializable{
 			aten.setLogin(login.getText());
 			aten.setSenha(senha.getText());
 			boolean valor = bo.cadastrar(aten);
-			if(valor == true)
+			if(valor == true) {
+				lblMensagem.setText("Cadastro feito com sucesso!");
 				lblMensagem.setVisible(true);
+			}
 			else {
 				lblMensagem.setText("Falha ao Cadastrar Atendente!");
 				lblMensagem.setVisible(true);
@@ -79,8 +81,10 @@ public class CadastrarAtendenteMedicoController implements Initializable{
 			med.setEspecialidade(especialidade.getText());
 			med.setCrm(crm.getText());
 			boolean valor = boMed.cadastrar(med);
-			if(valor == true)
+			if(valor == true){
+				lblMensagem.setText("Cadastro feito com sucesso!");
 				lblMensagem.setVisible(true);
+			}
 			else {
 				lblMensagem.setText("Falha ao Cadastrar Medico!");
 				lblMensagem.setVisible(true);

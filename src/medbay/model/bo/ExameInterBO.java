@@ -1,4 +1,4 @@
-package medbay.model.vo;
+package medbay.model.bo;
 
 public interface ExameInterBO {
 //    public boolean cadastrar(ExameVO exame);

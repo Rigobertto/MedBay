@@ -15,17 +15,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import medbay.model.bo.ProntuarioBO;
 import medbay.model.vo.ConsultaVO;
-import medbay.model.vo.ExameVO;
 import medbay.model.vo.ProntuarioVO;
 import medbay.view.Telas;
 
 public class VisualizarProntuarioController implements Initializable {
-	@FXML private TableView<ConsultaVO> tabelaProntuario;
-	@FXML private TableColumn<ConsultaVO, Integer> ide;
+	@FXML private TableView<ProntuarioVO> tabelaProntuario;
+	@FXML private TableColumn<ProntuarioVO, Integer> ide;
 	@FXML private Label nome;
-	@FXML private TableColumn<ConsultaVO, String> exame;
-	@FXML private TableColumn<ConsultaVO, String> data_consulta;
-	@FXML private TableColumn<ConsultaVO, String> observacao;
+	@FXML private TableColumn<ProntuarioVO, String> exame;
+	@FXML private TableColumn<ProntuarioVO, String> data_consulta;
+	@FXML private TableColumn<ProntuarioVO, String> hora_consulta;
+	@FXML private TableColumn<ProntuarioVO, String> observacao;
 	private static ConsultaVO consulta = new ConsultaVO();
 	ProntuarioBO boPront = new ProntuarioBO();
 	
@@ -35,12 +35,10 @@ public class VisualizarProntuarioController implements Initializable {
 	}
 	
 	public void listar(){
-		ObservableList<ProntuarioVO> prontuario = FXCollections.observableArrayList(boPront.listar(consulta)); 
-		ide.setCellValueFactory(new PropertyValueFactory<ProntuarioVO, Integer>("id"));
-		exame.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> param) -> new SimpleStringProperty(param.getValue().getMedico().getNome()));
-		data_consulta.setCellValueFactory(new PropertyValueFactory<ProntuarioVO, String>("data"));
-		exame.setCellValueFactory(new PropertyValueFactory<ExameVO, String>("nome"));
-		observacao.setCellValueFactory(new PropertyValueFactory<ProntuarioVO, String>("observacao")); // Talvez o q esta entre "" esteja incorreto
+		ObservableList<ProntuarioVO> prontuario = FXCollections.observableArrayList(boPront.listar(consulta));
+		ide.setCellValueFactory(new PropertyValueFactory<ProntuarioVO, Integer> ("id"));
+		exame.setCellValueFactory((TableColumn.CellDataFeatures<ProntuarioVO, String> par) -> new SimpleStringProperty(par.getValue().getExame().getNome()));
+		data_consulta.setCellValueFactory(new PropertyValueFactory<ProntuarioVO, String> ("dataString"));
 		
 		tabelaProntuario.setItems(prontuario);
 	}
@@ -55,7 +53,6 @@ public class VisualizarProntuarioController implements Initializable {
 	
 	public void voltar(ActionEvent event) {
 		try {
-			//fazer um if pra voltar para a tela certa
 			Telas.telaInicioMedico();
 		}catch(Exception e) {
 			e.printStackTrace();
