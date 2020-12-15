@@ -9,13 +9,12 @@ import java.util.Calendar;
 import java.util.List;
 
 import medbay.model.dao.ConsultaDAO;
-import medbay.model.util.Tempo;
 import medbay.model.vo.ConsultaVO;
 import medbay.model.vo.ExameVO;
 import medbay.model.vo.MedicoVO;
 import medbay.model.vo.PacienteVO;
 
-public class ConsultaBO /*implements ConsultaInterBO*/ {
+public class ConsultaBO implements ConsultaInterBO {
 	ConsultaDAO<ConsultaVO> dao = new ConsultaDAO<ConsultaVO>();
 	
 	ExameBO<ExameVO> ebo = new ExameBO<ExameVO>();
@@ -88,6 +87,10 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 	
 	public List<ConsultaVO> listarIdMedico(MedicoVO medico) {
 		List<ConsultaVO> lista = this.listar();
+		return this.listarIdMedico(medico, lista);
+	}
+	
+	public List<ConsultaVO> listarIdMedico(MedicoVO medico, List<ConsultaVO> lista) {
 		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
 		
 		for(int index = 0; index < lista.size(); index++) {
@@ -99,6 +102,10 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 
 	public List<ConsultaVO> listarIdPaciente(PacienteVO paciente) {
 		List<ConsultaVO> lista = this.listar();
+		return this.listarIdPaciente(paciente, lista);
+	}
+	
+	public List<ConsultaVO> listarIdPaciente(PacienteVO paciente, List<ConsultaVO> lista) {
 		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
 		
 		for(int index = 0; index < lista.size(); index++) {
@@ -110,6 +117,10 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 	
 	public List<ConsultaVO> listarNomeMedico(String nome) {
 		List<ConsultaVO> lista = this.listar();
+		return this.listarNomeMedico(nome, lista);
+	}
+	
+	public List<ConsultaVO> listarNomeMedico(String nome, List<ConsultaVO> lista) {
 		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
 		
 		for(int index = 0; index < lista.size(); index++) {
@@ -121,6 +132,10 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 	
 	public List<ConsultaVO> listarNomePaciente(String nome) {
 		List<ConsultaVO> lista = this.listar();
+		return this.listarNomePaciente(nome, lista);
+	}
+	
+	public List<ConsultaVO> listarNomePaciente(String nome, List<ConsultaVO> lista) {
 		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
 		
 		for(int index = 0; index < lista.size(); index++) {
@@ -131,10 +146,15 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 	}
 	
 	public List<ConsultaVO> listarNome(String nome) {
+		List<ConsultaVO> lista = this.listar();
+		return this.listarNome(nome, lista);
+	}
+	
+	public List<ConsultaVO> listarNome(String nome, List<ConsultaVO> lista) {
 		List<ConsultaVO> resultado = new ArrayList<ConsultaVO>();
 		
-		resultado.addAll(this.listarNomeMedico(nome));
-		resultado.addAll(this.listarNomePaciente(nome));
+		resultado.addAll(this.listarNomeMedico(nome, lista));
+		resultado.addAll(this.listarNomePaciente(nome, lista));
 		
 		return resultado;
 	}
@@ -146,15 +166,21 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 		ResultSet tabela = dao.buscaID(consulta);
 		
 		try {
-			Calendar data = Calendar.getInstance();
-			data.setTimeInMillis(tabela.getTime("data").getTime());
-			consulta.setData(data);
-			
-			consulta.setExame(ebo.buscaId(tabela.getInt("id_exame")));
-			consulta.setPaciente(pbo.buscaId(tabela.getInt("id_paciente")));
-			consulta.setMedico(mbo.buscaId(tabela.getInt("id_medico")));
-			
-			consulta.setObservacao(tabela.getString("observacao"));
+			if(tabela.next()) {
+				Calendar data = Calendar.getInstance();				
+				{
+					Date date = tabela.getDate("data_consulta");
+					Time time = tabela.getTime("hora_consulta");
+					data.setTimeInMillis(date.getTime() + time.getTime());
+				}
+				consulta.setData(data);
+				
+				consulta.setExame(ebo.buscaId(tabela.getInt("ide_exame")));
+				consulta.setPaciente(pbo.buscaId(tabela.getInt("ide_paciente")));
+				consulta.setMedico(mbo.buscaId(tabela.getInt("ide_medico")));
+				
+				consulta.setObservacao(tabela.getString("observacao"));
+			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
