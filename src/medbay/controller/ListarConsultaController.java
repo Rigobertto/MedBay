@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import medbay.model.bo.ConsultaBO;
+import medbay.model.bo.GerenteBO;
 import medbay.model.bo.PacienteBO;
 import medbay.model.vo.ConsultaVO;
 
@@ -23,8 +24,6 @@ public class ListarConsultaController implements Initializable{
 	@FXML private TableView<ConsultaVO> tabelaConsulta;
     @FXML private TableColumn<ConsultaVO, Integer> ide;
     @FXML private TableColumn<ConsultaVO, String> nome;
-	//@FXML private TableColumn<ConsultaVO, String> cpf;
-	//@FXML private TableColumn<ConsultaVO, String> sangue;
 	@FXML private TableColumn<ConsultaVO, String> medico;
 	@FXML private TableColumn<ConsultaVO, String> exame;
 	@FXML private TableColumn<ConsultaVO, String> data_consulta; // talez nao seja string
@@ -50,31 +49,29 @@ public class ListarConsultaController implements Initializable{
 		medico.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> param) -> new SimpleStringProperty(param.getValue().getMedico().getNome()));
 		exame.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> par) -> new SimpleStringProperty(par.getValue().getExame().getNome()));
 		hora_consulta.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("horaString"));
-		data_consulta.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("dataString"));
-		//data_consulta.setText("0");
-		//hora_consulta.setText("0");
+		data_consulta.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String> ("dataString"));
 		tabelaConsulta.setItems(consulta);
 		
 		Utils.initButtons(columnEdit, 15, PEN_SOLID, "svg-gray", (ConsultaVO consultabo, ActionEvent event) -> {
-//			System.out.println("Você clicou para editar as informações de: " + consultabo.getPaciente().getNome());
-//			// Aqui vai toda a lógica para editar o exame
-//			try {
-//				EditarConsultaController.setConsultal(consultabo);
-//				Telas.telaEditarConsulta();
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//			}
-//			//aux.editar(vo);
+			System.out.println("Você clicou para editar as informações de: " + consultabo.getPaciente().getNome());
+			
+			try {
+				EditarConsultaController.setConsultal(consultabo);
+				Telas.telaEditarConsulta();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			//aux.editar(vo);
 		});
 		Utils.initButtons(columnDelete, 15, TRASH_SOLID, "svg-red", (ConsultaVO consultabo, ActionEvent event) -> {
-//			System.out.println("Você clicou para deletar as informações de: " + consultabo.getId());
-//			// Aqui vai toda a lógica para deletar o exame
-//			try {
-//				bo.excluir(consultabo);
-//				Telas.telaEntrarConsulta();
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//			}
+			System.out.println("Você clicou para deletar as informações de: " + consultabo.getId());
+			// Aqui vai toda a lógica para deletar o exame
+			try {
+				bo.excluir(consultabo);
+				Telas.telaEntrarConsulta();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		});
     }
 	
@@ -112,6 +109,10 @@ public class ListarConsultaController implements Initializable{
 ////			}
 //		});
 //	}
+	
+	public void gerarPDF(ActionEvent event){
+		GerenteBO.gerarPDF(tabelaConsulta.getSelectionModel().getSelectedItem());
+	}
 	
 	public void logOut(ActionEvent event) {
 		try {

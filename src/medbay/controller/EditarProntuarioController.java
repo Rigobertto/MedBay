@@ -27,7 +27,7 @@ public class EditarProntuarioController implements Initializable{
 	
 	public void cadastrar(ActionEvent event){
 		try {
-			prontuario.setExame(consulta.getExame());
+			//prontuario.setExame(consulta.getExame());
 			prontuario.setObservacao(observacao.getText());
 			boProntuario.editar(prontuario);
 			boConsulta.excluir(consulta);

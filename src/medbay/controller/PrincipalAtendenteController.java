@@ -14,16 +14,17 @@ public class PrincipalAtendenteController implements Initializable{
 	@FXML private Label lblMensagem;
 	private static UsuarioVO user = new UsuarioVO();
 	
-	public static void getUser(UsuarioVO us) {
-		PrincipalAtendenteController.user = us;
-	}
-	
-	public static UsuarioVO setUser() {
-		return user;
-	}
 	public void initialize(URL url, ResourceBundle rb) {
     	//lblMensagem.setText(user.getNome());
     }
+	
+	public static UsuarioVO getUser() {
+		return user;
+	}
+
+	public static void setUser(UsuarioVO user) {
+		PrincipalAtendenteController.user = user;
+	}
 	
 	public void logOut(ActionEvent event) {
 		try {

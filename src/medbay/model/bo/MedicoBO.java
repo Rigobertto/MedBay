@@ -113,29 +113,5 @@ public class MedicoBO<VO extends MedicoVO> implements MedicoInterBO{
 				return null;
 			}
 		}
-		public MedicoVO listarID() {
-			return null;
-		}
-//		public MedicoVO buscaNome(MedicoVO medico) {
-//			// Recebe uma string como parametro para buscar no banco de dados atrav�s do DAO um atributo nome que igual a string recebida 
-//			// como parametro.
-//			// Posteriormente ir� apresentar na tela um objeto medico correspondente a String recebida.
-//			// Caso n�o exista nenhuma string igual, ir� exibir mensagem de nada encontrado.
-//		}
-//		
-//		public MedicoVO buscaCPF(MedicoVO medico) {
-//			// Ir� funcionar da mesma forma que o metodo de busca pelo nome, s� que ser� usado uma string com n�meros de cpf
-//			// Obviamente ir� passar por uma valida��o para saber se o n�mero digitado � equivalente a um cpf, ou seja, 11 d�gitos.
-//			// caso seja um cpf invalido ir� aparecer mensagem de invalidez na tela.
-//			// Posteriormente ir� apresentar na tela um objeto medico correspondente a String recebida caso exista algum objeto 
-//			// com cpf igual ao buscado.
-//		}
-//		
-//		public MedicoVO buscaCRM(MedicoVO medico) {
-//			//Ir� receber uma String como parametro e ir� passar pela valida��o, em seguida ir� manda para o DAO com a intens�o de verificar
-//			//se existe algum valor na tabela igual a string recebedia por parametro, caso tenha ir� mostrar na tela para o usu�rio, caso
-//			//n�o tenha a mensagem de medico n�o encontrado ser� exibido para o usu�rio;
-//			
-//		}
 	
 }

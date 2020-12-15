@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.PrincipalAtendenteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medbay.controller.PrincipalAtendenteController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -51,14 +51,9 @@
       </ImageView>
       <Button layoutX="400.0" layoutY="513.0" mnemonicParsing="false" onAction="#entrarConsulta" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Entrar" textFill="WHITE" />
       <Button layoutX="697.0" layoutY="513.0" mnemonicParsing="false" onAction="#entrarPaciente" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Entrar" textFill="WHITE" />
-      <Label layoutX="69.0" layoutY="123.0" prefHeight="21.0" prefWidth="44.0" text="Olá," textFill="#3c096c">
+      <Label layoutX="548.0" layoutY="46.0" prefHeight="34.0" prefWidth="185.0" text="Menu Atendente" textFill="#9d4edd">
          <font>
-            <Font size="23.0" />
-         </font>
-      </Label>
-      <Label layoutX="113.0" layoutY="123.0" text="Nome" textFill="#3c096c">
-         <font>
-            <Font size="23.0" />
+            <Font name="System Bold" size="23.0" />
          </font>
       </Label>
    </children>

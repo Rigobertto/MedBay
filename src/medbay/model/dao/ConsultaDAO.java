@@ -6,9 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import medbay.model.vo.ConsultaVO;
+import medbay.model.vo.ProntuarioVO;
 
 public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
-	
+	ProntuarioDAO<ProntuarioVO> daoProntuario = new ProntuarioDAO<ProntuarioVO>();
 	public void cadastrar(ConsultaVO vo) {
 		conn = getConnection();
 		String sqlInsert = "insert into Consulta (data_consulta, hora_consulta, ide_exame, "
@@ -16,6 +17,7 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 		PreparedStatement ptst2;
 		try {
 			ptst2 = getConnection().prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
+			System.out.println(vo.getHoraString());
 			ptst2.setDate(1, new Date(vo.getData().getTimeInMillis()));
 			ptst2.setTime(2, new Time(vo.getData().getTimeInMillis()));
 			ptst2.setInt(3, vo.getExame().getId());
@@ -35,6 +37,7 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 			} else {
 				System.out.println("Falha ao obter Id de Consulta cadastrado.");
 			}
+			daoProntuario.cadastrar(vo); //CHAMANDO O PRONTUARIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -43,16 +46,17 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 	
 	public void editar(ConsultaVO vo) {		
 		conn = getConnection();
-		String sql = "update Consulta set data = ?, id_exame = ?, id_paciente = ?, id_medico = ?, observacao = ? where ide = ?";
+		String sql = "update Consulta set data_consulta = ?, hora_consulta = ? ide_exame = ?, ide_paciente = ?, ide_medico = ?, observacao = ? where ide = ?";
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setDate(1, new Date(vo.getData().getTimeInMillis()));
-			ps.setInt(2, vo.getExame().getId());
-			ps.setInt(3, vo.getPaciente().getId());
-			ps.setInt(4, vo.getMedico().getId());
-			ps.setString(5, vo.getObservacao());
-			ps.setInt(6, vo.getId());
+			ps.setTime(2, new Time(vo.getData().getTimeInMillis()));
+			ps.setInt(3, vo.getExame().getId());
+			ps.setInt(4, vo.getPaciente().getId());
+			ps.setInt(5, vo.getMedico().getId());
+			ps.setString(6, vo.getObservacao());
+			ps.setInt(7, vo.getId());
 			ps.executeUpdate();
 		}
 		catch(SQLException e) {
@@ -62,7 +66,7 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 
 	public void excluir(ConsultaVO vo) {
 		conn = getConnection();
-		String sql = "delete from Exame where ide = ?";
+		String sql = "delete from consulta where ide = ?";
 		
 		PreparedStatement ptst;
 		try {

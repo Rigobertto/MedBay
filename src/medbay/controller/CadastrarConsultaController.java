@@ -71,11 +71,11 @@ public class CadastrarConsultaController implements Initializable{
 			medico = boMed.listarID(Integer.parseInt(ide_medico[0]));
 			
 			consulta.setData(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText()));
-			System.out.println(Tempo.toString(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText())));
+			
 			consulta.setPaciente(paciente);
 			consulta.setMedico(medico);
 			consulta.setExame(exame);
-			consulta.setData(data_consulta);
+			//consulta.setData(data_consulta);
 			consulta.setObservacao(obs.getText());
 			boolean valor = boConsulta.cadastrar(consulta);
 			if(valor == true){

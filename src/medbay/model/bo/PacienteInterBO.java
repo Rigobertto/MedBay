@@ -5,16 +5,10 @@ import java.util.List;
 import medbay.model.vo.PacienteVO;
 
 public interface PacienteInterBO {
-	
 	public List<PacienteVO> listar();
-	
-	//public PacienteVO editar(PacienteVO paciente);
-	
-	//public void excluir(PacienteVO paciente);
-	
-	//public PacienteVO buscaCPF(PacienteVO paciente);
-	
-	//public PacienteVO buscaNome(PacienteVO paciente);
-	
 	public boolean cadastrar(PacienteVO paciente);
+	public List<PacienteVO> listarNome(String nome);
+	public boolean editar(PacienteVO paciente);
+	public PacienteVO buscaId(int id);
+	public void excluir(PacienteVO paciente);
 }
