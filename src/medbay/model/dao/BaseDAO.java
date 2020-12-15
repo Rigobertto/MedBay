@@ -9,7 +9,7 @@ public abstract class BaseDAO <VO> implements BaseInterDAO <VO>{
 	Connection conn = null;
 	private static final String URL = "jdbc:postgresql://localhost:5432/MedBay";
 	private static final String USER = "postgres";
-	private static final String SENHA = "riguinho123";
+	private static final String SENHA = "18111998";
 	
 	public Connection getConnection() {
 		if(conn == null) {
