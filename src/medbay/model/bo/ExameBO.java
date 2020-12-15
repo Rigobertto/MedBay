@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import medbay.model.dao.ExameDAO;
 import medbay.model.vo.ExameVO;
 
-public class ExameBO<VO extends ExameVO> implements ExameInterBO {
+public class ExameBO<VO extends ExameVO> implements ExameInterBO<VO>{
 	ExameDAO<ExameVO> ex = new ExameDAO<ExameVO>();
 	
 	public ArrayList<ExameVO> listar() {
@@ -27,7 +27,7 @@ public class ExameBO<VO extends ExameVO> implements ExameInterBO {
 		return exames;
 	}
 	
-    public void cadastrar(VO exame) {
+    public void cadastrar(ExameVO exame) {
     	try {
     		ex.cadastrar(exame);
     	}catch(SQLException e) {

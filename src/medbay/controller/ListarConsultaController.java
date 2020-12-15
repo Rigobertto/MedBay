@@ -14,8 +14,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import medbay.model.bo.ConsultaBO;
+import medbay.model.bo.GerenteBO;
 import medbay.model.bo.PacienteBO;
-import medbay.model.util.Tempo;
 import medbay.model.vo.ConsultaVO;
 
 import medbay.view.Telas;
@@ -109,6 +109,10 @@ public class ListarConsultaController implements Initializable{
 ////			}
 //		});
 //	}
+	
+	public void gerarPDF(ActionEvent event){
+		GerenteBO.gerarPDF(tabelaConsulta.getSelectionModel().getSelectedItem());
+	}
 	
 	public void logOut(ActionEvent event) {
 		try {

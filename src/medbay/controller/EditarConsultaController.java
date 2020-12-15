@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,7 +30,7 @@ public class EditarConsultaController implements Initializable{
 	@FXML private Label lblMensagem;
 	@FXML private Label nome;
 	@FXML private Label cpf;
-	@FXML private TextArea obs;
+	@FXML private TextArea observacao;
 	@FXML private ComboBox<String> nomeExame;
 	@FXML private ComboBox<String> nomeMedico;
 	@FXML private TextField hora_consulta;
@@ -65,14 +64,15 @@ public class EditarConsultaController implements Initializable{
 			medico = boMed.listarID(Integer.parseInt(ide_medico[0]));
 			
 			consulta.setData(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText()));
-			System.out.println(Tempo.toString(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText())));
-			consulta.setPaciente(consulta.getPaciente());
+			
+			consulta.setPaciente(consultal.getPaciente());
 			consulta.setMedico(medico);
 			consulta.setExame(exame);
-			consulta.setData(data_consulta);
-			consulta.setObservacao(obs.getText());
-			boolean valor = boConsulta.cadastrar(consulta);
+			//consulta.setData(data_consulta);
+			consulta.setObservacao(observacao.getText());
+			boolean valor = boConsulta.editar(consulta);
 			if(valor == true){
+				lblMensagem.setText("Editado com sucesso!");
 				lblMensagem.setVisible(true);
 			}else {
 				lblMensagem.setText("Erro ao editar!");

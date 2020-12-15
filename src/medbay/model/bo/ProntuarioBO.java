@@ -12,7 +12,6 @@ import medbay.model.dao.ProntuarioDAO;
 import medbay.model.vo.ConsultaVO;
 import medbay.model.vo.ExameVO;
 import medbay.model.vo.MedicoVO;
-import medbay.model.vo.PacienteVO;
 import medbay.model.vo.ProntuarioVO;
 
 

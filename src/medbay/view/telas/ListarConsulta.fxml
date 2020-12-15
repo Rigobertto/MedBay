@@ -12,22 +12,22 @@
             <Image url="@../VE/sdads.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="210.0" fitWidth="230.0" layoutX="27.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="210.0" fitWidth="230.0" layoutX="27.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Rectangle%2019.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/undraw_Taking_notes_re_bnaf%201.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="19.0" fitWidth="110.0" layoutX="55.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="19.0" fitWidth="110.0" layoutX="56.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/advsdfvadf.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="87.0" fitWidth="181.0" layoutX="54.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="87.0" fitWidth="181.0" layoutX="55.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../VE/Tenha%20acesso%20a%20todos%20os%20dados%20referentes%20às%20Consultas%20da%20sua%20clínica.%20Adicione%20novos,%20exclua-os%20ou%20edite%20suas%20informaçoes..png" />
          </image>
@@ -65,5 +65,6 @@
       <Button layoutX="1162.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
       <Button layoutX="613.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #9D4EDD; -fx-background-radius: 10;" text="Buscar" textFill="WHITE" />
       <TextField layoutX="271.0" layoutY="212.0" prefHeight="31.0" prefWidth="342.0" promptText="Busque por Data" style="-fx-background-radius: 10;" />
+      <Button layoutX="50.0" layoutY="626.0" mnemonicParsing="false" onAction="#gerarPDF" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Gerar PDF" textFill="WHITE" />
    </children>
 </Pane>

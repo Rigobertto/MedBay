@@ -46,7 +46,7 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 	
 	public void editar(ConsultaVO vo) {		
 		conn = getConnection();
-		String sql = "update Consulta set data_consulta = ?, hora_consulta = ? id_exame = ?, id_paciente = ?, id_medico = ?, observacao = ? where ide = ?";
+		String sql = "update Consulta set data_consulta = ?, hora_consulta = ? ide_exame = ?, ide_paciente = ?, ide_medico = ?, observacao = ? where ide = ?";
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(sql);

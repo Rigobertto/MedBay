@@ -95,6 +95,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <DatePicker fx:id="data_consulta" layoutX="522.0" layoutY="429.0" prefHeight="31.0" prefWidth="341.0" />
+      <DatePicker fx:id="horaConsulta" layoutX="522.0" layoutY="429.0" prefHeight="31.0" prefWidth="341.0" />
    </children>
 </Pane>
