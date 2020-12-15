@@ -52,7 +52,7 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 	
 	public ExameVO buscarID(ExameVO vo) throws SQLException {
 		conn = getConnection();
-		String sqlSearch = "select * from Exame where ide like ?";
+		String sqlSearch = "select * from Exame where ide = ?";
 		PreparedStatement ptst;
 		ResultSet rs;
 		ExameVO exame = new ExameVO();

@@ -9,7 +9,7 @@ import medbay.model.vo.ConsultaVO;
 
 public class ProntuarioDAO<VO extends ProntuarioVO> extends BaseDAO<VO> {
 	
-	public void cadastrar(ConsultaVO vo) throws SQLException {
+	public void cadastrar(VO vo) throws SQLException {
 		conn = getConnection();
 		String sql = "insert into Prontuario (ide_paciente, ide_exame, laudo, data_consulta) values (?, ?, ?, ?)";
 		PreparedStatement ptst = conn.prepareStatement(sql);

@@ -32,7 +32,7 @@
       </ImageView>
       <Label layoutX="495.0" layoutY="109.0" text="CADASTRO DE CONSULTA" textFill="WHITE">
          <font>
-            <Font size="26.0" />
+            <Font name="System Bold" size="26.0" />
          </font>
       </Label>
       <TextField fx:id="hora_consulta" alignment="CENTER" layoutX="522.0" layoutY="479.0" onKeyPressed="#formatoHora" prefHeight="31.0" prefWidth="341.0" promptText="Hora no Formato 00:00" />

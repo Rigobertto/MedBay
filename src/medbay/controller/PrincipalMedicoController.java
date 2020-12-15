@@ -2,6 +2,8 @@ package medbay.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,15 +22,15 @@ import medbay.view.Telas;
 
 public class PrincipalMedicoController implements Initializable{
 	@FXML private TableView<ConsultaVO> tabelaConsulta;
-	@FXML private TableColumn<ConsultaVO, Integer> ideConsulta;
-	@FXML private TableColumn<ConsultaVO, String> nomePaciente;
-	@FXML private TableColumn<ConsultaVO, String> cpfPaciente;
-	@FXML private TableColumn<ConsultaVO, String> sanguePaciente;
-	@FXML private TableColumn<ConsultaVO, Float> pesoPaciente;
-	@FXML private TableColumn<ConsultaVO, Float> alturaPaciente;
-	@FXML private TableColumn<ConsultaVO, String> nomeExame;
-	@FXML private TableColumn<ConsultaVO, String> data;
-	@FXML private TableColumn<ConsultaVO, String> hora;
+	@FXML private TableColumn<ConsultaVO, Integer> ide;
+	@FXML private TableColumn<ConsultaVO, String> nome;
+	@FXML private TableColumn<ConsultaVO, String> genero;
+	@FXML private TableColumn<ConsultaVO, String> sangue;
+	@FXML private TableColumn<ConsultaVO, String> peso;
+	@FXML private TableColumn<ConsultaVO, String> altura;
+	@FXML private TableColumn<ConsultaVO, String> exame;
+	@FXML private TableColumn<ConsultaVO, String> data_consulta;
+	@FXML private TableColumn<ConsultaVO, String> hora_consulta;
 	@FXML private Label lblMensagem;
 	MedicoBO<MedicoVO> boMed = new MedicoBO<MedicoVO>();
 	private static UsuarioVO user = new UsuarioVO();
@@ -40,28 +42,23 @@ public class PrincipalMedicoController implements Initializable{
     }
 	
 	public void listar(){ //AMADO??
-		ObservableList<ConsultaVO> consulta = FXCollections.observableArrayList(boCon.listarID(medico)); 
-		ideConsulta.setCellValueFactory(new PropertyValueFactory<ConsultaVO, Integer>("id"));
-		nomePaciente.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("nome"));
-		cpfPaciente.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("cpf"));
-		sanguePaciente.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("TipoSangue")); // Talvez o q esta entre "" esteja incorreto
-		alturaPaciente.setCellValueFactory(new PropertyValueFactory<ConsultaVO, Float>("altura"));
-		pesoPaciente.setCellValueFactory(new PropertyValueFactory<ConsultaVO, Float>("peso"));
-		nomeExame.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("nome"));
-		data.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("data"));
-		hora.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("hora"));
+		ObservableList<ConsultaVO> consulta = FXCollections.observableArrayList(boCon.listarIdMedico(medico)); 
+		ide.setCellValueFactory(new PropertyValueFactory<ConsultaVO, Integer>("id"));
+		nome.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> param) -> new SimpleStringProperty(param.getValue().getPaciente().getNome()));
+		exame.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> par) -> new SimpleStringProperty(par.getValue().getExame().getNome()));
+		sangue.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> param) -> new SimpleStringProperty(param.getValue().getPaciente().getTipoSangue()));
+		altura.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> param) -> new SimpleStringProperty(String.valueOf(param.getValue().getPaciente().getAltura())));
+		peso.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> param) -> new SimpleStringProperty(String.valueOf(param.getValue().getPaciente().getPeso())));
+		genero.setCellValueFactory((TableColumn.CellDataFeatures<ConsultaVO, String> param) -> new SimpleStringProperty(param.getValue().getPaciente().getGenero()));
+		data_consulta.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("dataString"));
+		hora_consulta.setCellValueFactory(new PropertyValueFactory<ConsultaVO, String>("horaString"));
 		
 		tabelaConsulta.setItems(consulta);
     }
 	public void excluir(ActionEvent event){
 		try {
 		EditarProntuarioController.setConsulta(tabelaConsulta.getSelectionModel().getSelectedItem());
-		
-		if(EditarProntuarioController.getConsulta().getPaciente().getId() < 0) {
-			lblMensagem.setText("Selecione uma consulta!");
-			lblMensagem.setVisible(true);
-		}
-			Telas.telaEditarProntuario();
+		Telas.telaEditarProntuario();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -69,13 +66,8 @@ public class PrincipalMedicoController implements Initializable{
 	public void prontuario(ActionEvent event) {
 		try {
 			VisualizarProntuarioController.setConsulta(tabelaConsulta.getSelectionModel().getSelectedItem());
+			Telas.telaEntrarProntuario();
 			
-			if(VisualizarProntuarioController.getConsulta().getPaciente().getId() < 0 ) {
-				lblMensagem.setText("Selecione uma consulta!");
-				lblMensagem.setVisible(true);
-			}else {
-				Telas.telaEntrarProntuario();
-			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -84,14 +76,6 @@ public class PrincipalMedicoController implements Initializable{
 	public void logOut(ActionEvent event) {
 		try {
 			Telas.telaLogin();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void editarProntuario(ActionEvent event) {
-		try {
-			Telas.telaEditarProntuario();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -64,7 +64,7 @@
       <Button layoutX="548.0" layoutY="624.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
       <ComboBox fx:id="nomeMedico" layoutX="522.0" layoutY="329.0" prefHeight="31.0" prefWidth="341.0" promptText="Selecione o Médico" />
       <ComboBox fx:id="nomeExame" layoutX="522.0" layoutY="379.0" prefHeight="31.0" prefWidth="341.0" promptText="Selecione o Exame" />
-      <TextArea fx:id="obs" layoutX="522.0" layoutY="529.0" prefHeight="69.0" prefWidth="341.0" promptText="Digite uma informação" />
+      <TextArea fx:id="observacao" layoutX="522.0" layoutY="529.0" prefHeight="69.0" prefWidth="341.0" promptText="Digite uma informação" />
       <Label layoutX="372.0" layoutY="529.0" prefHeight="35.0" prefWidth="142.0" text="Observação:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -95,6 +95,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="data_consulta" alignment="CENTER" layoutX="522.0" layoutY="429.0" onKeyPressed="#formatoData" prefHeight="31.0" prefWidth="341.0" promptText="Formato ##/##/####" />
+      <DatePicker fx:id="data_consulta" layoutX="522.0" layoutY="429.0" prefHeight="31.0" prefWidth="341.0" />
    </children>
 </Pane>

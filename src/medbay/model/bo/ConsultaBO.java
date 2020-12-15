@@ -62,7 +62,6 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 				Calendar data = Calendar.getInstance();
 				data.setTimeInMillis(tabela.getTime("data_consulta").getTime());
 				consulta.setData(data);
-				
 				consulta.setExame(ebo.buscaId(tabela.getInt("ide_exame")));
 				consulta.setPaciente(pbo.buscaId(tabela.getInt("ide_paciente")));
 				consulta.setMedico(mbo.buscaId(tabela.getInt("ide_medico")));

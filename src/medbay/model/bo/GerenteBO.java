@@ -4,63 +4,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import medbay.model.dao.GerenteDAO;
-import medbay.model.vo.GerenteVO;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 public class GerenteBO implements GerenteInterBO{
 	
-	GerenteDAO<GerenteVO> dao = GerenteDAO<GerenteVO>();
-	
-	public List<GerenteVO> listar(GerenteVO gerente) {
-		ArrayList<GerenteVO> gerentes = new ArrayList<GerenteVO>();
+	public void gerarPDF() {
 		try {
-			ResultSet rs = dao.listar();
-			while(rs.next()){
-				GerenteVO vo = new GerenteVO();
-				vo.setId(rs.getInt("ide_gerente"));
-				vo.setCpf(rs.getString("cpf"));
-				vo.setNome(rs.getString("nome"));
-				vo.setIdade(rs.getInt("idade"));
-				vo.setGenero(rs.getString("genero"));
-				vo.setLogin(rs.getString("login"));
-				vo.setSenha(rs.getString("senha"));
-				gerentes.add(vo);
-			}
-			
-		}catch(SQLException e){
-			e.printStackTrace();
+			Document document = new Document();
+		PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\rigor\\OneDrive\\Documentos\\repositorios\\MedBay\\PDF_DevMedia.pdf");
+	    document.open();
+	
+	    // adicionando um parágrafo no documento
+	    document.add(new Paragraph("Gerando PDF - Java"));
 		}
-		return gerentes;
-	}
-	
-	public GerenteVO editar(GerenteVO gerente){
-		
-	}
-	
-	public void excluir(GerenteVO gerente){
-	//	Recebe um objeto Pessoa para excluir, vale destacar que excluirï¿½ nï¿½o sï¿½ apenas um atributo, mas sim o objeto por completo.
-	//	Nï¿½o retorna nada.
-	}
-	
-	public GerenteVO buscaCPF(GerenteVO gerente){
-	//	Irï¿½ receber uma String CPF para retornar o objeto do tipo Pessoa que tem como atributo igual a mesma String CPF
-	//	recebida por parametro e poder retornar.
-	//	Vale destacar que antes de ir para o mï¿½todo de busca no DAO, a String recebida por parametro irï¿½ passar por uma validaï¿½ï¿½o
-	//	para saber se ï¿½ de fato um nï¿½mero de CPF;
-	}
-	
-	public GerenteVO buscaNome(GerenteVO gerente){
-		//	Irï¿½ receber uma String nome para retornar o objeto do tipo Pessoa que tem como atributo igual a mesma String nome
-		//	recebida por parametro e poder retornar a exibiï¿½ï¿½o dos atributos do objeto.
-		//	Vale destacar que antes de ir para o mï¿½todo de busca no DAO, a String recebida por parametro irï¿½ passar por uma validaï¿½ï¿½o
-		//	para saber se ï¿½ de fato uma String nula e etc.
-	}
-	
-	public GerenteVO cadastrar(GerenteVO gerente){
-	//	Recebe um objeto Pessoa para inserir os atributos incluindo os inicializados pelo construtor e envia para o DAO e posteriormente
-	//	inserir no banco de dados;
-	//	Os atributos que serï¿½o cadastrados passarï¿½o pela validaï¿½ï¿½o dos mesmo com os mï¿½todos get e set correspondente a cada um,
-	//	como idade, cpf, nome, genero e etc.
+		catch(DocumentException de) {
+		    System.err.println(de.getMessage());
+		}
+		catch(IOException ioe) {
+		    System.err.println(ioe.getMessage());
+		}
+		document.close();
 	}
 }

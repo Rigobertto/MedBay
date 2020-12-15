@@ -4,16 +4,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import medbay.model.vo.ConsultaVO;
-
 public class Tempo {
 	public static Calendar toCalendar(String data, String hora) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm z");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
 		Calendar calendar = Calendar.getInstance();
 		
 		try {
-			calendar.setTime(sdf.parse(data + " " + hora + " " + "GMT-03:00"));
+			calendar.setTime(sdf.parse(data + " " + hora));
 		}
 		catch(ParseException e) {
 			e.printStackTrace();
@@ -89,12 +87,6 @@ public class Tempo {
     	if(data.get(Calendar.MINUTE) < 10) str += "0";
         str += data.get(Calendar.MINUTE);
         return str;
-    }
-    
-    public void batata() {
-    	ConsultaVO consulta = new ConsultaVO();
-    	
-    	consulta.setData(Tempo.toCalendar(Tempo.dataToString(Calendar.getInstance()), new String()));
     }
     
     public static String whatTimeIsIt() {

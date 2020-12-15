@@ -47,5 +47,10 @@
       </Label>
       <Button layoutX="548.0" layoutY="545.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #3C096C; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE" />
       <TextArea fx:id="observacao" layoutX="489.0" layoutY="265.0" prefHeight="254.0" prefWidth="302.0" promptText="Digite uma observação para o paciente:" />
+      <Label fx:id="lblMensagem" layoutX="522.0" layoutY="604.0" text="Cadastro feito com sucesso!">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
