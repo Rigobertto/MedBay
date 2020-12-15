@@ -20,7 +20,7 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 			rs = ptst.executeQuery();
 			while(rs.next()) {
 				if(cpf.equals(rs.getString("cpf"))){ //para caso o login já exista
-					System.out.println("O CPF já existe, insira um novo!");
+					// System.out.println("O CPF já existe, insira um novo!");
 					return;
 				}
 			}
@@ -43,7 +43,7 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 			int affectedRolls = ptst2.executeUpdate();
 			
 			if(affectedRolls == 0) {
-				System.out.println("Falha em cadastrar o usuário");
+				// System.out.println("Falha em cadastrar o usuário");
 				return;
 			}
 			
@@ -51,7 +51,7 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 			if(chave.next()) {
 				vo.setId(chave.getInt(1));
 			} else {
-				System.out.println("Falha ao obter Id de usuário cadastrado.");
+				// System.out.println("Falha ao obter Id de usuário cadastrado.");
 			}
 			
 		} catch (SQLException e) {
@@ -61,7 +61,7 @@ public class PacienteDAO<VO extends PacienteVO> extends PessoaDAO<VO> {
 			//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA KRL PORRA
 	}
 	
-	public void excluir(VO vo) throws SQLException{ //invocar excluir do pronturaio tbm
+	public void excluir(VO vo) throws SQLException { //invocar (o demonho) excluir do pronturaio tbm
 		conn = getConnection();
 		String sql = "delete from Paciente where ide = ?"; // revisar dps
 		PreparedStatement ptst;

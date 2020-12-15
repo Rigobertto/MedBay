@@ -61,7 +61,7 @@ public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
 			rs = ptst.executeQuery();
 			while(rs.next()) {
 				if(login.equals(rs.getString("login"))){ //para caso o login já exista
-					System.out.println("O Login já existe, insira um novo!");
+					// System.out.println("O Login já existe, insira um novo!");
 					return;
 				}
 			}
@@ -85,7 +85,7 @@ public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
 			int affectedRolls = ptst2.executeUpdate();
 			
 			if(affectedRolls == 0) {
-				System.out.println("Falha em cadastrar o usuário");
+				// System.out.println("Falha em cadastrar o usuário");
 				return;
 			}
 			
@@ -93,7 +93,7 @@ public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
 			if(chave.next()) {
 				vo.setId(chave.getInt(1));
 			} else {
-				System.out.println("Falha ao obter Id de usuário cadastrado.");
+				// System.out.println("Falha ao obter Id de usuário cadastrado.");
 			}
 			
 		} catch (SQLException e) {
@@ -154,7 +154,6 @@ public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
 				medico.setLogin(rs.getString("login"));
 				medico.setSenha(rs.getString("senha"));
 			}else{
-				System.out.println("Busca falhou, retornando nulo.");
 				return null;
 			}
 		} catch(SQLException e) {
@@ -184,7 +183,7 @@ public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
 				medico.setLogin(rs.getString("login"));
 				medico.setSenha(rs.getString("senha"));
 			} else {
-				System.out.println("Busca falhou, retornando nulo.");
+				// System.out.println("Busca falhou, retornando nulo.");
 				return null;
 			}
 		} catch(SQLException e) {
@@ -214,7 +213,7 @@ public class MedicoDAO<VO extends MedicoVO> extends BaseDAO <VO> {
 				medico.setLogin(rs.getString("login"));
 				medico.setSenha(rs.getString("senha"));
 			} else {
-				System.out.println("Busca falhou, retornando nulo.");
+				// System.out.println("Busca falhou, retornando nulo.");
 				return null;
 			}
 		} catch(SQLException e) {

@@ -10,7 +10,7 @@ import medbay.model.vo.UsuarioVO;
 public class GerenteDAO<VO extends GerenteVO> extends BaseDAO<VO>{
 	
 	public UsuarioVO autenticarGerente(UsuarioVO vo) {
-		//conn = getConnection();
+		conn = getConnection();
 		String sqlVerificarLogin = "select * from Gerente where login = ?";// + vo.getLogin();
 		//System.out.println(sqlVerificarLogin);
 		PreparedStatement ptst;
@@ -132,7 +132,7 @@ public class GerenteDAO<VO extends GerenteVO> extends BaseDAO<VO>{
 				gerente.setLogin(rs.getString("login"));
 				gerente.setSenha(rs.getString("senha"));
 			} else {
-				System.out.println("Busca falhou, retornando nulo.");
+				// System.out.println("Busca falhou, retornando nulo.");
 				return null;
 			}
 		} catch(SQLException e) {
@@ -160,7 +160,7 @@ public class GerenteDAO<VO extends GerenteVO> extends BaseDAO<VO>{
 				gerente.setLogin(rs.getString("login"));
 				gerente.setSenha(rs.getString("senha"));
 			} else {
-				System.out.println("Busca falhou, retornando nulo.");
+				// System.out.println("Busca falhou, retornando nulo.");
 				return null;
 			}
 		} catch(SQLException e) {
@@ -188,7 +188,7 @@ public class GerenteDAO<VO extends GerenteVO> extends BaseDAO<VO>{
 				gerente.setLogin(rs.getString("login"));
 				gerente.setSenha(rs.getString("senha"));
 			} else {
-				System.out.println("Busca falhou, retornando nulo.");
+				// System.out.println("Busca falhou, retornando nulo.");
 				return null;
 			}
 		} catch(SQLException e) {

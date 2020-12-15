@@ -23,7 +23,7 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 		}
 	}
 	
-	public void excluir(VO vo) throws SQLException{
+	public void excluir(VO vo) throws SQLException {
 		conn = getConnection();
 		String sql = "delete from Exame where ide = ?"; // revisar dps
 		PreparedStatement ptst;
@@ -66,7 +66,7 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 				exame.setValor(rs.getFloat("valor"));
 				
 			} else {
-				System.out.println("Busca falhou, retornando nulo.");
+				// System.out.println("Busca falhou, retornando nulo.");
 				return null;
 			}
 		} catch(SQLException e) {
@@ -91,7 +91,7 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 				exame.setValor(rs.getFloat("valor"));
 				
 			} else {
-				System.out.println("Busca falhou, retornando nulo.");
+				// System.out.println("Busca falhou, retornando nulo.");
 				return null;
 			}
 		} catch(SQLException e) {
@@ -116,7 +116,7 @@ public class ExameDAO<VO extends ExameVO> extends BaseDAO<VO> {
 		return rs;
 	}
 	
-	public ResultSet listarID(int id) throws SQLException{
+	public ResultSet listarID(int id) throws SQLException {
 		String sql = "select * from Exame where ide = ?";
 		PreparedStatement st;
 		ResultSet rs;
