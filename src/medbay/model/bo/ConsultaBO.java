@@ -2,11 +2,14 @@ package medbay.model.bo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import medbay.model.dao.ConsultaDAO;
+import medbay.model.util.Tempo;
 import medbay.model.vo.ConsultaVO;
 import medbay.model.vo.ExameVO;
 import medbay.model.vo.MedicoVO;
@@ -59,9 +62,15 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 				
 				consulta.setId(tabela.getInt("ide"));
 				
-				Calendar data = Calendar.getInstance();
-				data.setTimeInMillis(tabela.getTime("data_consulta").getTime());
+				
+				Calendar data = Calendar.getInstance();				
+				{
+					Date date = tabela.getDate("data_consulta");
+					Time time = tabela.getTime("hora_consulta");
+					data.setTimeInMillis(date.getTime() + time.getTime());
+				}
 				consulta.setData(data);
+				
 				consulta.setExame(ebo.buscaId(tabela.getInt("ide_exame")));
 				consulta.setPaciente(pbo.buscaId(tabela.getInt("ide_paciente")));
 				consulta.setMedico(mbo.buscaId(tabela.getInt("ide_medico")));
