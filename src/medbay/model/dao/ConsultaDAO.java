@@ -16,6 +16,7 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 		PreparedStatement ptst2;
 		try {
 			ptst2 = getConnection().prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
+			System.out.println(vo.getHoraString());
 			ptst2.setDate(1, new Date(vo.getData().getTimeInMillis()));
 			ptst2.setTime(2, new Time(vo.getData().getTimeInMillis()));
 			ptst2.setInt(3, vo.getExame().getId());
@@ -62,7 +63,7 @@ public class ConsultaDAO<VO extends ConsultaVO> extends BaseDAO<VO>{
 
 	public void excluir(ConsultaVO vo) {
 		conn = getConnection();
-		String sql = "delete from Exame where ide = ?";
+		String sql = "delete from consulta where ide = ?";
 		
 		PreparedStatement ptst;
 		try {

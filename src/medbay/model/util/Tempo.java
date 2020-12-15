@@ -12,6 +12,7 @@ public class Tempo {
 		
 		try {
 			calendar.setTime(sdf.parse(data + " " + hora));
+			//System.out.println("hora: " + calendar);
 		}
 		catch(ParseException e) {
 			e.printStackTrace();
@@ -76,17 +77,23 @@ public class Tempo {
 	}
 
     public static String dataToString(Calendar data) {
-        return data.get(Calendar.DATE) + "/" + (data.get(Calendar.MONTH) + 1) + "/" + data.get(Calendar.YEAR);
+    	if(data != null) {
+    		return data.get(Calendar.DATE) + "/" + (data.get(Calendar.MONTH) + 1) + "/" + data.get(Calendar.YEAR);
+    	}
+    	return null;
     }
     
     public static String horaToString(Calendar data) {
-    	String str = "";
-    	if(data.get(Calendar.HOUR) < 10) str += "0";
-    	str += data.get(Calendar.HOUR);
-    	str += ":";
-    	if(data.get(Calendar.MINUTE) < 10) str += "0";
-        str += data.get(Calendar.MINUTE);
-        return str;
+    	if(data != null) {
+	    	String str = "";
+	    	if(data.get(Calendar.HOUR) < 10) str += "0";
+	    	str += data.get(Calendar.HOUR);
+	    	str += ":";
+	    	if(data.get(Calendar.MINUTE) < 10) str += "0";
+	        str += data.get(Calendar.MINUTE);
+	        return str;
+    	}
+    	return null;
     }
     
     public static String whatTimeIsIt() {

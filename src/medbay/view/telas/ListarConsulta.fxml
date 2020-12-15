@@ -35,7 +35,7 @@
       <TableView fx:id="tabelaConsulta" layoutX="271.0" layoutY="261.0" prefHeight="419.0" prefWidth="970.0">
          <columns>
             <TableColumn fx:id="ide" prefWidth="31.0" text="ID" />
-            <TableColumn fx:id="PACIENTE" prefWidth="246.0" text="NOME" />
+            <TableColumn fx:id="nome" prefWidth="246.0" text="NOME" />
             <TableColumn fx:id="medico" prefWidth="271.0" text="MEDICO" />
             <TableColumn fx:id="exame" minWidth="0.0" prefWidth="182.0" text="EXAME" />
             <TableColumn fx:id="data_consulta" minWidth="8.0" prefWidth="91.0" text="DATA" />

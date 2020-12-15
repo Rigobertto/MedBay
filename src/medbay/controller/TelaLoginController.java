@@ -30,7 +30,8 @@ public class TelaLoginController {
 				ListarPacienteController.setUser(vo);
 				Telas.telaInicioGerente();
 			}else if(vo.getTabela() == 2) {
-				//PrincipalAtendenteController.setUser(vo);
+				System.out.println(vo.getNome());
+				PrincipalAtendenteController.setUser(vo);
 				Telas.telaInicioAtendente();
 			}else if(vo.getTabela() == 3) {
 				PrincipalMedicoController.setUser(vo);

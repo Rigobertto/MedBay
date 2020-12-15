@@ -7,9 +7,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import medbay.model.dao.ConsultaDAO;
-import medbay.model.util.Tempo;
 import medbay.model.vo.ConsultaVO;
 import medbay.model.vo.ExameVO;
 import medbay.model.vo.MedicoVO;
@@ -61,14 +59,17 @@ public class ConsultaBO /*implements ConsultaInterBO*/ {
 				ConsultaVO consulta = new ConsultaVO();
 				
 				consulta.setId(tabela.getInt("ide"));
-				
-				
 				Calendar data = Calendar.getInstance();				
-				{
+				
 					Date date = tabela.getDate("data_consulta");
 					Time time = tabela.getTime("hora_consulta");
-					data.setTimeInMillis(date.getTime() + time.getTime());
-				}
+					
+					data.set(date.getYear()+1900, date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
+					
+					//data.setTimeInMillis(date.getTime(), time.getTime());
+					//System.out.println(data.get(Calendar.HOUR));
+					//System.out.println(data.get(Calendar.MINUTE));
+					
 				consulta.setData(data);
 				
 				consulta.setExame(ebo.buscaId(tabela.getInt("ide_exame")));

@@ -2,6 +2,7 @@ package medbay.model.vo;
 
 import medbay.model.util.Tempo;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ConsultaVO {
@@ -11,6 +12,9 @@ public class ConsultaVO {
     private PacienteVO paciente;
     private MedicoVO medico;
     private String observacao;
+    private String dataString;
+    private String horaString;
+    
     
     public int getId() {
         return this.id;
@@ -26,8 +30,12 @@ public class ConsultaVO {
     }
 
     public boolean setData(Calendar data) {
-        if(data.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()) return false;
+        if(data == null || data.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()) 
+        	return false;
         this.data = data;
+        this.setHoraString();
+        this.setDataString();
+        
         return true;
     }
     
@@ -35,12 +43,27 @@ public class ConsultaVO {
         return setData(Tempo.toCalendar(data, hora));
     }
     
-    public String dataString() {
-    	return Tempo.dataToString(this.data);
+    
+    public String getDataString() {
+    	return this.dataString;
     }
     
-    public String horaString() {
-    	return Tempo.horaToString(this.data);
+    private void setDataString() {
+    	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String dataFinal = formatter.format(data.getTime());
+    	this.dataString = dataFinal;
+    }
+    
+    public String getHoraString() {
+    	
+    	return this.horaString;
+    }
+    
+    private void setHoraString() {
+    	SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+		String horaFinal = formatter.format(data.getTime());
+    	this.horaString = horaFinal;
+    	System.out.println("hora final:" +horaFinal);
     }
 
     public ExameVO getExame() {
