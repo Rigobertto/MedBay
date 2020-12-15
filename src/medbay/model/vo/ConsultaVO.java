@@ -34,6 +34,14 @@ public class ConsultaVO {
     public boolean setData(String data, String hora) {
         return setData(Tempo.toCalendar(data, hora));
     }
+    
+    public String dataString() {
+    	return Tempo.dataToString(this.data);
+    }
+    
+    public String horaString() {
+    	return Tempo.horaToString(this.data);
+    }
 
     public ExameVO getExame() {
         return this.exame;
