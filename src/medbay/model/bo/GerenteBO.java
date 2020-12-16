@@ -1,4 +1,4 @@
-package medbay.model.bo;
+package medbay.model.bo; // RIGOBERTO IMPLEMENTOU ESSA CLASSE
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,9 +13,7 @@ import javafx.stage.FileChooser;
 import medbay.model.vo.ConsultaVO;
 import javafx.stage.Stage;
 
-public class GerenteBO implements GerenteInterBO{
-	
-	//private final static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+public class GerenteBO implements GerenteInterBO{ // RIGOBERTO IMPLEMENTOU ESSA CLASSE
 	
 	public static void gerarPDF(ConsultaVO consulta) {
 		
@@ -39,8 +37,8 @@ public class GerenteBO implements GerenteInterBO{
 					+ "\nTipo Sanguíneo: " + consulta.getPaciente().getTipoSangue()  
 					+ "\nExame: " +  consulta.getExame().getNome() + "\nValor R$: " + consulta.getExame().getValor()
 					+ "\nData: " + consulta.getDataString() + " às " + consulta.getHoraString()  
-					+ "\nCom o médico: " + consulta.getMedico().getNome() + "\nCRM: " + consulta.getMedico().getCrm()
-					+ "\nCom Observação: " + consulta.getObservacao() + "\n\n");
+					+ "\nMédico: " + consulta.getMedico().getNome() + "\nCRM: " + consulta.getMedico().getCrm()
+					+ "\nObservação: " + consulta.getObservacao() + "\n\n");
 				}
 				document.add(paragraph);
 				Alert a = new Alert(AlertType.INFORMATION);
@@ -59,5 +57,5 @@ public class GerenteBO implements GerenteInterBO{
 			}
 		}
 	}			 
-}
+} // RIGOBERTO IMPLEMENTOU ESSA CLASSE
 
