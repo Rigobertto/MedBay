@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import javafx.fxml.FXML; // RIGOBERTO IMPLEMENTOU ESSA CLASSES
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -26,7 +26,7 @@ import medbay.model.vo.ExameVO;
 import medbay.model.vo.MedicoVO;
 import medbay.view.Telas;
 
-public class EditarConsultaController implements Initializable{
+public class EditarConsultaController implements Initializable{ // RIGOBERTO IMPLEMENTOU ESSA CLASSES
 	@FXML private Label lblMensagem;
 	@FXML private Label nome;
 	@FXML private Label cpf;
@@ -63,7 +63,7 @@ public class EditarConsultaController implements Initializable{
 			MedicoVO medico;
 			medico = boMed.listarID(Integer.parseInt(ide_medico[0]));
 			
-			consulta.setData(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText()));
+			consulta.setData(Tempo.toCalendar(Tempo.dataToString(data_consulta), hora_consulta.getText())); // RIGOBERTO IMPLEMENTOU ESSA CLASSES
 			
 			consulta.setPaciente(consultal.getPaciente());
 			consulta.setMedico(medico);
@@ -152,4 +152,4 @@ public class EditarConsultaController implements Initializable{
 	public static void setConsultal(ConsultaVO consultal) {
 		EditarConsultaController.consultal = consultal;
 	}
-}
+} // RIGOBERTO IMPLEMENTOU ESSA CLASSES
